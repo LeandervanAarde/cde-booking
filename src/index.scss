@@ -1,0 +1,77 @@
+@import "./Components/css/variables.scss";
+
+//Refer to Variables.scss for variable information 
+.content {
+  padding: 1%;
+  background-color: $background;
+  min-height: 100vh;
+}
+
+h6 {
+  font-family: $secondaryFont;
+  font-weight: bold !important;
+  font-size: 18px !important;
+  color: $fontColor1;
+
+  & :hover {
+    color: yellow;
+  }
+}
+
+
+input {
+  width: 85%;
+  padding: 1%;
+  height: 45px;
+  margin-left: 15px !important;
+  border-radius: $borderRad;
+  border: 3px solid $light-green;
+  background-color: transparent;
+  float: left;
+
+  
+}
+
+.submit {
+  background-color: $light-green;
+  height: 45px;
+  width: 10%;
+  float: left;
+  position: absolute;
+  left: 70%;
+  border-radius: 0px 10px 10px 0px;
+
+ .search{
+   color: white;
+   font-family: $mainFont;
+   font-weight: bold;
+   font-size: 18px;
+   display: inline-block;
+   margin-left: 5%;
+ }
+
+}
+
+.submit:hover{
+  transform: scale(1.2);
+  background-color: $dark-green;
+}
+
+.profile{
+
+  height: 100px;
+  float: right;
+  margin-top: -2%;
+}
+
+.photo{
+
+  height: 80%;
+background-color: blue;
+  border-radius: 55px;
+}
+
+.card-photo{
+  height: 17.8vh;
+  align-items: center !important;
+}
