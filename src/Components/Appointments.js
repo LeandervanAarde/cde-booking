@@ -1,85 +1,35 @@
 import React from 'react';
-import { Col, Placeholder } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/appointments.scss';
-import Input from './Subcomponents/Input';
-import '../index.scss';
-import Circle from './Subcomponents/Circle';
-import Cards from './Subcomponents/Cards';
+import { Col, Placeholder } from 'react-bootstrap';
+import "../index.scss";
+import SearchInput from './SubComponents/SearchInput';
+import Appointmentcard from './SubComponents/Appointmentcard';
 const Appointments = () => {
-    //Get current day
     let today = new Date;
-    let stringDate = today.toString().split(" ").splice(1,3);
+    let stringDate = today.toString().split(" ").splice(1, 3);
+    // If year is not wanted please use stringDateTwo.
+    let stringDateTwo = today.toString().split(" ").splice(1, 2);
+    // Display date refers to the date that will be displayed on the frontend.
     const displayDate = stringDate.join(' ');
 
-    //get current day +7
-    var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
-    let stringWeek = nextweek.toString().split(" ").splice(1,3);
-    let displayWeek = stringWeek.join(' ');
-    const sevenDays = displayDate + " - " + displayWeek + " ";
-    console.log(sevenDays);
- 
     return (
-        <Col md={{span:10, offset: 2}}className="contentContainer">
-            <Input >
-                Search Patient...
-            </Input>
-            <Col md={{span:2, offset: 1}} className="profile">
-                <Circle>
-                    <img src='../Assets/CDE.png'></img>
-                </Circle>
-                <p className='text-center'> Receptionists Name</p>
+        <Col md={11} className="Wrap">
+            <Col md={8} className="workingCon">
+                <SearchInput>
+                    Search Patient...
+                </SearchInput>
+                <Col md={12}>
+                    <h2 className='headingTwo'> {displayDate} Appointments</h2>
+                </Col>
+                <Col md={12} className="cardCon">
+                    <Appointmentcard />
+                    <p className='smallText text-center'> Scroll horizontal to see all appointments</p>
+                </Col>
+
             </Col>
-            <h3 className='ps-3 heading'>Appointments for {displayDate}</h3>
-            <Col md={{span:12 }} className="cardsContainer ">
-        
-                <Cards>
-                    <Col md={{span:11, offset:1}} className="card-photo pt-4">
-                        <Circle/>
-                        <h4 className='ms-5 mt-4'>Doctor Name</h4>
-                        <h4 className='ms-5 mt-4'>Patient Name</h4>
-                        <h4 className='ms-5 mt-4'>14:00 - 15:00</h4>
-                    </Col>
-                </Cards>
-
-                <Cards>
-                    <Col md={{span:11, offset:1}} className="card-photo pt-4">
-                        <Circle/>
-                        <h4 className='ms-5 mt-4'>Doctor Name</h4>
-                        <h4 className='ms-5 mt-4'>Patient Name</h4>
-                        <h4 className='ms-5 mt-4'>14:00 - 15:00</h4>
-                    </Col>
-                </Cards>
-
-                <Cards>
-                    <Col md={{span:11, offset:1}} className="card-photo pt-4">
-                        <Circle/>
-                        <h4 className='ms-5 mt-4'>Doctor Name</h4>
-                        <h4 className='ms-5 mt-4'>Patient Name</h4>
-                        <h4 className='ms-5 mt-4'>14:00 - 15:00</h4>
-                    </Col>
-                </Cards>
-
-                <Cards>
-                    <Col md={{span:11, offset:1}} className="card-photo pt-4">
-                        <Circle/>
-                        <h4 className='ms-5 mt-4'>Doctor Name</h4>
-                        <h4 className='ms-5 mt-4'>Patient Name</h4>
-                        <h4 className='ms-5 mt-4'>14:00 - 15:00</h4>
-                    </Col>
-                </Cards>
-
-                <Cards>
-                    <Col md={{span:11, offset:1}} className="card-photo pt-4">
-                        <Circle/>
-                        <h4 className='ms-5 mt-4'>Doctor Name</h4>
-                        <h4 className='ms-5 mt-4'>Patient Name</h4>
-                        <h4 className='ms-5 mt-4'>14:00 - 15:00</h4>
-                    </Col>
-                </Cards>
-            </Col>
-            <h3 className='ps-3 heading'>{sevenDays} Appointments</h3>
-
+            <Col md={4} className="work">
+       
+       </Col>
         </Col>
     );
 };

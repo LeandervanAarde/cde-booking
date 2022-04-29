@@ -1,0 +1,25 @@
+@import "../scss/variables.scss";
+
+.card{
+    height: 35vh;
+    background-color: transparent !important;
+    border: none !important;
+    margin-right: 1%;
+    display: inline-block !important;
+    padding-top: 2%;
+
+    .photo{
+        height: 36%;
+        background-color: red;
+        border-radius: 50%;
+        background-image: url("../Assets/CDE.png");
+    }
+
+    .cardText{
+        color: white;
+        font-family: $secondaryFont;
+        font-weight: bold;
+     
+    }
+}
+

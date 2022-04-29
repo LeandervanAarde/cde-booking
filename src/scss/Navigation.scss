@@ -1,0 +1,30 @@
+@import "../scss/variables.scss";
+
+
+.navCon{
+    background-color: $blue;
+    height: 97vh;
+    border-radius: $borderRad;
+   
+
+    .logoCon{
+        background-image: url("../Assets/CDE.png");
+        height: 5vh;
+        background-position: center;
+        background-size: cover;
+        margin-top: 30%;
+    }
+
+    #item1{
+        margin-top: 10vh;
+    }
+
+    .navText{
+        text-decoration: none;
+        color: $white;
+    }
+
+    .navItem{
+        margin-bottom: 5vh;
+    }
+}

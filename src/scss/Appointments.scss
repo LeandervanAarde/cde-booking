@@ -1,0 +1,35 @@
+@import "../scss/variables.scss";
+
+
+
+
+    h2{
+        color: white;
+        font-family: $mainFont;
+    }
+    
+    
+    .cardCon{
+        min-height:35vh;
+        overflow-x: auto;
+        white-space: nowrap;
+    
+        .smallText{
+            color:  rgba($color: $white, $alpha: 0.5);
+            font-family: $secondaryFont;
+            font-size: 14px;
+            position: sticky;
+            margin-left: 23%;
+            
+        }
+    }
+
+    .work{
+        height: 100vh;
+        background-color: $blue;
+        float: right;
+    }
+
+    .workingCon{
+        float: left;
+    }
