@@ -9,16 +9,19 @@
     padding-top: 2%;
 
     .photo{
-        height: 36%;
+        height: 40%;
         background-color: red;
         border-radius: 50%;
-        background-image: url("../Assets/CDE.png");
+        background-image: url("../Assets/Picholas-Cage.jpeg");
+        background-position: center;
+        background-size: cover;
     }
 
     .cardText{
-        color: white;
+        color: $fontColor;
         font-family: $secondaryFont;
         font-weight: bold;
+  
      
     }
 }

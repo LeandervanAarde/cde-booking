@@ -1,0 +1,102 @@
+@import "../scss/variables.scss";
+
+.calendar {
+    height: 100%;
+    background-color: $white;
+    border-radius: $borderRad;
+
+
+    .day {
+        display: inline-block;
+        width: 14%;
+        height: 8vh;
+        text-align: center;
+        font-family: $secondaryFont;
+        font-size: 18px;
+        cursor: pointer;
+
+        .selected {
+            background-color: $blue;
+            color: $white;
+            border-radius: $borderRad;
+            &:hover {
+                background-color: $hover;
+            }
+
+
+    }
+    
+    &:hover:not(.selected){
+        border: 2px solid $blue;
+        border-radius: $borderRad;
+        height: 20%;
+    }
+    
+
+    }
+
+    .today {
+        background-color: $currentDayColor;
+        color: black;
+        border-radius: $borderRad;
+        height: 100%;
+      
+    }
+
+    .before {
+        p {
+            opacity: 0.5;
+        }
+
+        &:hover {
+            border: 2px solid $blue;
+            height: 100%;
+        }
+
+    }
+
+    
+
+    .banner {
+        height: 20%;
+        background-color: $blue;
+        margin-bottom: 20px;
+
+        .month {
+
+            margin-top: 3vh;
+            text-align: center;
+
+        }
+
+        .month,
+        .previous,
+        .next {
+            float: left;
+        }
+
+        .previous,
+        .next {
+            height: 100%;
+            text-align: center;
+            padding-top: 4vh;
+            cursor: pointer;
+            transition: 0.2s linear;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .week {
+        width: 100%;
+        height: 10%;
+
+        .days {
+            display: inline-block;
+            width: 14%;
+            text-align: center;
+        }
+    }
+}

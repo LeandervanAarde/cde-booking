@@ -1,16 +1,19 @@
- @import "./scss/variables.scss";
+//All scss folders are imported here because all files are linked to this scss folder. 
+@import "./scss/variables.scss";
 @import"./scss/Navigation.scss";
 @import"./scss/input.scss";
 @import"./scss/Appointments.scss";
 @import"./scss/AppointmentCard.scss";
+@import"./scss/profile.scss";
+@import"./scss/calendar.scss";
 
-.content{
-  background-color: $Background ;
+.content {
+  background-color: $Background;
   min-height: 100vh;
   padding: 1%;
 }
 
-.btn{
+.btn {
   width: 105px;
   height: 40px;
   background-color: $hover !important;
@@ -19,12 +22,11 @@
 
 
 
-  p{
+  p {
     font-size: 14px;
     text-align: right;
     display: inline-block;
   }
 
- 
-} 
 
+}

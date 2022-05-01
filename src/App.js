@@ -18,7 +18,7 @@ function App() {
       <Row>
         <Navigation/>
         <Routes>
-          <Route path="/Appointments" element={<Appointments/>}></Route>
+          <Route path="/" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>
           <Route path="Doctors" element={<Doctors/>}></Route>
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
@@ -29,9 +29,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <Route path="/Appointments" element={<Appointments/>}></Route>
-<Route path="/Patients" element={<Patients/>}></Route>
-<Route path="/Doctors" element={<Doctors/>}></Route>
-<Route path="/" element={<Receotionists/>}></Route> */}

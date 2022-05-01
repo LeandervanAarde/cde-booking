@@ -4,6 +4,7 @@ import { Col, Placeholder } from 'react-bootstrap';
 import "../../index.scss";
 
 const Appointmentcard = () => {
+
     return (
     <Col md={3} className="card">
         <Col md={{span:6, offset: 3}} className="photo"></Col>

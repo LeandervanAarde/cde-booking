@@ -3,6 +3,7 @@
   background-color: #4163CF;
   height: 97vh;
   border-radius: 8px;
+  position: fixed;
 }
 
 .navCon .logoCon {

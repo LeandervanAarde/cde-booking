@@ -1,7 +1,9 @@
 @import "../scss/variables.scss";
 
 
-
+.wrap{
+    padding: 0 !important;
+}
 
     h2{
         color: white;
@@ -11,25 +13,27 @@
     
     .cardCon{
         min-height:35vh;
-        overflow-x: auto;
+        overflow-x: scroll;
         white-space: nowrap;
+       
     
         .smallText{
             color:  rgba($color: $white, $alpha: 0.5);
             font-family: $secondaryFont;
             font-size: 14px;
             position: sticky;
-            margin-left: 23%;
-            
         }
     }
 
+ 
+
     .work{
-        height: 100vh;
-        background-color: $blue;
-        float: right;
+        height: 51vh;     
     }
 
-    .workingCon{
-        float: left;
+    .calendarCon{
+        background-color: rgba($color: blue, $alpha: 0.3);
+        height: 59vh;
     }
+
+

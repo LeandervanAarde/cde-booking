@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Placeholder } from 'react-bootstrap';
 import "../../index.scss";
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ const Navigation = () => {
             {/* Logo */}
             <Col md={12} className="logoCon"></Col>
             {/* Links */}
-            <Link to="/Appointments">
+            <Link to="/">
                 <Col md={12} className="text-center navItem" id="item1">
                     <FaHome color={"white"} size={35} />
                     <h6 className='navText'>Home</h6>
