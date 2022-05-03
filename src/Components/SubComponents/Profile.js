@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../index.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Placeholder } from 'react-bootstrap';
+import { Col} from 'react-bootstrap';
 
 const Profile = () => {
     return (
@@ -10,14 +10,14 @@ const Profile = () => {
                 <h2 className='headingTwo text-center' id='profileText'>MY PROFILE</h2>
             </Col>
             <Col md={12}>
-                <Col md={{ span: 4 }} className="profileImage"></Col>
+                <Col md={{ span: 3 }} className="profileImage"></Col>
                 <h2 id="reception">RECEPTIONIST NAME</h2>
-                <br></br>
-                {/* <h5 id="title">Head Receptionist</h5> */}
+                
+                <h5 id="title">Head Receptionist</h5>
             </Col>
 
             <Col md={12} className="receptionInfo">
-                <table className='receptionInfoT'>
+                <table id='receptionInfoT'>
                     <thead>
                         <tr>
                             <th>Date Of Birth</th>

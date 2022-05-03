@@ -37,7 +37,6 @@ const Calendar = () => {
     }
 
 
-
     function DayStyle(Day) {
         if (prevDay(Day)) return "before"
         if (currentDay(Day)) return "selected"
@@ -67,7 +66,7 @@ const Calendar = () => {
 
     return (
         <Col md={12} className='calendar' >
-            <Col md={12} className="banner" value={value} onchange={onchange}>
+            <Col md={12} className="banner" value={value} onChange={onchange}>
                 <Col md={{span:2, offset:1}} className="previous" onClick={() =>!thisMonth() && onchange(prevMonth())}><FaArrowLeft  size={40} color={"white"}/></Col>
                 <h2 className='month col-md-6'>{currentMonth()} {currentYear()}</h2>
                 < Col md={2} className="next" onClick={() => onchange(nextMonth())}><FaArrowRight size={40} color={"white"}/></Col>

@@ -1,0 +1,59 @@
+@import "../scss/variables.scss";
+
+.WAppointmentCon {
+    height: 52vh;
+    background-color: $darkBg;
+    margin-top: 2vh;
+    border-radius: $borderRad;
+    padding-bottom: 2%;
+
+    .Header {
+        height: 15%;
+        background-color: $blue;
+        padding-top: 3%;
+        border-top-left-radius: $borderRad;
+        border-top-right-radius: $borderRad;
+    }
+
+    .Wbody {
+        height: 80%;
+        padding: 1%;
+        overflow: scroll;
+
+        #upComingAppointments {
+            width: 100%;
+            text-align: center;
+
+            tr {
+                width: 25%;
+
+                th {
+                    font-size: 16px;
+                }
+
+                td,
+                th {
+                    color: $white;
+                    height: 40px;
+                }
+
+                td {
+                    font-size: 12px;
+                }
+                
+                .remove {
+                    color: red;
+
+                    &:hover {
+                        font-weight: 700;
+                        transform: scale(1.2);
+                    }
+                }
+                &:hover {
+                    transform: scale(1.05);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

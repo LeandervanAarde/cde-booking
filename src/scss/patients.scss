@@ -1,0 +1,37 @@
+.sectionCon {
+    height: 4vh;
+    background-color: red;
+}
+
+.addPatient {
+    height: 6.4vh;
+    display: inline-block;
+    margin-top: 2vh;
+
+    .button {
+        aspect-ratio: 1/1;
+        background-color: $green;
+        border-radius: 50%;
+        padding: 2%;
+        display: inline-block;
+        margin-right: 2vh;
+
+        &:hover {
+            background-color: darken($green, 5%);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
+
+    .buttonText {
+        color: white;
+        display: inline-block;
+        font-family: $secondaryFont;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+.allPatients {
+    display: inline-block;
+}

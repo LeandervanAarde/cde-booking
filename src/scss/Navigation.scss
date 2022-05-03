@@ -9,7 +9,8 @@
 
     .logoCon{
         background-image: url("../Assets/CDE.png");
-        height: 5vh;
+        height: auto;
+        min-height: 5.1vh;
         background-position: center;
         background-size: cover;
         margin-top: 30%;

@@ -6,6 +6,15 @@
 @import"./scss/AppointmentCard.scss";
 @import"./scss/profile.scss";
 @import"./scss/calendar.scss";
+@import"./scss/Weeklyappointments.scss";
+@import"./scss/AvailableBookings.scss";
+@import"./scss/patientOverview.scss";
+@import"./scss/patients.scss";
+
+html {
+  background-color: $Background;
+  cursor: default;
+}
 
 .content {
   background-color: $Background;
@@ -14,19 +23,15 @@
 }
 
 .btn {
-  width: 105px;
+  width: 100%;
   height: 40px;
   background-color: $hover !important;
   border-radius: $borderRad !important;
   color: $white !important;
 
-
-
   p {
     font-size: 14px;
-    text-align: right;
+
     display: inline-block;
   }
-
-
 }

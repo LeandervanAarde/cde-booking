@@ -1,7 +1,7 @@
 @import "../scss/variables.scss";
 
 .card{
-    height: 35vh;
+    height: auto;
     background-color: transparent !important;
     border: none !important;
     margin-right: 1%;
@@ -9,20 +9,22 @@
     padding-top: 2%;
 
     .photo{
-        height: 40%;
+        aspect-ratio: 1/1;
         background-color: red;
         border-radius: 50%;
-        background-image: url("../Assets/Picholas-Cage.jpeg");
+        background-image: url("../Assets/rian-ramirez-rm7rZYdl3rY-unsplash.jpg");
         background-position: center;
         background-size: cover;
     }
 
     .cardText{
-        color: $fontColor;
+        color: $white;
         font-family: $secondaryFont;
-        font-weight: bold;
-  
-     
+        font-weight: bold;   
+    }
+
+    &:hover{
+        transform: scale(1.1);
     }
 }
 

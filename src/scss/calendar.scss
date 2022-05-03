@@ -5,11 +5,10 @@
     background-color: $white;
     border-radius: $borderRad;
 
-
     .day {
         display: inline-block;
         width: 14%;
-        height: 8vh;
+        height: 6vh;
         text-align: center;
         font-family: $secondaryFont;
         font-size: 18px;
@@ -19,54 +18,44 @@
             background-color: $blue;
             color: $white;
             border-radius: $borderRad;
+            height: auto;
+
             &:hover {
                 background-color: $hover;
             }
+        }
 
-
-    }
-    
-    &:hover:not(.selected){
-        border: 2px solid $blue;
-        border-radius: $borderRad;
-        height: 20%;
-    }
-    
-
+        &:hover:not(.before) {
+            background-color: $hover;
+            height: auto;
+            border-radius: $borderRad;
+            color: $white;
+        }
     }
 
     .today {
         background-color: $currentDayColor;
         color: black;
         border-radius: $borderRad;
-        height: 100%;
-      
     }
 
     .before {
         p {
             opacity: 0.5;
         }
-
-        &:hover {
-            border: 2px solid $blue;
-            height: 100%;
-        }
-
     }
-
-    
 
     .banner {
         height: 20%;
+        min-height: 10vh;
         background-color: $blue;
-        margin-bottom: 20px;
+        margin-bottom: 1vh;
+        border-top-left-radius: $borderRad;
+        border-top-right-radius: $borderRad;
 
         .month {
-
             margin-top: 3vh;
             text-align: center;
-
         }
 
         .month,
@@ -97,6 +86,10 @@
             display: inline-block;
             width: 14%;
             text-align: center;
+            font-family: $mainFont;
+            font-weight: 600;
+            font-size: 22px;
+            padding-bottom: 1vh;
         }
     }
 }

@@ -1,70 +1,80 @@
 @import "../scss/variables.scss";
 
-.profile{
-    height: 100%;
+.profile {
+    height: 43vh;
     background-color: $darkBg;
     border-radius: $borderRad;
+    margin-top: 1vh;
 
-    .banner{
+    .banner {
         background-color: $blue;
         height: 20%;
-        border-radius: $borderRad;
+        border-top-left-radius: $borderRad;
+        border-top-right-radius: $borderRad;
         padding-top: 5%;
     }
 
-    #profileText{
-        font-weight: 400 ;
+    #profileText {
+        font-weight: 400;
     }
 
-    .profileImage{
-    height: 150px;
-    background-image: url("../Assets/Picholas-Cage.jpeg");
-    background-position: center;
-    background-size: cover;
-    border-radius: 100px;
-    float: left;
-    margin-left: 2%;
+    .profileImage {
+        aspect-ratio: 1/1;
+        background-image: url("../Assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg");
+        background-position: center;
+        background-size: cover;
+        border-radius: 55%;
+        float: left;
+        margin-left: 2%;
+        margin-right: 7%;
+        margin-top: -2vh;
+    }
 
-   
-}
-#reception{
-float: left;
-  margin-top: 10% !important;
-  margin-left: 7%;
-}
-
-#title{
-    color: $white;
-    height: 20px;
-  font-size: 19px;
-  text-align: center;
-}
-
-.receptionInfo{
-    height: 20vh;
-    margin-top: 6vh;
-
-    .receptionInfoT{
-        width: 100%;
+    #reception {
+        margin-top: 10% !important;
+        margin-left: 7%;
+        font-size: 24px;
         text-align: center;
-        color: $white;
-      
-        td{
-            border-right: 1.5px solid $white;
-            font-family: $secondaryFont;
-            font-size: 19px;
-        }
-        th{
-           height: 70px;
-           padding-bottom: 20px;
-           width: 20%;
-           font-family: $mainFont;
-           font-size: 22px;
-        }
+        font-family: $mainFont;
+        font-weight: 600;
+    }
 
-        .rightContainer{
-            border-right: none;
+    #title {
+        color: $white;
+        height: 20px;
+        font-size: 17px;
+        text-align: center;
+        font-family: $secondaryFont;
+        font-weight: 400;
+    }
+
+    .receptionInfo {
+        height: 20vh;
+        margin-top: 6vh;
+
+        #receptionInfoT {
+            width: 100%;
+            text-align: center;
+            color: $white;
+
+            td {
+                border-right: 1.5px solid $white;
+                font-family: $secondaryFont;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            th {
+                height: 70px;
+                padding-bottom: 20px;
+                width: 20%;
+                font-family: $mainFont;
+                font-size: 22px;
+            }
+
+            .rightContainer {
+                border-right: none;
+            }
         }
     }
-}
 }

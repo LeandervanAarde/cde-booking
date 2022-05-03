@@ -1,39 +1,35 @@
 @import "../scss/variables.scss";
 
 
-.wrap{
+.wrap {
     padding: 0 !important;
 }
 
-    h2{
-        color: white;
-        font-family: $mainFont;
-    }
-    
-    
-    .cardCon{
-        min-height:35vh;
-        overflow-x: scroll;
-        white-space: nowrap;
-       
-    
-        .smallText{
-            color:  rgba($color: $white, $alpha: 0.5);
-            font-family: $secondaryFont;
-            font-size: 14px;
-            position: sticky;
-        }
-    }
+h2 {
+    color: white;
+    font-family: $mainFont;
+}
 
- 
+.cardCon {
+    min-height: 28vh;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
 
-    .work{
-        height: 51vh;     
-    }
+.work {
+    height: 51vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1vh;
+}
 
-    .calendarCon{
-        background-color: rgba($color: blue, $alpha: 0.3);
-        height: 59vh;
-    }
+.calendarCon,
+.BookingCon {
+    background-color: rgba($color: blue, $alpha: 0.3);
+    height: auto;
+}
 
-
+.BookingCon {
+    margin-top: 2vh;
+}

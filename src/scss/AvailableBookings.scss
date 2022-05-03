@@ -1,0 +1,52 @@
+.Bookings{
+    height: 100%;
+    min-height: 55vh;
+    max-height: 55vh;
+    background-color: $white;
+    border-radius: $borderRad;
+    overflow: scroll;
+
+    .banner{
+        height: 20%;
+        min-height: 10vh;
+        background-color: $blue;
+        margin-bottom: 20px;
+        border-top-left-radius: $borderRad;
+        border-top-right-radius: $borderRad;
+        padding-top: 1%;
+
+        h4{
+            color: $white;
+            font-family: $mainFont;
+        }
+        
+        p{
+            color: $white;
+            font-family: $secondaryFont;
+        }
+    }
+
+    .body{
+        table{
+            width: 100%;
+            text-align: center;
+        
+            th{
+                font-family: $mainFont;
+                font-size: 20px;
+                padding-bottom: 2vh;
+            }
+
+            td{
+                font-family: $secondaryFont;
+                height: 4vh;
+                font-size: 18px;
+            }
+        }
+
+        .remove{
+            width: 25%;
+            padding-bottom: 1vh;
+        }
+    }
+}

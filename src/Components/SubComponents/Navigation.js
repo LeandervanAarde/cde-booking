@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Placeholder } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import "../../index.scss";
 import { Link } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
@@ -47,7 +47,7 @@ const Navigation = () => {
 
             <Primarybtn>
 
-                <FaDoorOpen size={18} id="logOut"/>
+                <FaDoorOpen size={15} id="logOut"/>
                  Sign Out
             </Primarybtn>
         </Col>
