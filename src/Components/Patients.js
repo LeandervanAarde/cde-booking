@@ -9,6 +9,8 @@ import { FaUser } from "react-icons/fa";
 import { FaStethoscope } from "react-icons/fa";
 import { FaMoneyBillWave } from "react-icons/fa";
 import Addbutton from './SubComponents/Addbutton';
+import TableInformation from './SubComponents/TableInformation';
+import People from './SubComponents/People';
 const Patients = (props) => {
     const Number = 1245;
     const Fees = 450.45
@@ -34,18 +36,35 @@ const Patients = (props) => {
                     title="Total fees owed"
                     number={"R " + Fees}
                     icon={<FaMoneyBillWave color={"black"} size={110} />} />
-                 <h2 className='allPatients ms-4'>All patients</h2>
-                 <Col md={{span:2, offset: 8}} className="addPatient">
-                 <Addbutton/>
-                 <p className='buttonText'>Add patient</p>
-                 </Col>
-            </Col>
-            
+                <h2 className='allPatients ms-4'>All patients</h2>
+                <Col md={{ span: 2, offset: 8 }} className="addPatient">
+                    <Addbutton />
+                    <p className='buttonText'>Add patient</p>
+                </Col>
 
+                <People
+                id= "01"
+                name = "Richard Hendricks"
+                children ="Diabetes"
+                age = "29"
+                gender ="Male"
+                />
+            </Col>
 
             <Col md={3} className="work">
                 <Profile />
-
+                <TableInformation
+                    headerOne="ID"
+                    headerTwo="Patient"
+                    headerThree="Fees"
+                    headerFour=" "
+                    Information1="01"
+                    Information2="Leander van Aarde"
+                    Information3="R6000.00"
+                    btnTxt="PAID"
+                >
+                    Information Goes here
+                </TableInformation>
             </Col>
         </>
     );

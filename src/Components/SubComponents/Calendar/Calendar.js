@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import { Col } from 'react-bootstrap';
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
-const Calendar = () => {
+
+const Calendar = (props) => {
+    //Variables to get all days in the month, gets the starting day of the week and the end day of the week 
     const [calendar, setCalendar] = useState([]);
-    const [value, onchange] = useState(moment());
-    const startDay = value.clone().startOf("month").startOf("week");
-    const endDay = value.clone().endOf("month").endOf("week");
+    const startDay = props.value.clone().startOf("month").startOf("week");
+    const endDay = props.value.clone().endOf("month").endOf("week");
 
     useEffect(() => {
         const day = startDay.clone().subtract(1, "day");
@@ -21,65 +21,69 @@ const Calendar = () => {
             );
         }
         setCalendar(Arr);
+    }, [props.value])
 
-    }, [value])
-
+    //Function to check if the day is selected
     function currentDay(Day) {
-        return value.isSame(Day, "day");
+        return props.value.isSame(Day, "day");
     }
-
+    //Function to check dates before today
     function prevDay(Day) {
         return Day.isBefore(new Date(), "day")
     }
-
+    //Ffunction to check if the selected day is the same day as today
     function isToday(Day) {
         return Day.isSame(new Date(), "day")
     }
-
-
+    //Function to give classes to days so that they can get correct classes and can be appropriately styled
     function DayStyle(Day) {
         if (prevDay(Day)) return "before"
         if (currentDay(Day)) return "selected"
         if (isToday(Day)) return "today"
-
         return " "
     };
-
+    //Function to set the current month in the header
     function currentMonth() {
-        return value.format("MMMM");
+        return props.value.format("MMMM");
     }
+
+    //Sets the current year in header
     function currentYear() {
-        return value.format("YYYY")
+        return props.value.format("YYYY")
     }
 
-    function prevMonth(){
-        return value.clone().subtract(1, "month")
+    //Onclick function that will subtract a month and show the previous month
+    function prevMonth() {
+        return props.value.clone().subtract(1, "month")
+    }
+    //Onclick that will show the next month
+    function nextMonth() {
+        return props.value.clone().add(1, "month")
     }
 
-    function nextMonth(){
-        return value.clone().add(1, "month")
+    //Function that will check if month is the same as this month, this will not allow users to go back to months before this month
+    function thisMonth() {
+        return props.value.isSame(new Date(), "month")
     }
-    function thisMonth(){
-        return value.isSame(new Date(), "month")
-    }
-
 
     return (
         <Col md={12} className='calendar' >
-            <Col md={12} className="banner" value={value} onChange={onchange}>
-                <Col md={{span:2, offset:1}} className="previous" onClick={() =>!thisMonth() && onchange(prevMonth())}><FaArrowLeft  size={40} color={"white"}/></Col>
+            <Col md={12} className="banner" value={props.value} onChange={props.onChange}>
+                {/* Onlcik that checks if the user can go back one month */}
+                <Col md={{ span: 2, offset: 1 }} className="previous" onClick={() => !thisMonth() && props.onChange(prevMonth())}><FaArrowLeft size={40} color={"white"} /></Col>
                 <h2 className='month col-md-6'>{currentMonth()} {currentYear()}</h2>
-                < Col md={2} className="next" onClick={() => onchange(nextMonth())}><FaArrowRight size={40} color={"white"}/></Col>
+                {/* Onlcik that checks if the user can go forward one month */}
+                < Col md={2} className="next" onClick={() => props.onChange(nextMonth())}><FaArrowRight size={40} color={"white"} /></Col>
             </Col>
             <Col className='week'>
                 {
-                 [  "SUN", "MON","TUE", "WED", "THU", "FRI", "SAT"].map((d) => <div className='days'>{d}</div>)
+                    ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d) => <div className='days'>{d}</div>)
                 }
             </Col>
             {
                 calendar.map(week => <div >
                     {
-                        week.map(Day => <div className='day' onClick={() => !prevDay(Day) && onchange(Day)}>
+                        week.map(Day => <div className='day' onClick={() => !prevDay(Day) && props.onChange(Day)}>
                             <div className={DayStyle(Day)}> <p>{Day.format("D")} </p></div>
                         </div>)
                     }
@@ -87,6 +91,8 @@ const Calendar = () => {
             }
         </Col>
     );
+
+
 };
 
 export default Calendar;

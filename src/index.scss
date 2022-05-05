@@ -10,6 +10,8 @@
 @import"./scss/AvailableBookings.scss";
 @import"./scss/patientOverview.scss";
 @import"./scss/patients.scss";
+@import"./scss/modal.scss";
+@import"./scss/people.scss";
 
 html {
   background-color: $Background;
@@ -35,3 +37,4 @@ html {
     display: inline-block;
   }
 }
+

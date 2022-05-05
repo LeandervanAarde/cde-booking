@@ -6,9 +6,12 @@ import "../index.scss";
 import SearchInput from './SubComponents/SearchInput';
 import Appointmentcard from './SubComponents/Appointmentcard';
 import Profile from './SubComponents/Profile';
-import Calendar from './SubComponents/Calendar/Calendar';
-import Weekappointments from './SubComponents/Weekappointments';
+import Calendar  from './SubComponents/Calendar/Calendar';
+import TableInformation from './SubComponents/TableInformation';
 import Availablebook from './SubComponents/Availablebook';
+import Modal from './SubComponents/Modal';
+
+
 
 const Appointments = () => {
 
@@ -16,9 +19,9 @@ const Appointments = () => {
     const current = moment().clone().format("DD MMMM ");
     const Year = moment().clone().format("DD MMMM YYYY");
     const week = current + " - " + endWeek;
-    console.log(week);
-
     const [value, setValue] = useState(moment());
+    const [modalOpen, setModalOpen] = useState(false);
+   
     return (
         <>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
@@ -36,20 +39,37 @@ const Appointments = () => {
                     <Appointmentcard />
                 </Col>
                 <Col md={12} className="calendarCon">
-                    <Calendar value={value} onChange={setValue} />
+                    <Calendar value={value} onChange={setValue} 
+
+                    />
                 </Col>
 
                 <Col md={12} className="BookingCon">
-                   <Availablebook/>
+                   <Availablebook
+                    value = {value}
+                    function ={() => setModalOpen(true)}
+                   />
+                
                 </Col>
             </Col>
 
             <Col md={3} className="work">
                 <Profile />
-                <Weekappointments>
+                <TableInformation
+                    headerOne = "Time"
+                    headerTwo = "Patient"
+                    headerThree = "Doctor"
+                    headerFour= " "
+                    Information1 = "09:00 - 10:00"
+                    Information2 = "Leander van Aarde"
+                    Information3 = "Dr Makan"
+                    btnTxt = "-REMOVE"
+                >
                     {week} Appointments
-                </Weekappointments>
+                </TableInformation>
             </Col>
+           {modalOpen && <Modal setModalOpen={setModalOpen}/>}
+           
         </>
 
     );

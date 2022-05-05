@@ -1,0 +1,61 @@
+@import "../scss/variables.scss";
+
+.backdrop{
+  background-color: #0000009e;
+
+  height: auto;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  
+}
+
+.Modal {
+    width: 80%;
+    min-height: 50vh;
+    height: auto;
+    background-color: darken($white, 5%);
+    position: fixed;
+    z-index: 10;
+    top: 15vh;
+    right: 0;
+    left: 13vw;
+    padding: 2%;
+    padding-left: 4%;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+
+    .logo{
+        background-image: url("../../public/Assets/CDE-L.png");
+        height: 5vh;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+      }
+
+      h2{
+        color: $Background;
+        text-align: left;
+      }
+
+      input{
+          width: 52%;
+          margin-top: 5vh;
+          border-radius: $borderRad;
+          background-color: transparent;
+          border: 2px solid $blue;
+          padding: 1%;
+          display: inline-block;
+          margin-left: 2vw;
+      }
+
+      h6{
+         display: inline-block;
+         text-align: left;
+         margin-right: 2vw;
+         
+      }
+
+      
+  }
