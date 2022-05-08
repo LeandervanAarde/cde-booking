@@ -7,6 +7,7 @@
     margin-right: 1%;
     display: inline-block !important;
     padding-top: 2%;
+    margin-bottom: 4vh;
 
     .photo{
         aspect-ratio: 1/1;
@@ -18,13 +19,14 @@
     }
 
     .cardText{
-        color: $white;
+        color: $fontColor;
         font-family: $secondaryFont;
         font-weight: bold;   
     }
 
     &:hover{
         transform: scale(1.1);
+        @include dropShadow;
     }
 }
 

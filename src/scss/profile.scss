@@ -2,9 +2,10 @@
 
 .profile {
     height: 43vh;
-    background-color: $darkBg;
+    background-color: $lightwhite;
     border-radius: $borderRad;
     margin-top: 1vh;
+    @include dropShadow;
 
     .banner {
         background-color: $blue;
@@ -15,7 +16,8 @@
     }
 
     #profileText {
-        font-weight: 400;
+        font-weight: 500;
+        color: $white;
     }
 
     .profileImage {
@@ -55,7 +57,7 @@
         #receptionInfoT {
             width: 100%;
             text-align: center;
-            color: $white;
+            color: $fontColor;
 
             td {
                 border-right: 1.5px solid $white;

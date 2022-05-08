@@ -3,12 +3,10 @@ import React from 'react';
 
 const Patientoverview = (props) => {
     return (
-       <div className='infoContainer mt-3'>
-           <div className='iconCon'>
+       <div className='infoContainer mt-3 text-center'>
              {props.icon}
-           </div>
-           <h4 className='text-center mt-2'>{props.title}</h4>
-           <h2 className='text-center mt-4'>{props.number}</h2>
+           <h4 className='text-center mt-4'>{props.title}</h4>
+           <h2 className='text-center mt-1'>{props.number}</h2>
        </div>
     );
 };

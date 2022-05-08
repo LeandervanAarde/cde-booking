@@ -3,23 +3,17 @@
 .infoContainer{
     aspect-ratio: 1/0.8;
     width: 32.03%;
-    background-color: $blue ;
+    background-color: $white ;
     display: inline-block;
     margin-left: 1.3%;
     border-radius: $borderRad;
+    padding-top: 2vh;
+    @include dropShadow;
 
-    .iconCon{
-        height: 48%;
-        width: 100%;
-        background-color: $white;
-        border-top-left-radius: $borderRad;
-        border-top-right-radius: $borderRad;
-        text-align: center;
-        padding-top: 2%;
-    }
+
 
     h4{
-        color: white;
+        color: $darkerBg;
         font-family: $mainFont;
     }
 }

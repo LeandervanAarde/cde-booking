@@ -11,7 +11,7 @@ const Modal = ({props, setModalOpen}) => {
     return (
         <>
         <Col md={12} className='backdrop' onClick={ () => setModalOpen(false)}> </Col>
-       <Col md={{span:7}} className="Modal">
+       <Col md={{span:6}} className="Modal">
            <Col md={12}>
 
             <Col md={2} className="logo" onClick={ () => setModalOpen(false)}> </Col>

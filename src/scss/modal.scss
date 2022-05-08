@@ -19,9 +19,9 @@
     z-index: 10;
     top: 15vh;
     right: 0;
-    left: 13vw;
+    left: 16vw;
     padding: 2%;
-    padding-left: 4%;
+ 
     border-radius: $borderRad;
     transition: height 0.5s linear, width 0.5s linear;
 
@@ -37,6 +37,7 @@
       h2{
         color: $Background;
         text-align: left;
+      
       }
 
       input{
@@ -54,6 +55,7 @@
          display: inline-block;
          text-align: left;
          margin-right: 2vw;
+         margin-left:  5vw !important;
          
       }
 

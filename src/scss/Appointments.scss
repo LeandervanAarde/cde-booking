@@ -6,7 +6,7 @@
 }
 
 h2 {
-    color: white;
+    color: $fontColor;
     font-family: $mainFont;
 }
 
@@ -26,7 +26,6 @@ h2 {
 
 .calendarCon,
 .BookingCon {
-    background-color: rgba($color: blue, $alpha: 0.3);
     height: auto;
 }
 

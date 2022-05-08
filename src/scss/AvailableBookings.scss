@@ -4,9 +4,10 @@
     height: 100%;
     min-height: 55vh;
     max-height: 55vh;
-    background-color: $white;
+    background-color: $lightwhite;
     border-radius: $borderRad;
     overflow: scroll;
+    @include dropShadow;
 
     .banner{
         height: 20%;

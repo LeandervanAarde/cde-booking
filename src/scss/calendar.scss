@@ -2,8 +2,13 @@
 
 .calendar {
     height: 100%;
-    background-color: $white;
+    background-color: $lightwhite;
     border-radius: $borderRad;
+    @include dropShadow;
+
+    h2{
+        color: $white;
+    }
 
     .day {
         display: inline-block;

@@ -1,13 +1,13 @@
 
 // Colors used in the document
-$Background: #312F2F;
+$Background: #FAFBFD;
 $white: #FDFDFD;
 $lightwhite: #fdfdfdb8;
-$blue: #4163CF; 
+$blue: #5490FE; 
 $darkBg: #232436;
 $hover: #04289f;
 $warning: #CA0707; 
-$darkerBg: #232436;
+$darkerBg: #272727;
 $currentDayColor: rgba(188, 188, 188, 0.392);
 $green: #07AA52;
 
@@ -15,7 +15,7 @@ $green: #07AA52;
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap");
 $mainFont: 'Barlow Condensed', sans-serif;
 $secondaryFont: 'Catamaran', sans-serif;
-$fontColor : calc(#{$white}); 
+$fontColor : calc(#{$darkerBg}); 
 
 //Extras 
 $borderRad: 10px; 
@@ -25,3 +25,8 @@ $borderRad: 10px;
     -webkit-backdrop-filter: blur(12px);
 }
 
+@mixin dropShadow{
+box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.34);
+-webkit-box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.34);
+-moz-box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.34);
+}

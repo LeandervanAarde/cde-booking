@@ -1,59 +1,38 @@
 @import "../scss/variables.scss";
 
-.personBanner {
-    height: auto;
-    max-height: 44vh;
-    border-radius: $borderRad;
-    margin-top: 3vh;
-    padding-left: 3vw;
-    padding-bottom: 2vh;
-    overflow: scroll;
 
-    #information {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        color: $white;
-        overflow: scroll;
 
-        .image {
-            width: 5%;
-            padding-top: 2vh;
+    .infoCon{
+        height: 8vh;
+        margin-bottom: 2vh;
 
-            .picture {
-                height: 6vh;
-                aspect-ratio: 1/1;
-                background-image: url("../../public/Assets/bwlpkckoeogixawh3mhb.webp");
-                background-position: center;
-                background-size: cover;
-                border-radius: 55%;
-
-            }
+        .picture {
+            aspect-ratio: 1/1;
+            background-image: url("../../public/Assets/bwlpkckoeogixawh3mhb.webp");
+            background-position: center;
+            background-size: cover;
+            border-radius: 55%;
+            display: inline-flex;
+            background-color: white;
         }
-
-        .id {
-            width: 6%;
-            text-align: center;
-            padding-top: 1vh;
+    
+        .picture, .id, .name, .title, .age, .gender, .viewBtn{
+            float: left;
         }
-
-        .title,
-        .age,
-        .gender {
-            width: 15%;
-            padding-top: 1vh;
-            text-align: center;
+    
+         .id, .name, .title, .age, .gender {
+            float: left;
+            margin-top: 3vh;
         }
-
-        .button {
-            padding-top: 1.7vh;
-            width: 16%;
-        }
-
-        .name {
-            width: 18%;
-            text-align: center;
-            padding-top: 1vh;
+    
+        .viewBtn{
+            margin-top: 2vh;
         }
     }
-}
+
+   
+
+
+
+
+    
