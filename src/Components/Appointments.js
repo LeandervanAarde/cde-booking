@@ -11,8 +11,6 @@ import TableInformation from './SubComponents/TableInformation';
 import Availablebook from './SubComponents/Availablebook';
 import Modal from './SubComponents/Modal';
 
-
-
 const Appointments = () => {
 
     const endWeek = moment().clone().endOf('week').format("DD MMMM");
@@ -47,7 +45,9 @@ const Appointments = () => {
                 <Col md={12} className="BookingCon">
                    <Availablebook
                     value = {value}
-                    function ={() => setModalOpen(true)}
+                    function ={() => {
+                        return setModalOpen(true);
+                    }}
                    />
                 
                 </Col>

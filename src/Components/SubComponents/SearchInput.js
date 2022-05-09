@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Placeholder } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import "../../index.scss";
 import { FaSearch } from "react-icons/fa";
 //FaSearch

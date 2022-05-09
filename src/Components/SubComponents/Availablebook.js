@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React from 'react';
 import { Col } from 'react-bootstrap';
 import Primarybtn from './PrimaryBtn';
 import { FaRegCalendarCheck } from "react-icons/fa";

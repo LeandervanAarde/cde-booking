@@ -14,7 +14,7 @@
         border-radius: 50%;
         padding: 2%;
         display: inline-block;
-        margin-right: 2vh;
+        margin-right: 1vw;
 
         &:hover {
             background-color: darken($green, 5%);
@@ -24,7 +24,7 @@
     }
 
     .buttonText {
-        color: white;
+        color: $green;
         display: inline-block;
         font-family: $secondaryFont;
         font-size: 16px;

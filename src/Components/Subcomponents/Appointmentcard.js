@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Placeholder } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import "../../index.scss";
 
 const Appointmentcard = () => {

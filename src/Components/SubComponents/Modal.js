@@ -10,11 +10,15 @@ const Modal = ({props, setModalOpen}) => {
     
     return (
         <>
-        <Col md={12} className='backdrop' onClick={ () => setModalOpen(false)}> </Col>
+        <Col md={12} className='backdrop' onClick={ () => {
+                return setModalOpen(false);
+            }}> </Col>
        <Col md={{span:6}} className="Modal">
            <Col md={12}>
 
-            <Col md={2} className="logo" onClick={ () => setModalOpen(false)}> </Col>
+            <Col md={2} className="logo" onClick={ () => {
+                        return setModalOpen(false);
+                    }}> </Col>
           <h2> Book appointment</h2>
            <hr></hr>
            <h6>Patient Name</h6>
@@ -26,7 +30,9 @@ const Modal = ({props, setModalOpen}) => {
                 <h6>Patient Email</h6>
                 <input type={'text'} placeholder="Patient email"></input>
 
-                <Col md={{span:3, offset:4}} className="mt-5" onClick={ () => setModalOpen(false)}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span:3, offset:4}} className="mt-5" onClick={ () => {
+                        return setModalOpen(false);
+                    }}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>
        </Col>
        </>

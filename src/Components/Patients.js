@@ -11,10 +11,12 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import Addbutton from './SubComponents/Addbutton';
 import TableInformation from './SubComponents/TableInformation';
 import People from './SubComponents/People';
-
+import AddModal from './SubComponents/AddModal';
 import ViewModal from "./SubComponents/ViewModal";
+
 const Patients = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [addModal, setAddModal] = useState(false);
 
     const Number = 1245;
     const Fees = 450.45;
@@ -45,7 +47,11 @@ const Patients = (props) => {
                 <h2 className='allPatients ms-4'>All patients</h2>
 
                 <Col md={{ span: 2, offset: 8 }} className="addPatient">
-                    <Addbutton />
+                    <Addbutton 
+                    function = {() => {
+                            return setAddModal(true);
+                        }}
+                    />
                     <p className='buttonText'>Add patient</p>
                 </Col>
 
@@ -56,16 +62,13 @@ const Patients = (props) => {
                         children="Diabetes"
                         age="29"
                         gender="Male"
-                        function={() => setModalOpen(true)}
+                        function={() => {
+                            return setModalOpen(true);
+                        }}
                     />
-                    <People
-                        id="01"
-                        name={Name}
-                        children="Diabetes"
-                        age="29"
-                        gender="Male"
-                        function={() => setModalOpen(true)}
-                    />
+
+
+
                 </Col>
             </Col>
 
@@ -84,7 +87,8 @@ const Patients = (props) => {
                     Outstanding fees
                 </TableInformation>
             </Col>
-            {modalOpen && <ViewModal setModalOpen={setModalOpen}  />}
+            {modalOpen && <ViewModal setModalOpen={setModalOpen} />}
+            {addModal && <AddModal setAddModal={setAddModal} />}
         </>
     );
 };

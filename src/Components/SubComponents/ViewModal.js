@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col} from 'react-bootstrap';
 import Primarybtn from './PrimaryBtn';
-import { FaEye } from "react-icons/fa";
 
 
 const ViewModal = ({props, setModalOpen}) => {
