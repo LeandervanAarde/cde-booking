@@ -1,0 +1,166 @@
+@import '../../../scss/variables.scss';
+
+.ChatCon {
+    height: 52.5vh;
+    background-color: $lightwhite;
+    margin-top: 2vh;
+    border-radius: $borderRad;
+    padding-bottom: 2%;
+    position: relative;
+    @include dropShadow;
+
+    .Header {
+        height: 15%;
+        background-color: $blue;
+        padding-top: 3%;
+        border-top-left-radius: $borderRad;
+        border-top-right-radius: $borderRad;
+        color: $white;
+    }
+}
+
+.Wbody {
+    height: 80%;
+    padding: 1%;
+    overflow: scroll;
+     padding-bottom: 1.5vh;
+     padding-left: 1vw;
+     padding-right: 1vw;
+
+
+    //Fix this aspect from here
+
+    p {
+        border-radius: 1.15rem;
+        line-height: 1.25;
+        max-width: 75%;
+        padding: 0.5rem .875rem;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+    p::before,
+    p::after {
+        bottom: -0.1rem;
+        content: "";
+        height: 1rem;
+        position: absolute;
+    }
+
+    .fromMe {
+        margin-left: auto !important;
+        background-color: $blue;
+        color: $white;
+    }
+
+    .fromMe::before{
+
+            border-bottom-left-radius: 0.8rem 0.7rem;
+            border-right: 1rem solid #248bf5;
+            right: -0.35rem;
+            transform: translate(0, -0.1rem);
+    }
+
+    .fromMe::after {
+        background-color: $white;
+        border-bottom-left-radius: 0.5rem;
+        right: -40px;
+        transform: translate(-30px, -2px);
+        width: 10px;
+    }
+
+    p[class^="from"] {
+        margin: 0.5rem 0;
+        width: fit-content;
+      }
+
+      .fromMe ~ p.fromMe {
+        margin: 0.25rem 0 0;
+      }
+      
+      .fromMe ~ p.fromMe:not(:last-child) {
+        margin: 0.25rem 0 0;
+      }
+      
+      .fromMe ~ p.fromMe:last-child {
+        margin-bottom: 0.5rem;
+      }
+
+      .fromThem{
+        background-color: #e5e5ea;
+        color: #000;
+
+        &:before{
+            border-bottom-right-radius: 0.8rem 0.7rem;
+            border-left: 1rem solid #e5e5ea;
+            left: -0.35rem;
+            transform: translate(0, -0.1rem);
+        }
+
+        &::after{
+            background-color: #fff;
+            border-bottom-right-radius: 0.5rem;
+            left: 20px;
+            transform: translate(-30px, -2px);
+            width: 10px;
+        }
+        
+      }
+
+      .StaffName{
+          font-weight: bold;
+      }
+
+   
+
+    
+}
+
+.messageType{
+    height: 5vh;
+    position: absolute;
+    bottom: 0;
+  
+
+    .text{
+        background-color: darken($white, 6%);
+        width: 90%;
+        outline: none;
+        border: 2px solid $blue;
+        border-radius: $borderRad;
+        padding-left: 0.5vw;
+    }
+
+}  
+
+
+.send{
+    width: 5%;
+    height: 5vh;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: 0.2s linear;
+    text-align: right;
+
+    &:hover{
+       animation: wiggle 0.4s infinite;
+        cursor: pointer;
+    }
+
+    @keyframes wiggle {
+        0%{
+            transform: rotate(0deg);
+        }
+
+        50%{
+            transform: rotate(-30deg) scale(1.1); 
+           
+        }
+
+        100%{
+            transform: rotate(0deg);
+        }
+    }
+
+}

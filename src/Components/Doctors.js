@@ -6,9 +6,12 @@ import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
+import Chatroom from './SubComponents/UI/Chatroom';
 
 
 const Doctors = () => {
+
+
     return (
         <>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
@@ -195,7 +198,9 @@ const Doctors = () => {
 
             <Col md={3} className="work">
                 <Profile />
-
+                <Chatroom
+                chatHead = "Staff updates"
+                />
             </Col>
 
         </>

@@ -2,7 +2,7 @@ import React from 'react';
 import "../../../index.scss";
 import { Col} from 'react-bootstrap';
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <Col md={12} className="profile">
             <Col md={12} className="banner">
@@ -10,7 +10,7 @@ const Profile = () => {
             </Col>
             <Col md={12}>
                 <Col md={{ span: 3 }} className="profileImage"></Col>
-                <h2 id="reception">RECEPTIONIST NAME</h2>
+                <h2 id="reception">{props.Auth}</h2>
                 
                 <h5 id="title">Head Receptionist</h5>
             </Col>

@@ -4,7 +4,7 @@
 @import "./Components/SubComponents/Appointments/AppointmentCard.scss";
 @import"../src/scss/Appointments.scss";
 @import "../src/Components/SubComponents/Appointments/AvailableBookings.scss";
-@import "../src/Components/SubComponents/Appointments/Weeklyappointments.scss";
+@import "../src/Components/SubComponents/UI/Weeklyappointments.scss";
 
 // imports for the calendar
 @import "/src/Components/SubComponents/Calendar/calendar.scss";
@@ -18,6 +18,9 @@
 @import "/src/Components/SubComponents/UI/people.scss";
 @import "/src/Components/SubComponents/UI/Profile.scss";
 @import "/src/Components/SubComponents/UI/Staff.scss";
+
+//Import for chatroom
+@import "/src/Components/SubComponents/UI/Chatroom.scss";
 
   //Import for Main Components
 

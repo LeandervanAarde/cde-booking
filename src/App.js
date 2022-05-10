@@ -1,6 +1,6 @@
 
 import { Container } from "react-bootstrap";
-import React from "react";
+import React, {useState} from "react";
 import { Row } from "react-bootstrap";
 import {Routes, Route} from 'react-router-dom';
 import './index.scss';
@@ -23,8 +23,6 @@ function App() {
           <Route path="Doctors" element={<Doctors/>}></Route>
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
         </Routes>
-
-  
       </Row>
     </Container>
   );
