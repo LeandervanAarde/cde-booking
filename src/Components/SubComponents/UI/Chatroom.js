@@ -1,37 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { FaPaperPlane } from "react-icons/fa";
 import axios from 'axios';
+
 const Chatroom = (props) => {
     const [mssg, setMssg] = useState();
+    const apiLink = 'https://leander.dc-web.co.za/API/API.php/';
 
-
-    // const interval = setInterval(() => {
-    //     fetch(')
-    //         .then((res) => {
-    //             const pMessages = res.messages.map((message) => {
-    //                 if (localStorage.getItem("userName") === message.auth) {
-    //                     return (<p className='fromMe'>{message.message}<br></br> <span className='StaffName'>~{message.auth}</span></p>);
-    //                 } else {
-    //                     return (<p className='fromThem'>{message.message}<br></br> <span className='StaffName'>~{message.auth}</span></p>);
-    //                 }
-    //             });
-
-    //             if (pMessages != mssg) {
-    //                 setMssg(pMessages);
-    //             }
-    //         })
-
-    // }, 1000)
-
-    axios.get('https://leander.dc-web.co.za/API/API.php')
-    .then((res) =>{
-        console.log(res);
-    })
-    .catch((err) =>{
-        console.log(err);
-    })
-
+    useEffect(() => {
+        axios.get(apiLink)
+            .then((response) => {
+                let data = response;
+                console.log(response);
+             
+            })
+    }, [apiLink]);
+   
     return (
         <Col md={12} className="ChatCon">
             <Col md={12} className="Header"> <h2 className='text-center'>{props.chatHead}</h2></Col>
