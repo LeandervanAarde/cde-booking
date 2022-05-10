@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import Primarybtn from './PrimaryBtn';
+import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
 
 const AddModal = ({props, setAddModal}) => {

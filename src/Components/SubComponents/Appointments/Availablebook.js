@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import Primarybtn from './PrimaryBtn';
+import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaRegCalendarCheck } from "react-icons/fa";
 
 

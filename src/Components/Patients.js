@@ -2,17 +2,17 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import "../index.scss";
-import SearchInput from './SubComponents/SearchInput';
-import Profile from './SubComponents/Profile';
-import Patientoverview from './SubComponents/Patientoverview';
+import SearchInput from './SubComponents/Inputs/SearchInput';
+import Profile from './SubComponents/UI/Profile';
+import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaUser } from "react-icons/fa";
 import { FaStethoscope } from "react-icons/fa";
 import { FaMoneyBillWave } from "react-icons/fa";
-import Addbutton from './SubComponents/Addbutton';
-import TableInformation from './SubComponents/TableInformation';
-import People from './SubComponents/People';
-import AddModal from './SubComponents/AddModal';
-import ViewModal from "./SubComponents/ViewModal";
+import Addbutton from './SubComponents/Buttons/Addbutton';
+import TableInformation from './SubComponents/UI/TableInformation';
+import People from './SubComponents/UI/People';
+import AddModal from './SubComponents/modals/AddModal';
+import ViewModal from "./SubComponents/modals/ViewModal";
 
 const Patients = (props) => {
     const [modalOpen, setModalOpen] = useState(false);

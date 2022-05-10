@@ -1,5 +1,5 @@
 import React from 'react';
-import Primarybtn from './PrimaryBtn';
+import Primarybtn from '../Buttons/PrimaryBtn';
 
 // import Primarybtn from './PrimaryBtn';
 

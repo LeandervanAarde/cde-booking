@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
-import SearchInput from './SubComponents/SearchInput';
-import Profile from './SubComponents/Profile';
+import SearchInput from './SubComponents/Inputs/SearchInput';
+import Profile from './SubComponents/UI/Profile';
 
 const Receptionists = () => {
     return (

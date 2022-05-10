@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
-import SearchInput from './SubComponents/SearchInput';
-import Profile from './SubComponents/Profile';
-import Patientoverview from './SubComponents/Patientoverview';
+import SearchInput from './SubComponents/Inputs/SearchInput';
+import Profile from './SubComponents/UI/Profile';
+import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
-import Staff from './SubComponents/Staff';
+import Staff from './SubComponents/UI/Staff';
 
 
 const Doctors = () => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import {Col} from 'react-bootstrap';
-import "../../index.scss";
+import "../../../index.scss";
 import { Link } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 import { FaStethoscope } from "react-icons/fa";
 import { FaBookMedical } from "react-icons/fa";
-import Primarybtn from './PrimaryBtn';
+import Primarybtn from '../Buttons/PrimaryBtn';
 
 
 const Navigation = () => {

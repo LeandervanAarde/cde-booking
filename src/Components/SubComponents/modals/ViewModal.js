@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col} from 'react-bootstrap';
-import Primarybtn from './PrimaryBtn';
+import Primarybtn from '../Buttons/PrimaryBtn';
 
 
 const ViewModal = ({props, setModalOpen}) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col } from 'react-bootstrap';
-import "../../index.scss";
+import "../../../index.scss";
 
 const Appointmentcard = () => {
 

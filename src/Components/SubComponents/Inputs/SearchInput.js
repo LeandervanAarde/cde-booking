@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import "../../index.scss";
+import "../../../index.scss";
 import { FaSearch } from "react-icons/fa";
 //FaSearch
 const SearchInput = (props) => {

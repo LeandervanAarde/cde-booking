@@ -3,13 +3,13 @@ import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import moment from 'moment';
 import "../index.scss";
-import SearchInput from './SubComponents/SearchInput';
-import Appointmentcard from './SubComponents/Appointmentcard';
-import Profile from './SubComponents/Profile';
+import SearchInput from './SubComponents/Inputs/SearchInput';
+import Appointmentcard from './SubComponents/Appointments/Appointmentcard';
+import Profile from './SubComponents/UI/Profile';
 import Calendar  from './SubComponents/Calendar/Calendar';
-import TableInformation from './SubComponents/TableInformation';
-import Availablebook from './SubComponents/Availablebook';
-import Modal from './SubComponents/Modal';
+import TableInformation from './SubComponents/UI/TableInformation';
+import Availablebook from './SubComponents/Appointments/Availablebook';
+import Modal from './SubComponents/modals/Modal';
 
 const Appointments = () => {
 

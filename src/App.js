@@ -4,7 +4,7 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import {Routes, Route} from 'react-router-dom';
 import './index.scss';
-import Navigation from "./Components/SubComponents/Navigation";
+import Navigation from "./Components/SubComponents/UI/Navigation";
 import Appointments from "./Components/Appointments";
 import Doctors from "./Components/Doctors";
 import Patients from "./Components/Patients"
