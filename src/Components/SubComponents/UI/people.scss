@@ -1,4 +1,4 @@
-@import "../scss/variables.scss";
+@import "/src/scss/variables.scss";
 
 
 
@@ -9,7 +9,7 @@
 
         .picture {
             aspect-ratio: 1/1;
-            background-image: url("../../public/Assets/bwlpkckoeogixawh3mhb.webp");
+            background-image: url("../../../../public/Assets/bwlpkckoeogixawh3mhb.webp");
             background-position: center;
             background-size: cover;
             border-radius: 55%;

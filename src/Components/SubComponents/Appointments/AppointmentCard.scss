@@ -1,4 +1,4 @@
-@import "../scss/variables.scss";
+@import "/src/scss/variables.scss";
 
 .card{
     height: auto;
@@ -13,7 +13,7 @@
         aspect-ratio: 1/1;
         background-color: red;
         border-radius: 50%;
-        background-image: url("../../public/Assets/rian-ramirez-rm7rZYdl3rY-unsplash.jpg");
+        background-image: url("../../../../public/Assets/rian-ramirez-rm7rZYdl3rY-unsplash.jpg");
         background-position: center;
         background-size: cover;
     }

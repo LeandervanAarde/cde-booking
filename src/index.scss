@@ -1,19 +1,33 @@
 //All scss folders are imported here because all files are linked to this scss folder. 
-@import "./scss/variables.scss";
-@import"./scss/Navigation.scss";
-@import"./scss/input.scss";
-@import"./scss/Appointments.scss";
-@import"./scss/AppointmentCard.scss";
-@import"./scss/profile.scss";
-@import"./scss/calendar.scss";
-@import"./scss/Weeklyappointments.scss";
-@import"./scss/AvailableBookings.scss";
-@import"./scss/patientOverview.scss";
-@import"./scss/patients.scss";
-@import"./scss/modal.scss";
-@import"./scss/people.scss";
-@import"./scss/Staff.scss";
-@import"./scss/Doctors.scss";
+@import "/src/scss/variables.scss";
+// Imports for the Appointments page and subcomponents
+@import "./Components/SubComponents/Appointments/AppointmentCard.scss";
+@import"../src/scss/Appointments.scss";
+@import "../src/Components/SubComponents/Appointments/AvailableBookings.scss";
+@import "../src/Components/SubComponents/Appointments/Weeklyappointments.scss";
+
+// imports for the calendar
+@import "/src/Components/SubComponents/Calendar/calendar.scss";
+// Imports for the Inputs
+@import "/src/Components/SubComponents/Inputs/input.scss";
+// Imports for the Modals
+@import "/src/Components/SubComponents/modals/modal.scss";
+// Imports for the UI
+@import "/src/Components/SubComponents/UI/Navigation.scss";
+@import "/src/Components/SubComponents/UI/patientOverview.scss";
+@import "/src/Components/SubComponents/UI/people.scss";
+@import "/src/Components/SubComponents/UI/Profile.scss";
+@import "/src/Components/SubComponents/UI/Staff.scss";
+
+  //Import for Main Components
+
+  @import "/src/scss/Appointments.scss";
+  @import "/src/scss/Doctors.scss";
+  @import "/src/scss/patients.scss";
+  @import "/src/scss/variables.scss";
+
+
+
 
 html {
   background-color: $Background;

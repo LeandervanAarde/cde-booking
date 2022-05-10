@@ -1,4 +1,4 @@
-@import "../scss/variables.scss";
+@import "/src/scss/variables.scss";
 
 .backdrop{
   background-color: #0000009e;
@@ -26,7 +26,7 @@
     transition: height 0.5s linear, width 0.5s linear;
 
     .logo{
-        background-image: url("../../public/Assets/CDE-L.png");
+        background-image: url("../../../../public/Assets/CDE-L.png");
         height: 5vh;
         background-position: center;
         background-size: contain;

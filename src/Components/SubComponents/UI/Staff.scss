@@ -1,4 +1,4 @@
-@import "../scss/variables.scss";
+@import "/src/scss/variables.scss";
 
 .staffInfo{
     display: inline-flex;
@@ -18,7 +18,7 @@
         background-color: red;
         border-radius: 55%;
         float: left;
-        background-image: url("../../public/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg");
+        background-image: url("../../../../public/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg");
         background-position: center;
         background-size: cover;
     }
