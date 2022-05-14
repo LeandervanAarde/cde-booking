@@ -9,6 +9,7 @@ import Appointments from "./Components/Appointments";
 import Doctors from "./Components/Doctors";
 import Patients from "./Components/Patients"
 import Receptionists from "./Components/Receptionists";
+import io from 'socket.io-client';
 
 
 function App() {
