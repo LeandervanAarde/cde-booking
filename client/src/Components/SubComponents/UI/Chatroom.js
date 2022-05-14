@@ -20,7 +20,7 @@ const Chatroom = (props) => {
         <Col md={12} className="ChatCon">
             <Col md={12} className="Header"> <h2 className='text-center'>{props.chatHead}</h2></Col>
             <Col md={12} className="Wbody">
-                {mssg}
+                <p className='fromMe'>Hello</p>
             </Col>
             <Col md={{ span: 11 }} className="messageType">
                 <input type={"text"} className="text" />
