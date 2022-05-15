@@ -9,9 +9,7 @@ const Chatroom = ({ props, socket, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     //join the correct Room
-  
 
-  
     //sending a message and storing the data, getting the date etc
     const sndMssg = async () => {
         if (currentMessage !== "") {
@@ -28,6 +26,12 @@ const Chatroom = ({ props, socket, room }) => {
         }
     };
 
+    const joinRoom = () => {
+        if (room !== null) {
+            socket.emit("joinRoom", room);
+        }
+    }
+    
     useEffect(() => {
         socket.on("receiveMessage", (data) => {
             setMessageList((list) => [...list, data]);
@@ -35,10 +39,10 @@ const Chatroom = ({ props, socket, room }) => {
     }, [socket]);
 
     return (
-        <Col md={12} className="ChatCon" >
+        <Col md={12} className="ChatCon" onClick={joinRoom}>
             <Col md={12} className="Header"> <h2 className='text-center'>Staff Updates</h2></Col>
             <Col md={12} className="Wbody">
-                <p className='fromThem'>Welcome to chatRoom {room}</p>
+                <p className='fromThem' id='Defaultmssg'>Welcome to chatRoom {room}</p>
                 {messageList.map((messageContent) =>
                     <p className={username === messageContent.author ? "fromMe" : "fromThem"}>{messageContent.message}</p>
                 )}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -14,17 +14,13 @@ const socket = io.connect("http://localhost:3001");
 const Doctors = () => {
     const [username, setUsername] = useState("Leander");
     const room = 1;
-    const joinRoom = () => {
-        if (room !== null) {
-            socket.emit("joinRoom", room);
-          }
-    }
- 
+
+
     return (
         <>
-            <Col md={{ span: 8, offset: 1 }} className="workingCon" onClick={joinRoom} >
+            <Col md={{ span: 8, offset: 1 }} className="workingCon"  >
                 <SearchInput>
-                    Search Patient...
+                    Search Doctor...
                 </SearchInput>
                 <h2 className='headingTwo'> CDE Program patients</h2>
 
@@ -43,7 +39,9 @@ const Doctors = () => {
                     number={"12"}
                     icon={<FaStethoscope color={"#2663d4"} size={90} />} />
 
-                <h2 className='allPatients ms-2 mt-4'>All Receptionists</h2>
+
+
+                <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
 
                 <Col md={{ span: 12 }} className='staffWrapper'>
 
@@ -102,21 +100,57 @@ const Doctors = () => {
                         titleContent="Endocronology"
                         pay="Consult fee"
                         payContent="R 650"
-
                     />
-           
+
+                    <Staff
+                        name="name:"
+                        nameContent="Dr. David Segal"
+                        Age="Age:"
+                        ageContent="54"
+                        sex="Sex:"
+                        sexContent="Male"
+                        cell="Cell:"
+                        cellContent="082 134 8492"
+                        mail="Mail:"
+                        mailContent="DavidS@CDE.com"
+                        unique="Room:"
+                        uniqueContent="D1"
+                        title="Specialisastion"
+                        titleContent="Endocronology"
+                        pay="Consult fee"
+                        payContent="R 650"
+                    />
+
+                    <Staff
+                        name="name:"
+                        nameContent="Dr. David Segal"
+                        Age="Age:"
+                        ageContent="54"
+                        sex="Sex:"
+                        sexContent="Male"
+                        cell="Cell:"
+                        cellContent="082 134 8492"
+                        mail="Mail:"
+                        mailContent="DavidS@CDE.com"
+                        unique="Room:"
+                        uniqueContent="D1"
+                        title="Specialisastion"
+                        titleContent="Endocronology"
+                        pay="Consult fee"
+                        payContent="R 650"
+                    />
+
                 </Col>
 
 
             </Col>
 
-            <Col md={3} className="work">
+            <Col md={3} className="work" >
                 <Profile />
                 <Chatroom
-                chatHead = "Staff updates"
-                socket= {socket}
-                room = {room}
-                
+                    socket={socket}
+                    room={room}
+                     
                 />
             </Col>
 

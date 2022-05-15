@@ -26,8 +26,6 @@
      padding-bottom: 1.5vh;
      padding-left: 1vw;
      padding-right: 1vw;
-
-
     //Fix this aspect from here
 
     p {
@@ -129,6 +127,7 @@
         border: 2px solid $blue;
         border-radius: $borderRad;
         padding-left: 0.5vw;
+        margin-left: 1vw;
     }
 
 }  
@@ -142,6 +141,8 @@
     bottom: 0;
     transition: 0.2s linear;
     text-align: right;
+    margin-right: -0.6vw;
+
 
     &:hover{
        animation: wiggle 0.4s infinite;
