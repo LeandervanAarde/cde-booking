@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -7,11 +7,14 @@ import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
 import Chatroom from './SubComponents/UI/Chatroom';
-
+import io from 'socket.io-client';
+const socket = io.connect("http://localhost:3001");
 
 const Doctors = () => {
+    const [username, setUsername] = useState("Leander");
+    const room = 8
 
-
+ 
     return (
         <>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
@@ -56,8 +59,8 @@ const Doctors = () => {
                         titleContent="Endocronology"
                         pay="Consult fee"
                         payContent="R 650"
-
                     />
+
                     <Staff
                         name="name:"
                         nameContent="Dr. David Segal"
@@ -96,101 +99,7 @@ const Doctors = () => {
                         payContent="R 650"
 
                     />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
+           
                 </Col>
 
 
@@ -200,6 +109,9 @@ const Doctors = () => {
                 <Profile />
                 <Chatroom
                 chatHead = "Staff updates"
+                socket= {socket}
+                room = {room}
+                
                 />
             </Col>
 

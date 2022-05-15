@@ -23,12 +23,12 @@ io.on("connection", (socket)=>{
     //socket specify events 
     console.log(`User connected:${socket.id}`);
 
-    socket.on("joinRoom", (data) =>{
-        socket.join(data);
-        console.log(`User with Id:${socket.id} entered Room ${data}`);
-    });
+    // socket.on("joinRoom", (data) =>{
+    //     socket.join(data);
+    //     console.log(`User with Id:${socket.id} entered Room ${data}`);
+    // });
 
-    socket.on("sendMessage",(data) =>{
+    socket.on("sndMssg",(data) =>{
             socket.to(data.room).emit("receiveMessage", data);
     });
 
