@@ -9,9 +9,9 @@ const Chatroom = ({ props, socket, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     //join the correct Room
-    const joinRoom = () => {
-        socket.emit("joinRoom", room);
-    }
+  
+
+  
     //sending a message and storing the data, getting the date etc
     const sndMssg = async () => {
         if (currentMessage !== "") {
@@ -38,7 +38,7 @@ const Chatroom = ({ props, socket, room }) => {
         <Col md={12} className="ChatCon" >
             <Col md={12} className="Header"> <h2 className='text-center'>Staff Updates</h2></Col>
             <Col md={12} className="Wbody">
-
+                <p className='fromThem'>Welcome to chatRoom {room}</p>
                 {messageList.map((messageContent) =>
                     <p className={username === messageContent.author ? "fromMe" : "fromThem"}>{messageContent.message}</p>
                 )}

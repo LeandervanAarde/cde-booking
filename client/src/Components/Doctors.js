@@ -10,14 +10,19 @@ import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
 const socket = io.connect("http://localhost:3001");
 
+
 const Doctors = () => {
     const [username, setUsername] = useState("Leander");
-    const room = 8
-
+    const room = 1;
+    const joinRoom = () => {
+        if (room !== null) {
+            socket.emit("joinRoom", room);
+          }
+    }
  
     return (
         <>
-            <Col md={{ span: 8, offset: 1 }} className="workingCon">
+            <Col md={{ span: 8, offset: 1 }} className="workingCon" onClick={joinRoom} >
                 <SearchInput>
                     Search Patient...
                 </SearchInput>
