@@ -2,7 +2,6 @@
 
 .backdrop{
   background-color: #0000009e;
-
   height: auto;
   min-height: 100vh;
   position: fixed;
@@ -21,9 +20,11 @@
     right: 0;
     left: 16vw;
     padding: 2%;
- 
+    animation: modal 0.4s 1;
+   
     border-radius: $borderRad;
     transition: height 0.5s linear, width 0.5s linear;
+  
 
     .logo{
         background-image: url("../../../../public/Assets/CDE-L.png");
@@ -58,6 +59,31 @@
          margin-left:  5vw !important;
          
       }
+
+      @keyframes modal {
+          from{
+            transform: scale(0);
+            opacity: 0;
+            z-index: -1;
+          } to{
+            transform: scale(1);
+            opacity: 1;
+            z-index: 2;
+          }
+        
+      }
+
+      @keyframes modalOut {
+        from{
+          transform: scale(1);
+          opacity: 1;
+          z-index: 2;
+        } to{
+          transform: scale(0);
+          opacity: 0;
+          z-index: -1;
+        }
+    }
 
       
   }
