@@ -5,7 +5,8 @@
     background-color: $blue;
     height: 97vh;
     border-radius: $borderRad;
-   position: fixed;
+    position: fixed;
+    
 
     .logoCon{
         background-image: url("../../../../public/Assets/CDE.png");
@@ -23,9 +24,43 @@
     .navText{
         text-decoration: none;
         color: $white;
+        transition: 0.4 ease-in-out;
     }
 
     .navItem{
-        margin-bottom: 5vh;
+        margin-bottom: 6vh;
+        border-radius: $borderRad;
+        text-align: center;
+
+        &:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+            font-size: 14px;
+          
+        }
     }
+
+    a{
+        text-decoration: none !important;
+        background-color: none;
+    }
+    #last{
+        margin-bottom: 12vh;
+    }
+
+    .active{
+        background-color: $hover;
+        margin-bottom: 6vh;
+        border-radius: $borderRad;
+        text-align: center;
+
+        &:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+            font-size: 14px;
+          
+        }
+    }
+
 }
+

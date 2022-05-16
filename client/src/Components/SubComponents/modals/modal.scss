@@ -36,8 +36,9 @@
       }
 
       h2{
-        color: $Background;
+        color: $darkBg;
         text-align: left;
+        margin-left: 15vw !important;
       
       }
 
@@ -59,6 +60,30 @@
          margin-left:  5vw !important;
          
       }
+
+      .con{
+        height: 50vh;
+
+        .patPhoto{
+          aspect-ratio: 1/1;
+          background-color: red;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          border-radius: 55%;
+        }
+
+        .nameCon{
+          background-color: blue;
+          height: 20vh;
+
+        }
+        .Name{
+          margin-top: 1vh;
+          padding-left: 4vw;
+        }  
+      }
+    
 
       @keyframes modal {
           from{

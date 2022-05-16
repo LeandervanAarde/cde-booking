@@ -27,19 +27,17 @@ const Doctors = () => {
                 <Patientoverview
                     title="Total Staff members"
                     number={"50"}
-                    icon={<FaUser color={"#2663d4"} size={90} />} />
+                    icon={<FaUser color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
                     title="Total Appointments"
                     number="60"
-                    icon={<FaBookMedical color={"#2663d4"} size={90} />} />
+                    icon={<FaBookMedical color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
                     title="Total Doctors"
                     number={"12"}
-                    icon={<FaStethoscope color={"#2663d4"} size={90} />} />
-
-
+                    icon={<FaStethoscope color={"#2663d4"} size={70} />} />
 
                 <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
 

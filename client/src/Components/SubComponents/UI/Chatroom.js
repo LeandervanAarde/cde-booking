@@ -39,7 +39,7 @@ const Chatroom = ({ props, socket, room }) => {
     }, [socket]);
 
     return (
-        <Col md={12} className="ChatCon" onClick={joinRoom}>
+        <Col md={12} className="ChatCon" onMouseOver={joinRoom}>
             <Col md={12} className="Header"> <h2 className='text-center'>Staff Updates</h2></Col>
             <Col md={12} className="Wbody">
                 <p className='fromThem' id='Defaultmssg'>Welcome to chatRoom {room}</p>
