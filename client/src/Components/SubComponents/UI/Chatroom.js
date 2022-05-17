@@ -9,7 +9,7 @@ const Chatroom = ({ props, socket, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     //join the correct Room
-
+    
     //sending a message and storing the data, getting the date etc
     const sndMssg = async () => {
         if (currentMessage !== "") {

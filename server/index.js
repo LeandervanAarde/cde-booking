@@ -1,7 +1,7 @@
 //Not using express
 const express = require('express');
 const app = express();
-const {Server} = require("socket.io")
+const {Server} = require("socket.io");
 // built into node, to build the server application
 const http = require("http"); 
 const cors = require("cors");
@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = new Server(server,{
     //solving cors
     cors:{
-        origin: "http://localhost:3000",
+        origin: "*",
         methods:["GET", "POST"],
     },
 });
