@@ -30,6 +30,7 @@
     .navItem{
         margin-bottom: 6vh;
         border-radius: $borderRad;
+        aspect-ratio: 1/1;
         text-align: center;
         padding: 15px !important;
 
@@ -39,6 +40,10 @@
             font-size: 14px;
           
         }
+    }
+
+    svg{
+        text-align: center;
     }
 
     a{
@@ -52,8 +57,11 @@
     .active{
         background-color: $hover;
         margin-bottom: 6vh;
-        border-radius: $borderRad;
+        border-radius: 55px;
+        aspect-ratio: 1/1;
         text-align: center;
+        padding-top: 0.9vh;
+        
     
         &:hover{
             transform: scale(1.1);

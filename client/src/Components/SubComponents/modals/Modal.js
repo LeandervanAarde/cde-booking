@@ -6,8 +6,6 @@ import { FaUserPlus } from "react-icons/fa";
 
 const Modal = ({props, setModalOpen}) => {
 
- 
-    
     return (
         <>
         <Col md={12} className='backdrop' onClick={ () => {

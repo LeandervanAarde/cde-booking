@@ -13,11 +13,11 @@
 // Imports for the Modals
 @import "/src/Components/SubComponents/modals/modal.scss";
 // Imports for the UI
-@import "/src/Components/SubComponents/UI/Navigation.scss";
-@import "/src/Components/SubComponents/UI/patientOverview.scss";
-@import "/src/Components/SubComponents/UI/people.scss";
-@import "/src/Components/SubComponents/UI/Profile.scss";
-@import "/src/Components/SubComponents/UI/Staff.scss";
+@import "../src/Components/SubComponents/UI/Navigation.scss";
+@import "../src/Components/SubComponents/UI/patientOverview.scss";
+@import "src/Components/SubComponents/UI/profile.scss";
+@import "../src/Components/SubComponents/UI/Profile.scss";
+@import "../src/Components/SubComponents/UI/Staff.scss";
 
 //Import for chatroom
 @import "/src/Components/SubComponents/UI/Chatroom.scss";

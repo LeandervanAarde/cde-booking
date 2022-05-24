@@ -13,6 +13,7 @@ import TableInformation from './SubComponents/UI/TableInformation';
 import People from './SubComponents/UI/People';
 import AddModal from './SubComponents/modals/AddModal';
 import ViewModal from "./SubComponents/modals/ViewModal";
+import Navigation from './SubComponents/UI/Navigation';
 
 const Patients = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -23,6 +24,7 @@ const Patients = (props) => {
     const Name = "Richard Hendricks";
     return (
         <>
+        <Navigation/>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
                 <SearchInput>
                     Search Patient...

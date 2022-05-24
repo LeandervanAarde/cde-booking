@@ -22,28 +22,28 @@ const Navigation = () => {
             <Col md={12} className="logoCon"></Col>
             {/* Links */}
             <NavLink to="/" activeClassName="active">
-                <Col md={12} className={splitLocation[1] === "" ? "active" : "navItem"} id="item1" >
+                <Col md={{span: 9, offset:1}} className={splitLocation[1] === "" ? "active" : "navItem"} id="item1" >
                     <FaHome color={"white"} size={25} />
                     <p className='navText'>Home</p>
                 </Col>
             </NavLink>
 
-            <NavLink to="/Patients">
-                <Col md={12} className={splitLocation[1] === "Patients" ? "active" : "navItem"}>
+            <NavLink to="/Patients" className={'text'}>
+                <Col md={{span: 9, offset:1}} className={splitLocation[1] === "Patients" ? "active" : "navItem"}>
                     <FaUser color={"white"} size={25} />
                     <p className='navText'>Patients</p>
                 </Col>
             </NavLink>
 
-            <NavLink to="/Doctors">
-                <Col md={12} className={splitLocation[1] === "Doctors" ? "active" : "navItem"} >
+            <NavLink to="/Doctors" className={'text'}>
+                <Col md={{span: 9, offset:1}} className={splitLocation[1] === "Doctors" ? "active" : "navItem"} >
                     <FaStethoscope color={"white"} size={25} />
                     <p className='navText'>Doctors</p>
                 </Col>
             </NavLink>
 
-            <NavLink to="/Receptionists">
-                <Col md={12} className={splitLocation[1] === "Receptionists" ? "active" : "navItem"} id="last" >
+            <NavLink to="/Receptionists" className={'text'}>
+                <Col md={{span: 9, offset:1}} className={splitLocation[1] === "Receptionists" ? "active" : "navItem"} id="last" >
                     <FaBookMedical color={"white"} size={25} />
                     <p className='navText'>Recept</p>
                 </Col>

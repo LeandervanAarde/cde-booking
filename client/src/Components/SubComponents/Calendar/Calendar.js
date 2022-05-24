@@ -71,7 +71,7 @@ const Calendar = (props) => {
             <Col md={12} className="banner" value={props.value} onChange={props.onChange}>
                 {/* Onlcik that checks if the user can go back one month */}
                 <Col md={{ span: 2, offset: 1 }} className="previous" onClick={() => !thisMonth() && props.onChange(prevMonth())}><FaArrowLeft size={40} color={"white"} /></Col>
-                <h2 className='month col-md-6'>{currentMonth()} {currentYear()}</h2>
+                <h4 className='month col-md-6'><strong>{currentMonth()} {currentYear()}</strong></h4>
                 {/* Onlcik that checks if the user can go forward one month */}
                 < Col md={2} className="next" onClick={() => props.onChange(nextMonth())}><FaArrowRight size={40} color={"white"} /></Col>
             </Col>

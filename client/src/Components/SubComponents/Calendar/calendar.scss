@@ -6,7 +6,7 @@
     border-radius: $borderRad;
     @include dropShadow;
 
-    h2{
+    h4{
         color: $white;
     }
 
@@ -51,15 +51,15 @@
     }
 
     .banner {
-        height: 20%;
-        min-height: 10vh;
+        height: 15%;
+        min-height: 7vh;
         background-color: $blue;
-        margin-bottom: 1vh;
+        margin-bottom: 2.5vh;
         border-top-left-radius: $borderRad;
         border-top-right-radius: $borderRad;
 
         .month {
-            margin-top: 3vh;
+            margin-top: 2vh;
             text-align: center;
         }
 
@@ -73,7 +73,7 @@
         .next {
             height: 100%;
             text-align: center;
-            padding-top: 4vh;
+            padding-top: 1.5vh;
             cursor: pointer;
             transition: 0.2s linear;
 

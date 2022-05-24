@@ -16,7 +16,6 @@ function App() {
   return (
     <Container fluid className="content">
       <Row>
-        <Navigation/>
         <Routes>
           <Route path="/" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>

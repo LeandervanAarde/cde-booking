@@ -8,7 +8,7 @@ const TableInformation = (props) => {
 
     return (
        <Col md={12} className="WAppointmentCon">
-           <Col md={12} className="Header"> <h2 className='text-center'>{props.children}</h2></Col>
+           <Col md={12} className="Header"> <h4 className='text-center'>{props.children}</h4></Col>
            <Col md={12} className="Wbody">
            <table id='upComingAppointments'>
                     <thead>

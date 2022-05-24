@@ -8,6 +8,7 @@ import io from 'socket.io-client';
 import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaTty, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
+import Navigation from './SubComponents/UI/Navigation';
 const socket = io.connect("http://localhost:3001");
 
 const Receptionists = () => {
@@ -21,6 +22,7 @@ const Receptionists = () => {
 
     return (
         <>
+        <Navigation/>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
                 <SearchInput>
                     Search Receptionists...

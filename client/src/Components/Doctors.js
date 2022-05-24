@@ -8,6 +8,7 @@ import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
 import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
+import Navigation from './SubComponents/UI/Navigation';
 const socket = io.connect("http://localhost:3001");
 
 
@@ -18,6 +19,7 @@ const Doctors = () => {
 
     return (
         <>
+        <Navigation/>
             <Col md={{ span: 8, offset: 1 }} className="workingCon"  >
                 <SearchInput>
                     Search Doctor...

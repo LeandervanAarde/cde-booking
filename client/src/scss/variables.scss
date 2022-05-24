@@ -5,7 +5,7 @@ $white: #FDFDFD;
 $lightwhite: #fdfdfdb8;
 $blue: #5490FE; 
 $darkBg: #232436;
-$hover: #04289f;
+$hover: darken($blue, 18%);
 $warning: #CA0707; 
 $darkerBg: #272727;
 $currentDayColor: rgba(188, 188, 188, 0.392);
@@ -26,7 +26,7 @@ $borderRad: 10px;
 }
 
 @mixin dropShadow{
-box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.28);
--webkit-box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.28);
--moz-box-shadow: 13px 10px 26px -7px rgba(0,0,0,0.28);
+box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
+-webkit-box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
+-moz-box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
 }

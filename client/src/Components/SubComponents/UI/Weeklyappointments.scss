@@ -9,8 +9,11 @@
     @include dropShadow;
     .Header {
         height: 15%;
+        min-height: 7vh;
         background-color: $blue;
-        padding-top: 3%;
+        padding-top: 6%;
+        padding-left: 5%;
+        padding-right: 5%;
         border-top-left-radius: $borderRad;
         border-top-right-radius: $borderRad;
         color: $white;

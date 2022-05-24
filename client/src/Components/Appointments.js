@@ -10,6 +10,7 @@ import Calendar  from './SubComponents/Calendar/Calendar';
 import TableInformation from './SubComponents/UI/TableInformation';
 import Availablebook from './SubComponents/Appointments/Availablebook';
 import Modal from './SubComponents/modals/Modal';
+import Navigation from './SubComponents/UI/Navigation';
 
 const Appointments = () => {
 
@@ -22,6 +23,7 @@ const Appointments = () => {
    
     return (
         <>
+        <Navigation/>
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
                 <SearchInput>
                     Search Patient...
@@ -54,7 +56,9 @@ const Appointments = () => {
             </Col>
 
             <Col md={3} className="work">
-                <Profile />
+                <Profile 
+                Auth={"Cindy Stacy"}
+                />
                 <TableInformation
                     headerOne = "Time"
                     headerTwo = "Patient"
@@ -65,7 +69,7 @@ const Appointments = () => {
                     Information3 = "Dr Makan"
                     btnTxt = "-REMOVE"
                 >
-                    {week} Appointments
+                  <h5>{week} Appointments </h5>  
                 </TableInformation>
             </Col>
            {modalOpen && <Modal setModalOpen={setModalOpen}/>}
