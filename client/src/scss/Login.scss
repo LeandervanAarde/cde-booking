@@ -1,0 +1,70 @@
+@import "../scss/variables.scss";
+
+.background{
+    height: 100vh;
+    background-image: url("../../public/Assets/bgL.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.formCon{
+    height: 100vh;
+    background-color: $Background;
+
+    .logoBg{
+        height: 15vh;
+        margin-top: 10vh;
+        background-image: url("../../public/Assets/CDE-L.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .logInTxt{
+        text-align: center;
+        font-family: $mainFont;
+        margin-top: 12vh;
+        margin-bottom: 7vh;
+    }
+
+    form{
+        margin-top: 4vh;
+        margin-left: 25%;
+  
+    }
+
+    .RecepID, .Pass{
+        position: relative;
+        width: 20vw;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom:2px solid $darkerBg;
+        outline: none;
+        transition:all .5s ease;
+        padding: 5px;
+        margin-bottom: 5vh;
+        &:focus{
+            background-color: darken($Background, 5%);
+            @include dropShadow
+       }
+
+
+    }
+
+    .RecepID:focus ~ .recepLabel, .Pass:focus ~ .passLabel {
+        transform: translate3d(0px, -31px, 0px) !important;
+        position: absolute;
+  
+    }
+
+    label{
+        position: absolute;
+        left: 69.5%;
+        transition:all .3s ease;
+        font-size: small;
+    }
+
+  
+}

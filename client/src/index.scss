@@ -3,8 +3,9 @@
 // Imports for the Appointments page and subcomponents
 @import "./Components/SubComponents/Appointments/AppointmentCard.scss";
 @import"../src/scss/Appointments.scss";
-@import "../src/Components/SubComponents/Appointments/AvailableBookings.scss";
-@import "../src/Components/SubComponents/UI/Weeklyappointments.scss";
+@import "../src/scss/Login.scss";
+@import "./src/Components/SubComponents/Appointments/AvailableBookings.scss";
+@import "./src/Components/SubComponents/UI/Weeklyappointments.scss";
 
 // imports for the calendar
 @import "/src/Components/SubComponents/Calendar/calendar.scss";
@@ -14,9 +15,9 @@
 @import "/src/Components/SubComponents/modals/modal.scss";
 // Imports for the UI
 @import "../src/Components/SubComponents/UI/Navigation.scss";
-@import "../src/Components/SubComponents/UI/patientOverview.scss";
+@import "src/Components/SubComponents/UI/patientOverview.scss";
+@import "src/Components/SubComponents/UI/people.scss";
 @import "src/Components/SubComponents/UI/profile.scss";
-@import "../src/Components/SubComponents/UI/Profile.scss";
 @import "../src/Components/SubComponents/UI/Staff.scss";
 
 //Import for chatroom
@@ -40,7 +41,7 @@ html {
 .content {
   background-color: $Background;
   min-height: 100vh;
-  padding: 1%;
+
 }
 
 .btn {

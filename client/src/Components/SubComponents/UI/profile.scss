@@ -2,12 +2,12 @@
 
 .profile {
     height: auto;
-    max-height: 32vh;
+    min-height: 32vh;
     background-color: $lightwhite;
     border-radius: $borderRad;
     margin-top: 1vh;
     @include dropShadow;
-    padding: 1%;
+
 
     .banner {
         background-color: $blue;
@@ -32,7 +32,7 @@
         float: left;
         margin-left: 2%;
         margin-right: 7%;
-        margin-top: 1vh;
+        margin-top: 0.5vh;
     }
 
     #reception {
@@ -50,15 +50,16 @@
         font-size: 17px;
         text-align: center;
         font-family: $secondaryFont;
-        font-weight: 400;
+
     }
 
-   .receptionistInfo{
-       display: inline-block;
-       margin-top: 2.5vh;
+    .receptionistInfo {
+        float: left;
+        margin-top: 2.5vh;
 
-       h6{
-           text-align: center;
-       }
-   }
+
+        h6 {
+            text-align: center;
+        }
+    }
 }

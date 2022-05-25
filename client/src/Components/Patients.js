@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
-import "../index.scss";
+import "../../src/index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
 import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
@@ -75,7 +75,9 @@ const Patients = (props) => {
             </Col>
 
             <Col md={3} className="work">
-                <Profile />
+            <Profile 
+                Auth={"Cindy Stacy"}
+                />
                 <TableInformation
                     headerOne="ID"
                     headerTwo="Patient"

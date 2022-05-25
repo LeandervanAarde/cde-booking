@@ -50,8 +50,8 @@ const Navigation = () => {
             </NavLink>
 
             <Primarybtn >
-                <FaDoorOpen size={15} id="logOut" />
-                Sign Out
+                <strong>Sign Out</strong>
+           
             </Primarybtn>
         </Col>
     );

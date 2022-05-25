@@ -146,7 +146,9 @@ const Doctors = () => {
             </Col>
 
             <Col md={3} className="work" >
-                <Profile />
+            <Profile 
+                Auth={"Cindy Stacy"}
+                />
                 <Chatroom
                     socket={socket}
                     room={room}

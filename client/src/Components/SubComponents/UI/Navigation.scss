@@ -3,8 +3,9 @@
 
 .navCon{
     background-color: $blue;
-    height: 97vh;
-    border-radius: $borderRad;
+    height: 100vh;
+    border-bottom-right-radius: $borderRad;
+    border-top-right-radius: $borderRad;
     position: fixed;
     
 
@@ -51,7 +52,7 @@
         background-color: none;
     }
     #last{
-        margin-bottom: 12vh;
+        margin-bottom: 5vh;
     }
 
     .active{

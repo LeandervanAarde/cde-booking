@@ -12,6 +12,7 @@ const Profile = (props) => {
             <Col md={{ span: 3}} className="profileImage"></Col>
             <h2 id="reception">{props.Auth}</h2>
             <h5 id="title">Head Receptionist</h5>
+            <br></br>
             <Col md={12} className="receptionInfo">
                 <Col md={4} className='receptionistInfo'><h6><strong>BIRTH DATE</strong></h6>  <h5 id="title">26 March 2022</h5></Col>
                 <Col md={4} className='receptionistInfo'><h6><strong>PAY</strong></h6>  <h5 id="title">R15 000</h5></Col>

@@ -8,6 +8,7 @@ import Appointments from "./Components/Appointments";
 import Doctors from "./Components/Doctors";
 import Patients from "./Components/Patients"
 import Receptionists from "./Components/Receptionists";
+import Login from "./Components/Login";
 
 
 
@@ -15,13 +16,15 @@ function App() {
 
   return (
     <Container fluid className="content">
+   
       <Row>
-        <Routes>
+      <Login/>
+        {/* <Routes>
           <Route path="/" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>
           <Route path="Doctors" element={<Doctors/>}></Route>
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
-        </Routes>
+        </Routes> */}
       </Row>
     </Container>
   );
