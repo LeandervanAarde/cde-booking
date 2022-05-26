@@ -26,7 +26,7 @@ $borderRad: 10px;
 }
 
 @mixin dropShadow{
-box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
--webkit-box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
--moz-box-shadow: 13px 10px 26px -7px rgba(44, 44, 44, 0.15);
+box-shadow: 13px 10px 26px -7px rgba(53, 52, 52, 0.09);
+-webkit-box-shadow: 13px 10px 26px -7px rgba(53, 52, 52, 0.09);
+-moz-box-shadow: 13px 10px 26px -7px rgba(53, 52, 52, 0.09);
 }

@@ -34,17 +34,17 @@ const Patients = (props) => {
                 <Patientoverview
                     title="Total patients"
                     number={Number}
-                    icon={<FaUser color={"#2663d4"} size={100} />} />
+                    icon={<FaUser color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
                     title="Total Doctors"
                     number="60"
-                    icon={<FaStethoscope color={"#2663d4"} size={100} />} />
+                    icon={<FaStethoscope color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
                     title="Total fees owed"
                     number={"R " + Fees}
-                    icon={<FaMoneyBillWave color={"#2663d4"} size={100} />} />
+                    icon={<FaMoneyBillWave color={"#2663d4"} size={70} />} />
 
                 <h2 className='allPatients ms-4'>All patients</h2>
 

@@ -18,13 +18,13 @@ function App() {
     <Container fluid className="content">
    
       <Row>
-      <Login/>
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>
           <Route path="Doctors" element={<Doctors/>}></Route>
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
-        </Routes> */}
+          <Route path="/Login" element={<Login></Login>}></Route>
+        </Routes>
       </Row>
     </Container>
   );

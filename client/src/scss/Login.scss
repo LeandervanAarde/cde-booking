@@ -45,6 +45,7 @@
         transition:all .5s ease;
         padding: 5px;
         margin-bottom: 5vh;
+        margin-top: 8px;
         &:focus{
             background-color: darken($Background, 5%);
             @include dropShadow
@@ -54,7 +55,7 @@
     }
 
     .RecepID:focus ~ .recepLabel, .Pass:focus ~ .passLabel {
-        transform: translate3d(0px, -31px, 0px) !important;
+        transform: translate3d(0px, -20px, 0px) !important;
         position: absolute;
   
     }
@@ -64,6 +65,16 @@
         left: 69.5%;
         transition:all .3s ease;
         font-size: small;
+    }
+
+    .buttonCon{
+        
+        height: 5vh;
+
+        .key{
+            margin-left: -2vw;
+            margin-right: 2vw;
+        }
     }
 
   

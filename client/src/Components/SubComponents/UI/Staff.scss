@@ -45,12 +45,8 @@
         margin-top: 4%;
         margin-left: 10%;
         
-       #removeStaff{
-           background-color: red !important;
-
-           &:nth-child(1){
-               color: red !important;
-           }
+       #staffRemove:hover{
+         background-color: $warning !important;
        }
     }
 }

@@ -26,7 +26,7 @@ const Staff = (props) => {
         <p className='Room info'>{props.unique} <span className='content'>{props.uniqueContent}</span></p>
         <p className='title info'>{props.title} <span className='content'>{props.titleContent}</span></p>
         <p className='fee info'>{props.pay} <span className='content'>{props.payContent}</span></p>
-        <div className='removebtn'><Primarybtn id="removeStaff">- Remove</Primarybtn></div>
+        <div className='removebtn'><Primarybtn id="staffRemove">- Remove</Primarybtn></div>
       </div>
 
     </div>
