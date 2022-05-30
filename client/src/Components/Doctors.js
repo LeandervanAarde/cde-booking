@@ -9,6 +9,7 @@ import Staff from './SubComponents/UI/Staff';
 import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
 import Navigation from './SubComponents/UI/Navigation';
+import Doctor from "../Components/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg";
 const socket = io.connect("http://localhost:3001");
 
 
@@ -19,7 +20,7 @@ const Doctors = () => {
 
     return (
         <>
-        <Navigation/>
+            <Navigation />
             <Col md={{ span: 8, offset: 1 }} className="workingCon"  >
                 <SearchInput>
                     Search Doctor...
@@ -43,116 +44,116 @@ const Doctors = () => {
 
                 <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
 
-                <Col md={{ span: 12 }} className='staffWrapper'>
+                <Col md={{ span: 12, }} className='staffWrapper '>
 
                     <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
                     />
 
                     <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
-
-                    />
-                    <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
                     />
 
                     <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
                     />
 
                     <Staff
-                        name="name:"
-                        nameContent="Dr. David Segal"
-                        Age="Age:"
-                        ageContent="54"
-                        sex="Sex:"
-                        sexContent="Male"
-                        cell="Cell:"
-                        cellContent="082 134 8492"
-                        mail="Mail:"
-                        mailContent="DavidS@CDE.com"
-                        unique="Room:"
-                        uniqueContent="D1"
-                        title="Specialisastion"
-                        titleContent="Endocronology"
-                        pay="Consult fee"
-                        payContent="R 650"
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
                     />
 
+                    <Staff
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
+                    />
+
+                    <Staff
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
+                    />
+
+                    <Staff
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
+                    />
+
+                    <Staff
+                        img={Doctor}
+                        name="Shooter McGavin"
+                        gender="Male"
+                        age="45"
+                        room="D1"
+                        unique="Consult fee: R650"
+                        mail="DavidS@gmail.com"
+                        number="0768115662"
+                        role="Endocronology"
+                    />
                 </Col>
 
 
             </Col>
 
             <Col md={3} className="work" >
-            <Profile 
-                Auth={"Cindy Stacy"}
+                <Profile
+                    Auth={"Cindy Stacy"}
                 />
                 <Chatroom
                     socket={socket}
                     room={room}
-                     
+
                 />
             </Col>
 

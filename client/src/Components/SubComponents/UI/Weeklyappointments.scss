@@ -8,8 +8,8 @@
     padding-bottom: 2%;
     @include dropShadow;
     .Header {
-        height: 15%;
-        min-height: 7vh;
+        height: auto;
+        min-height: 6vh;
         background-color: $blue;
         padding-top: 6%;
         padding-left: 5%;

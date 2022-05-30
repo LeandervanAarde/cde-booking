@@ -12,7 +12,7 @@
     .banner {
         background-color: $blue;
         height: 15%;
-        min-height: 7vh;
+        min-height: 5.8vh;
         border-top-left-radius: $borderRad;
         border-top-right-radius: $borderRad;
         padding-top: 3%;
@@ -25,7 +25,7 @@
 
     .profileImage {
         aspect-ratio: 1/1;
-        background-image: url("../../../../public/Assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg");
+        background-image: url("../../Assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg");
         background-position: center;
         background-size: cover;
         border-radius: 55%;

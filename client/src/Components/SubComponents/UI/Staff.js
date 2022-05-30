@@ -1,5 +1,7 @@
 import React from 'react';
 import Primarybtn from '../Buttons/PrimaryBtn';
+import { Col } from 'react-bootstrap';
+import { FaCalendarAlt, FaDoorClosed, FaUser, FaRegEnvelope, FaTty, FaBookMedical } from "react-icons/fa";
 
 // import Primarybtn from './PrimaryBtn';
 
@@ -7,29 +9,17 @@ import Primarybtn from '../Buttons/PrimaryBtn';
 
 const Staff = (props) => {
   return (
-
-    <div className="staffInfo ">
-      <div>
-        <div className='staffPhoto'></div>
-        <p className='memberName'>Shooter McGavin</p>
-        <div>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <p className='name info'>{props.name} <span className='content'>{props.nameContent}</span></p>
-        <p className='dateOfBirth info'>{props.Age} <span className='content'>{props.ageContent}</span></p>
-        <p className='Gender info'>{props.sex} <span className='content'>{props.sexContent}</span></p>
-        <p className='phone info'>{props.cell} <span className='content'>{props.cellContent}</span></p>
-        <p className='email info'>{props.mail} <span className='content'>{props.mailContent}</span></p>
-        <p className='Room info'>{props.unique} <span className='content'>{props.uniqueContent}</span></p>
-        <p className='title info'>{props.title} <span className='content'>{props.titleContent}</span></p>
-        <p className='fee info'>{props.pay} <span className='content'>{props.payContent}</span></p>
-        <div className='removebtn'><Primarybtn id="staffRemove">- Remove</Primarybtn></div>
-      </div>
-
-    </div>
+ <div className='staffInfo'> 
+    <div className='staffPhoto'><img src={props.img}/></div>
+    <h4 className='docName'>{props.name}</h4>
+    <Col md={4} className="doctorinfo"><FaUser color={"#2663d4"} size={20}/><h6>{props.gender}</h6></Col>
+    <Col md={4} className="doctorinfo"><FaCalendarAlt color={"#2663d4"} size={20}/><h6>{props.age}</h6></Col>
+    <Col md={4} className="doctorinfo"><FaDoorClosed color={"#2663d4"} size={20}/><h6>{props.room}</h6></Col>
+    <p>{props.unique}</p>
+    <Col md={12} className="doctordetail"><FaRegEnvelope className='Info' color={"#2663d4"} size={20}/><p>{props.mail}</p></Col>
+    <Col md={12} className="doctordetail"><FaTty className='Info' color={"#2663d4"} size={20}/><p>{props.number}</p></Col>
+    <Col md={12} className="doctordetail"><FaBookMedical className='Info' color={"#2663d4"} size={20}/><p>{props.role}</p></Col>
+ </div>
   );
 };
 

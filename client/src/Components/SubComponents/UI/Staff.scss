@@ -1,52 +1,64 @@
 @import "/src/scss/variables.scss";
 
-.staffInfo{
-    display: inline-flex;
-    width: 23.4%;
-    padding: 0.5%;
-    height: auto;
-    min-height: 10vh;
-    background-color: $white;
+.staffInfo {
+    width: 23%;
+    aspect-ratio: 1/1.4;
+    background-color: darken( $white, 1%);
+    display: inline-block;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-right: 17px;
     border-radius: $borderRad;
+    margin-top: 4vh;
     @include dropShadow;
-    margin-left: 1vw !important;
-    margin-bottom: 2vh !important;
 
-    .staffPhoto{
-        width: 5vw;
+
+
+    .staffPhoto {
+        width: 6vw;
         aspect-ratio: 1/1;
-        background-color: red;
+        background-color: white;
         border-radius: 55%;
-        float: left;
-        background-image: url("../../../../public/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg");
-        background-position: center;
-        background-size: cover;
+        margin-left: 30%;
+        margin-top: -14%;
+       
+        border: 3px solid $white;
+         @include dropShadow; 
+         
+         img{
+             width: 100%;
+             height: 100%;
+             border-radius: 55%;
+            object-fit: cover;
+            object-position: center;
+         }
+    } 
+
+    .docName{
+        text-align: center !important;
+        margin-top: 1vh;
     }
 
-    .memberName{
-        margin-top: 2.7vh;
-        margin-left: 0.4vw;
-        font-weight: 500;
-        float: left;
-        font-size: medium;
+    .doctorinfo{
+        margin-bottom: 1vh;
     }
 
-    .info{
-    margin-top: 0;
-    margin-bottom: 0.2vh;
-    margin-left: 0.4vw;
-    font-weight: 500;
-    font-family: $mainFont;
+    p{
+        text-align: left;
+        font-weight: bold;
+        margin-left: 1vw;
     }
 
-    .removebtn{
-        width: 80%;
-        height: auto;
-        margin-top: 4%;
-        margin-left: 10%;
-        
-       #staffRemove:hover{
-         background-color: $warning !important;
-       }
+    .doctordetail{
+        padding-top: 1vh;
+        p{
+          display: inline-block;
+        }
+    }
+
+    .Info{
+       float: left;
+       margin-left: 1vw;
+       
     }
 }
