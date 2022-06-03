@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { Button, Col } from 'react-bootstrap';
+import {  Col } from 'react-bootstrap';
 import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
 import { FaKey } from "react-icons/fa";
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const location = useLocation();
-    const { pathname } = location;
-    const splitLocation = pathname.split("/");
+    // const { pathname } = location;
+    // const splitLocation = pathname.split("/");
 
     //This is going to redirect us after we have logged in
     const navigate = useNavigate();
@@ -28,13 +28,25 @@ const Login = () => {
   
     };
 
-    const handleSubmit = (e) =>{
-        console.log(userInputs);
 
-        axios.post('http://localhost:8888/medAPI/userLogin.php', userInputs)
+    const getData = (e) =>{
+        console.log(userInputs);
+        axios.post('http://localhost:8888/MedAPI/userLogin.php', userInputs)
         .then((res) =>{
             console.log(res);
-        });
+            if(res.data === true){
+                sessionStorage.setItem("activeUser", userInputs.user);
+                
+                navigate("/");
+            } else{
+                console.log("Data is not retrieved");
+                //Give an error message that wil be a modal.
+            }
+        })
+
+        .catch((err) =>{
+            console.log(err)
+        })
     }
 
     return (
@@ -47,7 +59,7 @@ const Login = () => {
 
                 <form>
 
-                    <input name="RecepID" onChange={captureInputs} ref={userName} type="username" className='RecepID' />
+                    <input name="RecepID" onChange={captureInputs} ref={userName} type="email" className='RecepID' />
                     <label className='recepLabel'>Receptionist ID</label>
                     <br></br>
 
@@ -55,7 +67,7 @@ const Login = () => {
                     <label className='passLabel'>Password</label>
                 </form>
 
-                <Col md={{ span: 8, offset: 2 }} className="buttonCon"><Primarybtn function={handleSubmit} ><FaKey className='key' color='white' size={25} /><strong>LOG IN</strong></Primarybtn></Col>
+                <Col md={{ span: 8, offset: 2 }} className="buttonCon"><Primarybtn function={getData} ><FaKey className='key' color='white' size={25} /><strong>LOG IN</strong></Primarybtn></Col>
             </Col>
         </>
     );
