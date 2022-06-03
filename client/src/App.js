@@ -19,11 +19,11 @@ function App() {
    
       <Row>
         <Routes>
-          <Route path="/" element={<Appointments/>}></Route>
+          <Route path="/Appointments" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>
           <Route path="Doctors" element={<Doctors/>}></Route>
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
-          <Route path="/Login" element={<Login></Login>}></Route>
+          <Route path="/" element={<Login></Login>}></Route>
         </Routes>
       </Row>
     </Container>

@@ -1,0 +1,16 @@
+.ModalBod{
+    width: 30vw !important;
+    min-height: 20vh;
+    height: auto;
+    background-color: darken($white, 5%);
+    position: fixed;
+    z-index: 10;
+    top: 40vh;
+    right: 0;
+    left: 32vw;
+    padding: 2%;
+    animation: modal 0.4s 1;
+   
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+}

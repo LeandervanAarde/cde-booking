@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import moment from 'moment';
@@ -11,6 +11,7 @@ import TableInformation from './SubComponents/UI/TableInformation';
 import Availablebook from './SubComponents/Appointments/Availablebook';
 import Modal from './SubComponents/modals/Modal';
 import Navigation from './SubComponents/UI/Navigation';
+import { useNavigate } from 'react-router-dom';
 
 const Appointments = () => {
 
@@ -20,6 +21,18 @@ const Appointments = () => {
     const week = current + " - " + endWeek;
     const [value, setValue] = useState(moment());
     const [modalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+
+    //Check if the current user has been logged in 
+
+    useEffect(() =>{
+        const userLogged = sessionStorage.getItem("activeUser");
+        if(userLogged === "" || userLogged === null){
+            navigate('/');
+        }
+    }, [currentUser])
+
    
     return (
         <>
@@ -39,8 +52,7 @@ const Appointments = () => {
                     <Appointmentcard />
                 </Col>
                 <Col md={12} className="calendarCon">
-                    <Calendar value={value} onChange={setValue} 
-
+                    <Calendar value={value} onChange={setValue}
                     />
                 </Col>
 
@@ -73,9 +85,7 @@ const Appointments = () => {
                 </TableInformation>
             </Col>
            {modalOpen && <Modal setModalOpen={setModalOpen}/>}
-           
         </>
-
     );
 };
 

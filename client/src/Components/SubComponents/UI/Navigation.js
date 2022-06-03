@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import "../../../index.scss";
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
@@ -15,11 +15,17 @@ const Navigation = () => {
     const location = useLocation();
     const { pathname } = location;
     const splitLocation = pathname.split("/");
+    const navigate = useNavigate();
+
+    const logout = () =>{
+        sessionStorage.clear();
+        navigate('/');
+    }
 
     return (
           <Col md={1} className="navCon">
             {/* Logo */}
-            <NavLink to="/" activeClassName="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
+            <NavLink to="/Appointments" activeClassName="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
             {/* Links */}
             <NavLink to="/" activeClassName="active">
                 <Col md={{ span: 9, offset: 1 }} className={splitLocation[1] === "" ? "active" : "navItem"} id="item1" >
@@ -48,9 +54,9 @@ const Navigation = () => {
                     <p className='navText'>Recept</p>
                 </Col>
             </NavLink>
-            <NavLink to="/Login">
+            <NavLink to="/">
 
-                <Primarybtn id="logout" >
+                <Primarybtn id="logout" function={logout}>
                     <strong>Sign Out</strong>
                 </Primarybtn>
             </NavLink>

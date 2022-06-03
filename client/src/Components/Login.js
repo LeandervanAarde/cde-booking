@@ -37,7 +37,7 @@ const Login = () => {
             if(res.data === true){
                 sessionStorage.setItem("activeUser", userInputs.user);
                 
-                navigate("/");
+                navigate("/Appointments");
             } else{
                 console.log("Data is not retrieved");
                 //Give an error message that wil be a modal.
@@ -63,11 +63,11 @@ const Login = () => {
                     <label className='recepLabel'>Receptionist ID</label>
                     <br></br>
 
-                    <input name="Password" onChange={captureInputs} ref={password} type="password" className='Pass' />
+                    <input name="Password" onChange={captureInputs} ref={password} type="password" className='Pass' onKeyPress={(event) => { event.key === "Enter" &&  getData() }} />
                     <label className='passLabel'>Password</label>
                 </form>
 
-                <Col md={{ span: 8, offset: 2 }} className="buttonCon"><Primarybtn function={getData} ><FaKey className='key' color='white' size={25} /><strong>LOG IN</strong></Primarybtn></Col>
+                <Col md={{ span: 8, offset: 2 }} className="buttonCon"><Primarybtn function={getData}  ><FaKey className='key' color='white' size={25} /><strong>LOG IN</strong></Primarybtn></Col>
             </Col>
         </>
     );
