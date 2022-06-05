@@ -84,8 +84,8 @@ const Calendar = (props) => {
             {
                 calendar.map(week => <div >
                     {
-                        week.map(Day => <div className='day' dayval={props.value}  onClick={() => !prevDay(Day) && props.onChange(Day)}>
-                            <div className={DayStyle(Day)}> <p>{Day.format("D")} </p></div>
+                        week.map(Day => <div className='day'  onClick={() => !prevDay(Day) && props.onChange(Day)}>
+                            <div className={DayStyle(Day)} value={props.val} onClick={props.function}>  <p>{Day.format("D")} </p></div>
                         </div>)
                     }
                 </div>)

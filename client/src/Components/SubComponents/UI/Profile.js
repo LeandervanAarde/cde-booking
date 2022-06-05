@@ -18,23 +18,11 @@ const Profile = (props) => {
         image: ''
     })
 
-    // useEffect(() => {
-    //     axios.post('http://localhost:8888/MedAPI/getUserInfo.php',userLogged)
-    //         .then((res) => {
-    //             let data = res.data;
-    //             console.log(data) 
-    //         })
-    // }, [userLogged]);
-
-    // let t = JSON.string
+ 
     useEffect(() => {
         axios.post('http://localhost:8888/MedAPI/getUserInfo.php', JSON.stringify(recepInfo))
             .then((res) => {
                 console.log(res.data[0]);
-                // let somethingWeird = res.data.email.toUpperCase()
-                // console.log(somethingWeird)
-                // let data = res.data;
-                // console.log(data);
                 setRecepInfo({
                     email: res.data[0].email,
                     name: res.data[0].name +" "+ res.data[0].surname,
@@ -47,9 +35,6 @@ const Profile = (props) => {
                 });
             })
     }, []);
-
-   
-
 
     return (
         <Col md={12} className="profile">

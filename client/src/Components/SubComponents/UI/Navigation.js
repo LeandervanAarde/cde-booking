@@ -27,8 +27,8 @@ const Navigation = () => {
             {/* Logo */}
             <NavLink to="/Appointments" activeClassName="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
             {/* Links */}
-            <NavLink to="/" activeClassName="active">
-                <Col md={{ span: 9, offset: 1 }} className={splitLocation[1] === "" ? "active" : "navItem"} id="item1" >
+            <NavLink to="/Appointments" activeClassName="active">
+                <Col md={{ span: 9, offset: 1 }} className={splitLocation[1] === "Appointments" ? "active" : "navItem"} id="item1" >
                     <FaHome color={"white"} size={25} />
                     <p className='navText'>Home</p>
                 </Col>

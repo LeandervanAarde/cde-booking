@@ -6,7 +6,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 const Chatroom = ({ props, socket, room }) => {
-    const [username, setUsername] = useState("Leander");
+    const [username, setUsername] = useState(sessionStorage.getItem("activeUser"));
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     //join the correct Room
