@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -8,6 +8,7 @@ import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
 import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
+import { useNavigate } from 'react-router-dom';
 import Navigation from './SubComponents/UI/Navigation';
 import Doctor from "../Components/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg";
 const socket = io.connect("http://localhost:3001");
@@ -16,6 +17,15 @@ const socket = io.connect("http://localhost:3001");
 const Doctors = () => {
     const [username, setUsername] = useState("Leander");
     const room = 1;
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+
+    useEffect(() =>{
+        const userLogged = sessionStorage.getItem("activeUser");
+        if(userLogged === "" || userLogged === null || userLogged === false){
+            navigate('/');
+        }
+    }, [currentUser])
 
 
     return (

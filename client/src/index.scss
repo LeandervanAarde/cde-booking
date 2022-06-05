@@ -37,6 +37,8 @@
 html {
   background-color: $Background;
   cursor: default;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .content {
@@ -44,6 +46,7 @@ html {
   min-height: 100vh;
 
 }
+
 
 .btn {
   width: 100%;

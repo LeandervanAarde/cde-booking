@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Row, Container  } from "react-bootstrap";
 import {Routes, Route} from 'react-router-dom';
 import './index.scss';
@@ -13,11 +13,11 @@ import Login from "./Components/Login";
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Container fluid className="content">
-   
-      <Row>
+   {isLoggedIn ? (<Login/>) :  ( <Row>
         <Routes>
           <Route path="/Appointments" element={<Appointments/>}></Route>
           <Route path="/Patients" element={<Patients/>}></Route>
@@ -25,7 +25,8 @@ function App() {
           <Route path="/Receptionists" element={<Receptionists/>}></Route>
           <Route path="/" element={<Login></Login>}></Route>
         </Routes>
-      </Row>
+      </Row>)}
+      
     </Container>
   );
 }

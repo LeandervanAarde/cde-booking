@@ -20,15 +20,17 @@ const Appointments = () => {
     const Year = moment().clone().format("DD MMMM YYYY");
     const week = current + " - " + endWeek;
     const [value, setValue] = useState(moment());
+    const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"))
     const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+    console.log(currentD._d)
 
     //Check if the current user has been logged in 
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
-        if(userLogged === "" || userLogged === null){
+        if(userLogged === "" || userLogged === null || userLogged === false){
             navigate('/');
         }
     }, [currentUser])
@@ -52,7 +54,7 @@ const Appointments = () => {
                     <Appointmentcard />
                 </Col>
                 <Col md={12} className="calendarCon">
-                    <Calendar value={value} onChange={setValue}
+                    <Calendar value={value} dayval={currentD._d} onChange={(setValue, setCurrentD)} 
                     />
                 </Col>
 

@@ -24,7 +24,25 @@
         text-align: center;
         font-family: $mainFont;
         margin-top: 12vh;
-        margin-bottom: 7vh;
+    }
+
+    .errorText{
+        color: $warning;
+        font-size: 14px;
+        transition: all 0.2 linear;
+        animation: slideIn 0.5s linear;
+        animation-delay: 10ms;
+    }
+
+    @keyframes slideIn {
+        0%{
+            transform: translateX(100%);
+        }
+
+        100%{
+            transform: translateX(0%);
+        }
+        
     }
 
     form{

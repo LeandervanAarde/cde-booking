@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -10,6 +10,7 @@ import { FaTty, FaBookMedical, FaUser } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
 import Navigation from './SubComponents/UI/Navigation';
 import Receptionist from "../Components/Assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg"
+import { useNavigate } from 'react-router-dom';
 const socket = io.connect("http://localhost:3001");
 
 const Receptionists = () => {
@@ -20,6 +21,16 @@ const Receptionists = () => {
             socket.emit("joinRoom", room);
         }
     }
+
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+
+    useEffect(() =>{
+        const userLogged = sessionStorage.getItem("activeUser");
+        if(userLogged === "" || userLogged === null || userLogged === false){
+            navigate('/');
+        }
+    }, [currentUser])
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import "../../src/index.scss";
@@ -14,14 +14,25 @@ import People from './SubComponents/UI/People';
 import AddModal from './SubComponents/modals/AddModal';
 import ViewModal from "./SubComponents/modals/ViewModal";
 import Navigation from './SubComponents/UI/Navigation';
+import { useNavigate } from 'react-router-dom';
 
 const Patients = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [addModal, setAddModal] = useState(false);
-
     const Number = 1245;
     const Fees = 450.45;
     const Name = "Richard Hendricks";
+
+    const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+
+    useEffect(() =>{
+        const userLogged = sessionStorage.getItem("activeUser");
+        if(userLogged === "" || userLogged === null || userLogged === false){
+            navigate('/');
+        }
+    }, [currentUser])
+
     return (
         <>
         <Navigation/>

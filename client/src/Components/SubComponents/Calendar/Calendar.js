@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Col } from 'react-bootstrap';
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -12,6 +12,7 @@ const Calendar = (props) => {
 
     useEffect(() => {
         const day = startDay.clone().subtract(1, "day");
+  
         const Arr = []
         while (day.isBefore(endDay, "day")) {
             Arr.push(
@@ -83,7 +84,7 @@ const Calendar = (props) => {
             {
                 calendar.map(week => <div >
                     {
-                        week.map(Day => <div className='day' onClick={() => !prevDay(Day) && props.onChange(Day)}>
+                        week.map(Day => <div className='day' dayval={props.value}  onClick={() => !prevDay(Day) && props.onChange(Day)}>
                             <div className={DayStyle(Day)}> <p>{Day.format("D")} </p></div>
                         </div>)
                     }
