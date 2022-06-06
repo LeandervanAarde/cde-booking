@@ -9,10 +9,14 @@ import Profile from './SubComponents/UI/Profile';
 import Calendar from './SubComponents/Calendar/Calendar';
 import TableInformation from './SubComponents/UI/TableInformation';
 import Availablebook from './SubComponents/Appointments/Availablebook';
+import AvailableAppointItems from './SubComponents/Appointments/AvailableAppointItems';
 import Modal from './SubComponents/modals/Modal';
 import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
+import { FaRegCalendarCheck } from "react-icons/fa";
+import NoAppointments from './SubComponents/Appointments/NoAppointments';
 
 const Appointments = () => {
 
@@ -25,9 +29,9 @@ const Appointments = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
-    console.log(value)
     const [appointments, setAppointments] = useState(Year);
     const [today, setToday] = useState([]);
+    const [availableAppointments, setAvailableAppointments] = useState([]);
 
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -36,7 +40,7 @@ const Appointments = () => {
             navigate('/');
         }
     }, [currentUser]);
-    
+
     //Get all appointments that have been scheduled for the current day
     useEffect(() => {
         axios.post('http://localhost:8888/MedAPI/getAppointments.php', JSON.stringify(appointments))
@@ -49,9 +53,30 @@ const Appointments = () => {
                 }
                 setToday(tempArr);
             })
+    }, []);
 
-    }, [])
 
+    useEffect(() =>{
+        axios.post('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
+        .then((res) =>{
+            let data = res.data;
+            if(!data || data === false){
+                setAvailableAppointments(false)
+            }else{
+                setAvailableAppointments(data)
+            }
+          
+           
+        })
+    }, [value.clone().format("DD MMMM YYYY")])
+   
+
+    console.log(availableAppointments)
+  
+
+
+    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY") }/>) : availableAppointments.map((e) =>(<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => {setModalOpen(true)}}/>));
+ 
     return (
         <>
             <Navigation />
@@ -71,11 +96,9 @@ const Appointments = () => {
                 </Col>
 
                 <Col md={12} className="BookingCon">
-                    <Availablebook
-                        value={value}
-                        function={() => {
-                            return setModalOpen(true);
-                        }}
+                    <Availablebook 
+                    valueRead={value.clone().format("DD MMMM YYYY")}  
+                    Children = {outPut}
                     />
                 </Col>
             </Col>
@@ -98,6 +121,7 @@ const Appointments = () => {
                 </TableInformation>
             </Col>
             {modalOpen && <Modal setModalOpen={setModalOpen} />}
+
         </>
     );
 };

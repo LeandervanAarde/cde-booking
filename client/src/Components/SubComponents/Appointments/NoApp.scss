@@ -1,0 +1,19 @@
+@import "/src/scss/variables.scss";
+
+.container{
+    background-color: $white;
+    height: auto;
+    position: absolute;
+    z-index: 999;
+    top: 96.7vh;
+    width: 65.25vw !important;
+    border-bottom-left-radius: $borderRad;
+    border-bottom-right-radius: $borderRad;
+    padding-top: 5vh;
+
+    img{
+        width: 25%;
+        margin-top: 6vh;
+        height: 30vh;
+    }
+}
