@@ -17,6 +17,8 @@
         border-top-left-radius: $borderRad;
         border-top-right-radius: $borderRad;
         padding-top: 1%;
+        position: relative;
+        z-index: 11;
 
         h4{
             color: $white;

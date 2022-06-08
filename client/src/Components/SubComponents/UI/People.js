@@ -8,7 +8,9 @@ const People = (props) => {
   return (
     <>
       <Col md={12} className='infoCon'>
-        <Col md={1} className="text-center picture"></Col>
+        <Col md={1} className="text-center picture">
+          <img src={props.image} alt='Patient' className='picture'/>
+        </Col>
         <Col md={2} className='text-center id'><p>{props.id}</p></Col>
         <Col md={2} className='text-center name'><p>{props.name}</p></Col>
         <Col md={2} className='text-center title'><p>{props.children}</p></Col>

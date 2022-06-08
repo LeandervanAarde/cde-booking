@@ -15,6 +15,9 @@ import AddModal from './SubComponents/modals/AddModal';
 import ViewModal from "./SubComponents/modals/ViewModal";
 import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment';
+import image from "../Components/Assets/default.jpeg";
 
 const Patients = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -22,16 +25,30 @@ const Patients = (props) => {
     const Number = 1245;
     const Fees = 450.45;
     const Name = "Richard Hendricks";
-
+    const [allPatients, setAllPatients] = useState([]);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+    const current = moment().clone().format("DD MMMM ");
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
         if(userLogged === "" || userLogged === null || userLogged === false){
             navigate('/');
         }
-    }, [currentUser])
+    }, [currentUser]);
+
+    useEffect(() =>{
+        axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
+        .then((res) =>{
+            let data = res.data; 
+            setAllPatients(data);
+        });
+    },[]);
+    console.log(allPatients);
+
+
+    const allPat= allPatients.map((e) => ( <People image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage} id={e.id} name={e.name +" "+ e.surname} children={e.medCondition} age={(+ e.dateOfBirth.split(" ").splice(2))} gender={e.gender} function={() => {return setModalOpen(true);}} />));
+
 
     return (
         <>
@@ -44,7 +61,7 @@ const Patients = (props) => {
 
                 <Patientoverview
                     title="Total patients"
-                    number={Number}
+                    number={allPatients.length}
                     icon={<FaUser color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
@@ -59,7 +76,7 @@ const Patients = (props) => {
 
                 <h2 className='allPatients ms-4'>All patients</h2>
 
-                <Col md={{ span: 2, offset: 8 }} className="addPatient">
+                <Col md={{ span: 2, offset: 10 }} className="addPatient">
                     <Addbutton 
                     function = {() => {
                             return setAddModal(true);
@@ -69,26 +86,12 @@ const Patients = (props) => {
                 </Col>
 
                 <Col md={12} className='mt-3 personBanner '>
-                    <People
-                        id="01"
-                        name={Name}
-                        children="Diabetes"
-                        age="29"
-                        gender="Male"
-                        function={() => {
-                            return setModalOpen(true);
-                        }}
-                    />
-
-
-
+                   {allPat}
                 </Col>
             </Col>
 
             <Col md={3} className="work">
-            <Profile 
-                Auth={"Cindy Stacy"}
-                />
+            <Profile />
                 <TableInformation
                     headerOne="ID"
                     headerTwo="Patient"

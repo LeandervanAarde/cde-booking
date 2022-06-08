@@ -17,21 +17,27 @@ import axios from 'axios';
 import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
 import { FaRegCalendarCheck } from "react-icons/fa";
 import NoAppointments from './SubComponents/Appointments/NoAppointments';
+import Addbutton from './SubComponents/Buttons/Addbutton';
+import AppointmentModal from './SubComponents/modals/AppointmentModal';
 
 const Appointments = () => {
 
-    const endWeek = moment().clone().endOf('week').format("DD MMMM");
+    const endWeek = moment().clone().endOf('week').format("DD MMMM YYYY");
     const current = moment().clone().format("DD MMMM ");
     const Year = moment().clone().format("DD MMMM YYYY");
     const week = current + " - " + endWeek;
     const [value, setValue] = useState(moment());
     const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"))
     const [modalOpen, setModalOpen] = useState(false);
+    const [appModal, setappModal] = useState(false);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
     const [appointments, setAppointments] = useState(Year);
     const [today, setToday] = useState([]);
     const [availableAppointments, setAvailableAppointments] = useState([]);
+    const [allDoctors, setAllDoctors] = useState([]);
+    const [allPatients, setAllPatients] = useState([]);
+    const [weeklyAppointments, setWeeklyAppointments] = useState();
 
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -55,37 +61,55 @@ const Appointments = () => {
             })
     }, []);
 
+    useEffect(() => {
+        axios.get('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
+            .then((res) => {
+                let data = res.data;
+                if (!data || data === false) {
+                    setAvailableAppointments(false)
+                } else {
+                    setAvailableAppointments(data)
+                }
+            })
+    }, [value.clone().format("DD MMMM YYYY")]);
+    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => { setModalOpen(true) }} />));
+
+    useEffect(() => {
+        axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
+            .then((res) => {
+                let data = res.data;
+                setAllDoctors(data);
+            })
+    }, []);
+    const dropElements = allDoctors.map((e) => (<option>{e.name} {e.surname}</option>));
+
+    useEffect(() => {
+        axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
+            .then((res) => {
+                let data = res.data;
+                setAllPatients(data);
+            });
+    }, []);
+    console.log(allPatients);
+    const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
 
     useEffect(() =>{
-        axios.post('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
-        .then((res) =>{
+        axios.get(`http://localhost:8888/MedAPI/getWeeklyAppoint.php?endWeek=${endWeek}&startWeek=${Year}`)
+        .then((res) => {
             let data = res.data;
-            if(!data || data === false){
-                setAvailableAppointments(false)
-            }else{
-                setAvailableAppointments(data)
-            }
-          
-           
-        })
-    }, [value.clone().format("DD MMMM YYYY")])
-   
+            console.log(data)
+             let weeklyApp = data.map((e) =>(<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />));
+             setWeeklyAppointments(weeklyApp);
+        });
+    }, [])
 
-    console.log(availableAppointments)
-  
-
-
-    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY") }/>) : availableAppointments.map((e) =>(<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => {setModalOpen(true)}}/>));
- 
     return (
         <>
             <Navigation />
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
-                <SearchInput>
-                    Search Patient...
-                </SearchInput>
+
                 <Col md={12}>
-                    <h2 className='headingTwo' value={Year}> {Year} Appointments</h2>
+                    <h2 className='headingTwo' id={'todayApp'} value={Year}> {Year} Appointments</h2>
                 </Col>
                 <Col md={12} className="cardCon">
                     {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
@@ -95,32 +119,40 @@ const Appointments = () => {
                     />
                 </Col>
 
+                <Col md={{ span: 2, offset: 10 }} className="addPatient">
+                    <Addbutton
+                        function={() => {
+                            return setappModal(true);
+                        }}
+                    />
+                    <p className='buttonText'>Add avail</p>
+                </Col>
+
                 <Col md={12} className="BookingCon">
-                    <Availablebook 
-                    valueRead={value.clone().format("DD MMMM YYYY")}  
-                    Children = {outPut}
+                    <Availablebook
+                        valueRead={value.clone().format("DD MMMM YYYY")}
+                        Children={outPut}
                     />
                 </Col>
             </Col>
 
             <Col md={3} className="work">
-                <Profile
-                    Auth={"Cindy Stacy"}
-                />
+                <Profile />
                 <TableInformation
-                    headerOne="Time"
-                    headerTwo="Patient"
-                    headerThree="Doctor"
+                    headerOne="Date"
+                    headerTwo="Time"
+                    headerThree="Patient"
                     headerFour=" "
-                    Information1="09:00 - 10:00"
-                    Information2="Leander van Aarde"
-                    Information3="Dr Makan"
+                    Information1="06 June 2022"
+                    Information2="09:00 - 10:00"
+                    Information3="Leander van Aarde"
                     btnTxt="-REMOVE"
                 >
                     <h5>{week} Appointments </h5>
                 </TableInformation>
             </Col>
-            {modalOpen && <Modal setModalOpen={setModalOpen} />}
+            {modalOpen && <Modal nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
+            {appModal && <AppointmentModal nm={"Doctor "} select={dropElements} startTime={"Start time"} endTime={"End time"} mail={"Date"} func={() => { return setappModal(false); }} setappModal={setappModal} />}
 
         </>
     );

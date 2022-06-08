@@ -2,10 +2,8 @@ import React from 'react';
 import { Col, ProgressBar } from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
-//FaUserPlus
 
-const Modal = (props) => {
-
+const AppointmentModal = (props) => {
     return (
         <>
         <Col md={12} className='backdrop' onClick={props.func}> </Col>
@@ -20,11 +18,13 @@ const Modal = (props) => {
                    {props.select}
                 </select>
                 <br></br>
-                <h6>{props.cont} &nbsp;</h6>
-                <input type={'text'} placeholder="Patient Cell"></input>
+                <h6 className='timeLabel'>{props.startTime}</h6>
+                <input type={'time'}  className="time"></input>
+                <h6 className='timeLabel' id="right">{props.endTime}</h6>
+                <input type={'time'} className="time" ></input>
                 <br></br>
                 <h6>{props.mail}</h6>
-                <input type={'text'} placeholder="Patient email"></input>
+                <input type={'date'} data-date-format="DD MMMM YYYY" placeholder="Doctor email"></input>
 
                 <Col md={{span:3, offset:4}} className="mt-5" onClick={props.func}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>
@@ -33,4 +33,4 @@ const Modal = (props) => {
     );
 };
 
-export default Modal;
+export default AppointmentModal;

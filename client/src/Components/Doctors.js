@@ -10,7 +10,10 @@ import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './SubComponents/UI/Navigation';
-import Doctor from "../Components/Assets/usman-yousaf-pTrhfmj2jDA-unsplash.jpg";
+import axios from 'axios';
+import moment from 'moment';
+import image from "../Components/Assets/default.jpeg";
+
 const socket = io.connect("http://localhost:3001");
 
 
@@ -19,6 +22,10 @@ const Doctors = () => {
     const room = 1;
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+    const [allDoctors, setAllDoctors] = useState([]);
+    const date = moment().clone().format("YYYY");
+
+
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
@@ -27,6 +34,16 @@ const Doctors = () => {
         }
     }, [currentUser])
 
+    useEffect(() => {
+        axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
+            .then((res) => {
+                let data = res.data;
+                setAllDoctors(data);
+            })
+    }, []);
+    const dropElements = allDoctors.map((e) => (<option>{e.name} {e.surname}</option>));
+    // image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
+    
 
     return (
         <>
@@ -55,105 +72,20 @@ const Doctors = () => {
                 <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
 
                 <Col md={{ span: 12, }} className='staffWrapper '>
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
-
-                    <Staff
-                        img={Doctor}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="D1"
-                        unique="Consult fee: R650"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Endocronology"
-                    />
+                    {
+                        allDoctors.map((e) =>( <Staff
+                            img={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
+                            name={e.name +" "+ e.surname}
+                            gender={e.gender}
+                            age={date - e.dateOfBirth.split(" ").splice(2)}
+                            room={e.room}
+                            unique={"Consultation Fee: R"+ e.consultFee}
+                            mail={e.email}
+                            number={e.phoneNumber}
+                            role={e.specialisation}
+                        />))
+                    }
                 </Col>
-
-
             </Col>
 
             <Col md={3} className="work" >
