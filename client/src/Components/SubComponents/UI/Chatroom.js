@@ -23,7 +23,7 @@ const Chatroom = ({ props, socket, room }) => {
             // list all the data from the message to display on the chatroom
             await socket.emit("sndMssg", messageData);
             setMessageList((list) => [...list, messageData]);
-            setCurrentMessage("")
+            setCurrentMessage("");
         }
     };
 

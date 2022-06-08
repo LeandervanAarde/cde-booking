@@ -1,0 +1,10 @@
+@import "/src/scss/variables.scss";
+
+.remove {
+    color: red;
+
+    &:hover {
+        font-weight: 700;
+        transform: scale(1.2);
+    }
+}

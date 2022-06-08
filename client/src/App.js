@@ -9,11 +9,13 @@ import Doctors from "./Components/Doctors";
 import Patients from "./Components/Patients"
 import Receptionists from "./Components/Receptionists";
 import Login from "./Components/Login";
+import { io } from "socket.io-client";
 
 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const socket = io.connect("http://localhost:3001");
 
   return (
     <Container fluid className="content">

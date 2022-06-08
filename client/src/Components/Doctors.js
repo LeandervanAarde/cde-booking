@@ -25,8 +25,6 @@ const Doctors = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
 
-
-
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
         if(userLogged === "" || userLogged === null || userLogged === false){

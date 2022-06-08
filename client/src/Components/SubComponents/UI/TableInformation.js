@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col} from 'react-bootstrap';
+import axios from 'axios';
 const TableInformation = (props) => {
 
     const removeAppointment = (e) =>{
@@ -20,12 +21,8 @@ const TableInformation = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="dataRow">
-                            <td>{props.Information1}</td>
-                            <td>{props.Information2}</td>
-                            <td>{props.Information3}</td>
-                            <td className="remove" onClick={removeAppointment}> {props.tIcon} {props.btnTxt} </td>
-                        </tr>
+                            {props.row}
+                            
                     </tbody>
                 </table>
            </Col>

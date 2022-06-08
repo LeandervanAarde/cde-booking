@@ -19,6 +19,7 @@ import { FaRegCalendarCheck } from "react-icons/fa";
 import NoAppointments from './SubComponents/Appointments/NoAppointments';
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import AppointmentModal from './SubComponents/modals/AppointmentModal';
+import TableRow from './SubComponents/UI/TableRow';
 
 const Appointments = () => {
 
@@ -98,7 +99,7 @@ const Appointments = () => {
         .then((res) => {
             let data = res.data;
             console.log(data)
-             let weeklyApp = data.map((e) =>(<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />));
+             let weeklyApp = data.map((e) =>(<TableRow Information1={e.Date} Information2={e.timeStart +" - "+ e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"}/>));
              setWeeklyAppointments(weeklyApp);
         });
     }, [])
@@ -112,7 +113,7 @@ const Appointments = () => {
                     <h2 className='headingTwo' id={'todayApp'} value={Year}> {Year} Appointments</h2>
                 </Col>
                 <Col md={12} className="cardCon">
-                    {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
+                    {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd}  />))}
                 </Col>
                 <Col md={12} className="calendarCon">
                     <Calendar value={value} val={value.clone().format("DD MMMM YYYY")} onChange={setValue}
@@ -142,11 +143,8 @@ const Appointments = () => {
                     headerOne="Date"
                     headerTwo="Time"
                     headerThree="Patient"
-                    headerFour=" "
-                    Information1="06 June 2022"
-                    Information2="09:00 - 10:00"
-                    Information3="Leander van Aarde"
-                    btnTxt="-REMOVE"
+                    headerFour={" "}
+                    row={weeklyAppointments}
                 >
                     <h5>{week} Appointments </h5>
                 </TableInformation>
@@ -159,3 +157,10 @@ const Appointments = () => {
 };
 
 export default Appointments;
+
+
+
+// Information1="06 June 2022"
+// Information2="09:00 - 10:00"
+// Information3="Leander van Aarde"
+// btnTxt="-REMOVE"

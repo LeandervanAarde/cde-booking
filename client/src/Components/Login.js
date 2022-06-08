@@ -25,10 +25,7 @@ const Login = () => {
         let name = userName.current.value;
         let pass = password.current.value;
         setUserInputs({...userInputs, user: name, password:pass})
-  
     };
-
-
 
     const getData = (e) =>{
         console.log(userInputs);
@@ -37,7 +34,6 @@ const Login = () => {
             console.log(res);
             if(res.data === true){
                 sessionStorage.setItem("activeUser", userInputs.user);
-               
                 navigate("/Appointments");
             } else{
                 console.log("Data is not retrieved");
@@ -48,7 +44,6 @@ const Login = () => {
                 }, 5000)
             }
         })
-
         .catch((err) =>{
             console.log(err)
         })
@@ -78,5 +73,4 @@ const Login = () => {
         </>
     );
 };
-
 export default Login;

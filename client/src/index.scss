@@ -6,6 +6,7 @@
 @import "../src/scss/Login.scss";
 @import "./src/Components/SubComponents/Appointments/AvailableBookings.scss";
 @import "./src/Components/SubComponents/UI/Weeklyappointments.scss";
+@import "./src/Components/SubComponents/UI/TableRow.scss";
 @import "../src/Components/SubComponents/Appointments/NoApp.scss";
 
 // imports for the calendar
@@ -26,14 +27,10 @@
 @import "/src/Components/SubComponents/UI/Chatroom.scss";
 
   //Import for Main Components
-
   @import "/src/scss/Appointments.scss";
   @import "/src/scss/Doctors.scss";
   @import "/src/scss/patients.scss";
   @import "/src/scss/variables.scss";
-
-
-
 
 html {
   background-color: $Background;
@@ -47,7 +44,6 @@ html {
   min-height: 100vh;
 
 }
-
 
 .btn {
   width: 100%;
