@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import "../../src/index.scss";
@@ -12,7 +12,6 @@ import Addbutton from './SubComponents/Buttons/Addbutton';
 import TableInformation from './SubComponents/UI/TableInformation';
 import People from './SubComponents/UI/People';
 import AddModal from './SubComponents/modals/AddModal';
-import ViewModal from "./SubComponents/modals/ViewModal";
 import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -20,55 +19,55 @@ import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
 
 const Patients = (props) => {
-    const [modalOpen, setModalOpen] = useState(false);
+    // const [modalOpen, setModalOpen] = useState(false);
     const [addModal, setAddModal] = useState(false);
-    const Number = 1245;
-    const Fees = 450.45;
-    const Name = "Richard Hendricks";
     const [allPatients, setAllPatients] = useState([]);
     const navigate = useNavigate();
-    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+    const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
     const current = moment().clone().format("DD MMMM ");
     const [allDoctors, setAllDoctors] = useState([]);
-    const [person, setPerson] = useState()
+    const [person, setPerson] = useState();
+    const date = moment().clone().format("YYYY");
 
-    useEffect(() =>{
+    useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
-        if(userLogged === "" || userLogged === null || userLogged === false){
+        if (userLogged === "" || userLogged === null || userLogged === false) {
             navigate('/');
         }
     }, [currentUser]);
 
-    useEffect(() =>{
+    useEffect(() => {
         axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
-        .then((res) =>{
-            let data = res.data; 
-            setAllPatients(data);
-        });
-
+            .then((res) => {
+                let data = res.data;
+                setAllPatients(data);
+            });
 
         axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
-        .then((res) => {
-            let data = res.data;
-            setAllDoctors(data);
-        });
+            .then((res) => {
+                let data = res.data;
+                setAllDoctors(data);
+            });
+    }, []);
 
-    },[]);
+    const getValue = (e) => {
+        let val = e.target.value;
+        console.log(val);
+    }
 
-    const getValue = (e) =>{
-        let val = e.target.id;
-         console.log(val);
-     }
-  
-    const allPat= allPatients.map((e) => ( <People key={e.id} id={e.id} image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}  name={e.name +" "+ e.surname} children={e.medCondition} age={(+ e.dateOfBirth.split(" ").splice(2))} gender={e.gender} function={() => {setModalOpen(true)}} function2={getValue} />));
+    const allPat = allPatients.map((e) => (
+        <People
+            {...e} 
+            image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage} 
+            age={(+date - e.dateOfBirth.split(" ").splice(2))} 
+        />
+    ));
     const outstandingFees = allPatients.map((e) => (+ e.feesOut.split(" ").splice(1)));
     const total = Math.round(outstandingFees.reduce((accumulator, currVal) => (accumulator + currVal), 0));
-
-
-     
+    
     return (
         <>
-        <Navigation/>
+            <Navigation />
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
                 <SearchInput>
                     Search Patient...
@@ -93,8 +92,8 @@ const Patients = (props) => {
                 <h2 className='allPatients ms-4'>All patients</h2>
 
                 <Col md={{ span: 2, offset: 10 }} className="addPatient">
-                    <Addbutton 
-                    function = {() => {
+                    <Addbutton
+                        function={() => {
                             return setAddModal(true);
                         }}
                     />
@@ -102,12 +101,13 @@ const Patients = (props) => {
                 </Col>
 
                 <Col md={12} className='mt-3 personBanner '>
-                   {allPat}
+                    {allPat}
                 </Col>
+
             </Col>
 
             <Col md={3} className="work">
-            <Profile />
+                <Profile />
                 <TableInformation
                     headerOne="ID"
                     headerTwo="Patient"
@@ -121,10 +121,6 @@ const Patients = (props) => {
                     Outstanding fees
                 </TableInformation>
             </Col>
-            {modalOpen && <ViewModal 
-            func={() => { return setModalOpen(false); }} 
-            setModalOpen={setModalOpen} 
-            />}
             {addModal && <AddModal  setAddModal={setAddModal} />}
         </>
     );

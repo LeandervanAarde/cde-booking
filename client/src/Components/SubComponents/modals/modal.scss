@@ -6,7 +6,7 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
-  z-index: 12;
+  // z-index: 12;
 }
 
 .Modal {
@@ -15,7 +15,7 @@
     height: auto;
     background-color: darken($white, 5%);
     position: fixed;
-    z-index: +15;
+    // z-index: +15;
     top: 15vh;
     right: 0;
     left: 16vw;
@@ -66,7 +66,7 @@
 
         .patPhoto{
           aspect-ratio: 1/1;
-          background-color: red;
+        
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
@@ -120,6 +120,12 @@
 
     .right{
       margin-left:  2vw !important;
+    }
+
+    img{
+      height: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 55%;
     }
 
       
