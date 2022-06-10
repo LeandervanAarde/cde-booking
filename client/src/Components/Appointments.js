@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import moment from 'moment';
@@ -39,6 +39,7 @@ const Appointments = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const [allPatients, setAllPatients] = useState([]);
     const [weeklyAppointments, setWeeklyAppointments] = useState();
+    const Hello = useRef()
 
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -63,9 +64,10 @@ const Appointments = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
+        axios.post('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
             .then((res) => {
                 let data = res.data;
+                console.log(data)
                 if (!data || data === false) {
                     setAvailableAppointments(false)
                 } else {
@@ -75,13 +77,7 @@ const Appointments = () => {
     }, [value.clone().format("DD MMMM YYYY")]);
     const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => { setModalOpen(true) }} />));
 
-    useEffect(() => {
-        axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
-            .then((res) => {
-                let data = res.data;
-                setAllDoctors(data);
-            })
-    }, []);
+  
     const dropElements = allDoctors.map((e) => (<option>{e.name} {e.surname}</option>));
 
     useEffect(() => {
@@ -90,6 +86,12 @@ const Appointments = () => {
                 let data = res.data;
                 setAllPatients(data);
             });
+
+            axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
+            .then((res) => {
+                let data = res.data;
+                setAllDoctors(data);
+            })
     }, []);
     console.log(allPatients);
     const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
@@ -102,7 +104,7 @@ const Appointments = () => {
              let weeklyApp = data.map((e) =>(<TableRow Information1={e.Date} Information2={e.timeStart +" - "+ e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"}/>));
              setWeeklyAppointments(weeklyApp);
         });
-    }, [])
+    }, []);
 
     return (
         <>
@@ -149,18 +151,10 @@ const Appointments = () => {
                     <h5>{week} Appointments </h5>
                 </TableInformation>
             </Col>
-            {modalOpen && <Modal nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
+            {modalOpen && <Modal ref={Hello} nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
             {appModal && <AppointmentModal nm={"Doctor "} select={dropElements} startTime={"Start time"} endTime={"End time"} mail={"Date"} func={() => { return setappModal(false); }} setappModal={setappModal} />}
-
         </>
     );
 };
 
 export default Appointments;
-
-
-
-// Information1="06 June 2022"
-// Information2="09:00 - 10:00"
-// Information3="Leander van Aarde"
-// btnTxt="-REMOVE"

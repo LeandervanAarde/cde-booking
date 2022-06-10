@@ -29,6 +29,8 @@ const Patients = (props) => {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
     const current = moment().clone().format("DD MMMM ");
+    const [allDoctors, setAllDoctors] = useState([]);
+    const [person, setPerson] = useState()
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
@@ -43,13 +45,27 @@ const Patients = (props) => {
             let data = res.data; 
             setAllPatients(data);
         });
+
+
+        axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
+        .then((res) => {
+            let data = res.data;
+            setAllDoctors(data);
+        });
+
     },[]);
-    console.log(allPatients);
+
+    const getValue = (e) =>{
+        let val = e.target.id;
+         console.log(val);
+     }
+  
+    const allPat= allPatients.map((e) => ( <People key={e.id} id={e.id} image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}  name={e.name +" "+ e.surname} children={e.medCondition} age={(+ e.dateOfBirth.split(" ").splice(2))} gender={e.gender} function={() => {setModalOpen(true)}} function2={getValue} />));
+    const outstandingFees = allPatients.map((e) => (+ e.feesOut.split(" ").splice(1)));
+    const total = Math.round(outstandingFees.reduce((accumulator, currVal) => (accumulator + currVal), 0));
 
 
-    const allPat= allPatients.map((e) => ( <People image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage} id={e.id} name={e.name +" "+ e.surname} children={e.medCondition} age={(+ e.dateOfBirth.split(" ").splice(2))} gender={e.gender} function={() => {return setModalOpen(true);}} />));
-
-
+     
     return (
         <>
         <Navigation/>
@@ -66,12 +82,12 @@ const Patients = (props) => {
 
                 <Patientoverview
                     title="Total Doctors"
-                    number="60"
+                    number={allDoctors.length}
                     icon={<FaStethoscope color={"#2663d4"} size={70} />} />
 
                 <Patientoverview
                     title="Total fees owed"
-                    number={"R " + Fees}
+                    number={"R " + total}
                     icon={<FaMoneyBillWave color={"#2663d4"} size={70} />} />
 
                 <h2 className='allPatients ms-4'>All patients</h2>
@@ -105,8 +121,11 @@ const Patients = (props) => {
                     Outstanding fees
                 </TableInformation>
             </Col>
-            {modalOpen && <ViewModal setModalOpen={setModalOpen} />}
-            {addModal && <AddModal setAddModal={setAddModal} />}
+            {modalOpen && <ViewModal 
+            func={() => { return setModalOpen(false); }} 
+            setModalOpen={setModalOpen} 
+            />}
+            {addModal && <AddModal  setAddModal={setAddModal} />}
         </>
     );
 };

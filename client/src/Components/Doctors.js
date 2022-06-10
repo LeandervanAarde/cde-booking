@@ -39,8 +39,7 @@ const Doctors = () => {
                 setAllDoctors(data);
             })
     }, []);
-    const dropElements = allDoctors.map((e) => (<option>{e.name} {e.surname}</option>));
-    // image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
+
     
 
     return (
@@ -64,7 +63,7 @@ const Doctors = () => {
 
                 <Patientoverview
                     title="Total Doctors"
-                    number={"12"}
+                    number={allDoctors.length}
                     icon={<FaStethoscope color={"#2663d4"} size={70} />} />
 
                 <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
@@ -93,7 +92,6 @@ const Doctors = () => {
                 <Chatroom
                     socket={socket}
                     room={room}
-
                 />
             </Col>
 
