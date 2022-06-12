@@ -27,6 +27,10 @@ const Chatroom = ({ props, socket, room }) => {
         }
     };
 
+  if(!sessionStorage.getItem("mssg")){
+    sessionStorage.setItem("mssg", messageList)
+  }
+
     const joinRoom = () => {
         if (room !== null) {
             socket.emit("joinRoom", room);

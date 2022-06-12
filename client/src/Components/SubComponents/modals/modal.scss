@@ -10,18 +10,17 @@
 }
 
 .Modal {
-    width: 80%;
-    min-height: 50vh;
+    width: 70%;
+    min-height: 30vh;
+
     height: auto;
     background-color: darken($white, 5%);
     position: fixed;
-    // z-index: +15;
     top: 15vh;
     right: 0;
-    left: 16vw;
+    left: 20vw;
     padding: 2%;
     animation: modal 0.4s 1;
-   
     border-radius: $borderRad;
     transition: height 0.5s linear, width 0.5s linear;
   
@@ -38,8 +37,7 @@
       h2{
         color: $darkBg;
         text-align: left;
-        margin-left: 15vw !important;
-      
+        margin-left: 10vw !important;
       }
 
       input, select{
@@ -56,17 +54,15 @@
       h6{
          display: inline-block;
          text-align: left;
-         margin-right: 2vw;
-         margin-left:  5vw !important;
-         
+        //  margin-right: 6vw;
+        //  margin-left:  3vw !important;
+        
       }
 
       .con{
-        height: 50vh;
-
+        height: 100%;
         .patPhoto{
           aspect-ratio: 1/1;
-        
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
@@ -83,6 +79,11 @@
           padding-left: 4vw;
         }  
       }
+      span{
+        text-align: center !important;
+    }
+
+    
     
 
       @keyframes modal {
@@ -95,7 +96,6 @@
             opacity: 1;
             z-index: 2;
           }
-        
       }
 
       @keyframes modalOut {
@@ -126,7 +126,10 @@
       height: 100%;
       aspect-ratio: 1/1;
       border-radius: 55%;
-    }
+    } 
 
-      
+    //Modal to add patients
+
+
+
   }

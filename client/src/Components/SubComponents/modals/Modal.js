@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, ProgressBar } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
 //FaUserPlus
@@ -12,7 +12,7 @@ const Modal = (props) => {
        <Col md={{span:6}} className="Modal">
            <Col md={12}>
 
-            <Col md={2} className="logo" oonClick={props.func}> </Col>
+            <Col md={2} className="logo" onClick={props.func}> </Col>
           <h2> Book appointment</h2>
            <hr></hr>
            <h6>{props.nm}</h6>

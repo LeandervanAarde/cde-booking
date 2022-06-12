@@ -39,8 +39,9 @@ const Appointments = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const [allPatients, setAllPatients] = useState([]);
     const [weeklyAppointments, setWeeklyAppointments] = useState();
+    const[avail, setAvail] = useState([]);
     const Hello = useRef()
-
+ 
     //Check if the current user has been logged in 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -67,7 +68,6 @@ const Appointments = () => {
         axios.post('http://localhost:8888/MedAPI/availableAppointments.php', JSON.stringify(value.clone().format("DD MMMM YYYY")))
             .then((res) => {
                 let data = res.data;
-                console.log(data)
                 if (!data || data === false) {
                     setAvailableAppointments(false)
                 } else {
@@ -76,10 +76,9 @@ const Appointments = () => {
             })
     }, [value.clone().format("DD MMMM YYYY")]);
     const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => { setModalOpen(true) }} />));
-
+    const dropElements = allDoctors.map((e) => (<option  ref={Hello}  value={e.name +" "+ e.surname}>{e.name} {e.surname}</option>));
+    
   
-    const dropElements = allDoctors.map((e) => (<option>{e.name} {e.surname}</option>));
-
     useEffect(() => {
         axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
@@ -93,7 +92,6 @@ const Appointments = () => {
                 setAllDoctors(data);
             })
     }, []);
-    console.log(allPatients);
     const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
 
     useEffect(() =>{
@@ -105,6 +103,10 @@ const Appointments = () => {
              setWeeklyAppointments(weeklyApp);
         });
     }, []);
+
+    useEffect(() =>{
+        axios.post('http://localhost:8888/MedAPI/addAvailable.php', )
+    })
 
     return (
         <>
@@ -151,8 +153,8 @@ const Appointments = () => {
                     <h5>{week} Appointments </h5>
                 </TableInformation>
             </Col>
-            {modalOpen && <Modal ref={Hello} nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
-            {appModal && <AppointmentModal nm={"Doctor "} select={dropElements} startTime={"Start time"} endTime={"End time"} mail={"Date"} func={() => { return setappModal(false); }} setappModal={setappModal} />}
+            {modalOpen && <Modal  nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
+            {appModal && <AppointmentModal  nm={"Doctor "} select={dropElements} startTime={"Start time"} endTime={"End time"} mail={"Date"} func={() => { return setappModal(false); }} setappModal={setappModal} />}
         </>
     );
 };

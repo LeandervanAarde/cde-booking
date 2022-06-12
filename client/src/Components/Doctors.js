@@ -18,7 +18,7 @@ const socket = io.connect("http://localhost:3001");
 
 
 const Doctors = () => {
-    const [username, setUsername] = useState("Leander");
+
     const room = 1;
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
@@ -39,6 +39,7 @@ const Doctors = () => {
                 setAllDoctors(data);
             })
     }, []);
+
 
     
 
@@ -71,6 +72,7 @@ const Doctors = () => {
                 <Col md={{ span: 12, }} className='staffWrapper '>
                     {
                         allDoctors.map((e) =>( <Staff
+                            key= {e.index}
                             img={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
                             name={e.name +" "+ e.surname}
                             gender={e.gender}
@@ -87,11 +89,12 @@ const Doctors = () => {
 
             <Col md={3} className="work" >
                 <Profile
-                    Auth={"Cindy Stacy"}
+
                 />
                 <Chatroom
                     socket={socket}
                     room={room}
+                 
                 />
             </Col>
 

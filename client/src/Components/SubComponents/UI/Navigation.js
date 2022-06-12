@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import "../../../index.scss";
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -16,6 +16,20 @@ const Navigation = () => {
     const { pathname } = location;
     const splitLocation = pathname.split("/");
     const navigate = useNavigate();
+   
+    const [role, setRole] = useState();
+
+   
+
+    useEffect(() =>{
+        if(sessionStorage.getItem("UserRank") === "Head Receptionist"){
+            setRole(true)
+        } else {
+            setRole(false)
+        }
+    }, [])
+
+
 
     const logout = () =>{
         sessionStorage.clear();
@@ -25,9 +39,9 @@ const Navigation = () => {
     return (
           <Col md={1} className="navCon">
             {/* Logo */}
-            <NavLink to="/Appointments" activeClassName="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
+            <NavLink to="/Appointments" activeclassname="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
             {/* Links */}
-            <NavLink to="/Appointments" activeClassName="active">
+            <NavLink to="/Appointments" activeclassname="active">
                 <Col md={{ span: 9, offset: 1 }} className={splitLocation[1] === "Appointments" ? "active" : "navItem"} id="item1" >
                     <FaHome color={"white"} size={25} />
                     <p className='navText'>Home</p>
@@ -48,14 +62,14 @@ const Navigation = () => {
                 </Col>
             </NavLink>
 
-            <NavLink to="/Receptionists" className={'text'}>
+            {sessionStorage.getItem("UserRank") === "Head Receptionist" ? <NavLink to="/Receptionists" className={'text'}>
                 <Col md={{ span: 9, offset: 1 }} className={splitLocation[1] === "Receptionists" ? "active" : "navItem"} id="last" >
                     <FaBookMedical color={"white"} size={25} />
                     <p className='navText'>Recept</p>
                 </Col>
-            </NavLink>
+            </NavLink>  : <></>}
+            
             <NavLink to="/">
-
                 <Primarybtn id="logout" function={logout}>
                     <strong>Sign Out</strong>
                 </Primarybtn>

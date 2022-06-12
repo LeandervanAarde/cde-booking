@@ -34,10 +34,12 @@ const Login = () => {
             console.log(res);
             if(res.data === true){
                 sessionStorage.setItem("activeUser", userInputs.user);
+                console.log(res.data)
                 navigate("/Appointments");
             } else{
                 console.log("Data is not retrieved");
                 //Give an error message that wil be a modal.
+                // alert("Hello")
                 setError(true)
                 setTimeout(function(){
                     setError(false)

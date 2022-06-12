@@ -9,14 +9,10 @@ import moment from 'moment';
 const People = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   // const date = moment().clone().format("YYYY");
-  const date = moment().clone().format("YYYY");
-  console.log(props);
-  
+  const date = moment().clone().format("YYYY"); 
   let age = (+date - props.dateOfBirth.split(" ").splice(2))
 
   return (
-    // <h1>{props.name}</h1>
-
     <>
       {props.key}
       {/* {props.} */}
@@ -37,7 +33,6 @@ const People = (props) => {
         {...props}
         func={() => { return setModalOpen(false); }}
         setModalOpen={setModalOpen}
-        
       />}
     </>
   );

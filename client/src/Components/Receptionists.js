@@ -11,26 +11,54 @@ import Staff from './SubComponents/UI/Staff';
 import Navigation from './SubComponents/UI/Navigation';
 import Receptionist from "../Components/Assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg"
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment';
+import image from "../Components/Assets/default.jpeg";
 const socket = io.connect("http://localhost:3001");
 
 const Receptionists = () => {
-    const [username, setUsername] = useState("Leander");
+    const [receptionists, setReceptionists] = useState([]);
+    const Doctors = sessionStorage.getItem("doctors");
+    const recep = sessionStorage.getItem("reception");
     const room = 1;
+    const date = moment().clone().format("YYYY");
     const joinRoom = () => {
         if (room !== null) {
             socket.emit("joinRoom", room);
         }
     }
-
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+
+    console.log(recep)
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
         if(userLogged === "" || userLogged === null || userLogged === false){
             navigate('/');
         }
-    }, [currentUser])
+    }, [currentUser]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8888/MedAPI/getAllReceptionists.php')
+            .then((res) => {
+                let data = res.data;
+             setReceptionists(data);
+            })
+    }, []);
+
+    // const map = 
+    //     Receptionists.map((e) =>(<Staff
+    //     img={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
+    //     name={e.name +" "+ e.surname}
+    //     gender={e.gender}
+    //     age={date - e.dateOfBirth.split(" ").splice(2)}
+    //     room={e.room}
+    //     unique={"Consultation Fee: R"+ e.consultFee}
+    //     mail={e.email}
+    //     number={e.phoneNumber}
+    //     role={e.specialisation}
+    // />));
 
     return (
         <>
@@ -59,53 +87,21 @@ const Receptionists = () => {
                 <h2 className='allPatients ms-2 mt-4'>All Receptionists</h2>
 
                 <Col md={{ span: 12 }} className='staffWrapper'>
-                    <Staff
-                        img={Receptionist}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="Active"
-                        unique="Monthly In: R24 000"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Receptionist"
-                    />
 
-                    <Staff
-                        img={Receptionist}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="Active"
-                        unique="Monthly In: R24 000"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Receptionist"
-                    />
-
-                    <Staff
-                        img={Receptionist}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="Active"
-                        unique="Monthly In: R24 000"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Head Receptionist"
-                    />
-
-                    <Staff
-                        img={Receptionist}
-                        name="Shooter McGavin"
-                        gender="Male"
-                        age="45"
-                        room="Active"
-                        unique="Monthly In: R24 000"
-                        mail="DavidS@gmail.com"
-                        number="0768115662"
-                        role="Receptionist"
-                    />
+                    { receptionists.map((e) =>(<Staff
+                        key={e.id}
+                      img={!e.ProfileImage ? image : "http://localhost:8888/MedAPI/images/"+ e.ProfileImage}
+                      name={e.name +" "+ e.surname}
+                      gender={e.gender}
+                      age={date - e.dateOfBirth.split(" ").splice(2)}
+                      room={e.Status}
+                      unique={"Monthly Income:"+ e.monthInc}
+                      mail={e.email}
+                      number={e.phoneNumber}
+                      role={e.rank}
+                      
+                    />))}
+                   
 
                 </Col>
             </Col>

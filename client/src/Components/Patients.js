@@ -28,6 +28,9 @@ const Patients = (props) => {
     const [allDoctors, setAllDoctors] = useState([]);
     const [person, setPerson] = useState();
     const date = moment().clone().format("YYYY");
+    const [fees, setFees] = useState();
+    const [reset, setReset] = useState();
+    const [updatePatients, setUpdatePatiens] = useState();
 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -40,31 +43,29 @@ const Patients = (props) => {
         axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
                 let data = res.data;
-                setAllPatients(data);
+            
+                let outstandingFees = data.map((e) => (+ e.feesOut.split(" ").splice(1)));
+                let total = Math.round(outstandingFees.reduce((accumulator, currVal) => (accumulator + currVal), 0));
+                setFees(total)
+                let allPat = data.map((e, index) => (
+                    <People
+                        {...e} 
+                        key={index}
+                        image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage} 
+                        age={(+date - e.dateOfBirth.split(" ").splice(2))} 
+                    />
+                ));
+              
+                setAllPatients(allPat);
             });
 
         axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
             .then((res) => {
                 let data = res.data;
                 setAllDoctors(data);
+               
             });
-    }, []);
-
-    const getValue = (e) => {
-        let val = e.target.value;
-        console.log(val);
-    }
-
-    const allPat = allPatients.map((e) => (
-        <People
-            {...e} 
-            image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage} 
-            age={(+date - e.dateOfBirth.split(" ").splice(2))} 
-        />
-    ));
-    const outstandingFees = allPatients.map((e) => (+ e.feesOut.split(" ").splice(1)));
-    const total = Math.round(outstandingFees.reduce((accumulator, currVal) => (accumulator + currVal), 0));
-    
+    }, []);  
     return (
         <>
             <Navigation />
@@ -86,7 +87,7 @@ const Patients = (props) => {
 
                 <Patientoverview
                     title="Total fees owed"
-                    number={"R " + total}
+                    number={"R " + fees}
                     icon={<FaMoneyBillWave color={"#2663d4"} size={70} />} />
 
                 <h2 className='allPatients ms-4'>All patients</h2>
@@ -101,7 +102,7 @@ const Patients = (props) => {
                 </Col>
 
                 <Col md={12} className='mt-3 personBanner '>
-                    {allPat}
+                    {allPatients}
                 </Col>
 
             </Col>
@@ -121,7 +122,7 @@ const Patients = (props) => {
                     Outstanding fees
                 </TableInformation>
             </Col>
-            {addModal && <AddModal  setAddModal={setAddModal} />}
+            {addModal && <AddModal   function={() => { return setAddModal(false); }} />}
         </>
     );
 };
