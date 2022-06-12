@@ -21,6 +21,7 @@ import Addbutton from './SubComponents/Buttons/Addbutton';
 import AppointmentModal from './SubComponents/modals/AppointmentModal';
 import TableRow from './SubComponents/UI/TableRow';
 
+
 const Appointments = () => {
 
     const endWeek = moment().clone().endOf('week').format("DD MMMM YYYY");
@@ -40,7 +41,14 @@ const Appointments = () => {
     const [allPatients, setAllPatients] = useState([]);
     const [weeklyAppointments, setWeeklyAppointments] = useState();
     const[avail, setAvail] = useState([]);
-    const Hello = useRef()
+    const name = useRef();
+    const start = useRef();
+    const end = useRef();
+    const day = useRef();
+    const month = useRef();
+    const year = useRef();
+    const specialisation = useRef();
+    const [doctorName, setDoctorName] = useState();
  
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -76,8 +84,31 @@ const Appointments = () => {
             })
     }, [value.clone().format("DD MMMM YYYY")]);
     const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => { setModalOpen(true) }} />));
-    const dropElements = allDoctors.map((e) => (<option  ref={Hello}  value={e.name +" "+ e.surname}>{e.name} {e.surname}</option>));
-    
+   const getName = (e) =>{
+    let nm =  e.target.value;
+    console.log(nm)
+    setDoctorName(nm)
+   }
+
+
+    const bookApp = (e) =>{
+        let information = {
+            name: doctorName,
+            startTime: start.current.value,
+            endTime: end.current.value,
+            specialisation: specialisation.current.value,
+            date:day.current.value +""+ month.current.value +""+ year.current.value
+        }
+        // setAvail(information);
+
+        axios.post('http://localhost:8888/MedAPI/addAvailable.php', information )
+        .then((res) =>{
+            let data = res.data;
+            console.log(data); 
+        })
+    }
+
+
   
     useEffect(() => {
         axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
@@ -93,20 +124,18 @@ const Appointments = () => {
             })
     }, []);
     const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
+    const dropElements = allDoctors.map((e) => (<option ref={name}  value={e.name +" "+ e.surname}>{e.name} {e.surname}</option>));
 
     useEffect(() =>{
         axios.get(`http://localhost:8888/MedAPI/getWeeklyAppoint.php?endWeek=${endWeek}&startWeek=${Year}`)
         .then((res) => {
             let data = res.data;
-            console.log(data)
              let weeklyApp = data.map((e) =>(<TableRow Information1={e.Date} Information2={e.timeStart +" - "+ e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"}/>));
              setWeeklyAppointments(weeklyApp);
         });
     }, []);
 
-    useEffect(() =>{
-        axios.post('http://localhost:8888/MedAPI/addAvailable.php', )
-    })
+
 
     return (
         <>
@@ -153,8 +182,27 @@ const Appointments = () => {
                     <h5>{week} Appointments </h5>
                 </TableInformation>
             </Col>
-            {modalOpen && <Modal  nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={() => { return setModalOpen(false); }} setModalOpen={setModalOpen} />}
-            {appModal && <AppointmentModal  nm={"Doctor "} select={dropElements} startTime={"Start time"} endTime={"End time"} mail={"Date"} func={() => { return setappModal(false); }} setappModal={setappModal} />}
+            {modalOpen && <Modal  nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={setModalOpen(false)} setModalOpen={setModalOpen} />}
+            {appModal && 
+            <AppointmentModal 
+            special={"Doctor type"}
+            timeBegin={start} 
+            timeEnd={end} 
+            day={day} 
+            month={month} 
+            year={year} 
+            specialisation ={specialisation} 
+            nm={"Doctor "} 
+            select={dropElements} 
+            startTime={"Start time"} 
+            endTime={"End time"} 
+            mail={"Date"} 
+            ref={name}  
+            function={bookApp} 
+            func= {() => setappModal(false)}
+            setappModal={setappModal} 
+            getDrop = {getName}
+            />}
         </>
     );
 };
