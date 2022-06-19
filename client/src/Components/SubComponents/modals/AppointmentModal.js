@@ -17,6 +17,7 @@ const AppointmentModal = (props) => {
            <hr></hr>
            <h6>{props.nm}</h6>
                 <select ref={props.ref} onChange={props.getDrop}>
+                    <option selected disabled>Select Doctor</option>
                    {props.select}
                 </select>
                 <br></br>
@@ -33,7 +34,7 @@ const AppointmentModal = (props) => {
                 <input ref={props.month} type={'text'}  placeholder="Month" id="month"></input>
                 <input ref={props.year} type={'number'}  placeholder="Day" id="year"></input>
 
-                <Col md={{span:4, offset:4}} className="mt-5" onClick={props.function}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span:6, offset:3}} className="mt-5" onClick={props.function}><Primarybtn onClick={props.close} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>
        </Col>
        </>

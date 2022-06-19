@@ -9,12 +9,13 @@ import AvailableAppointItems from './AvailableAppointItems';
 
 
 
-const Availablebook = (props, { setModalOpen }) => {
+const Availablebook = (props) => {
   
 
     return (
-        <Col md={12} className='Bookings' >
+        <Col md={12} className='Bookings'>
             <Col md={12} className="banner">
+                {props.rerender}
                 <h4 className='text-center'>Available Appointments for</h4>
                 <p className='text-center'>{props.valueRead}</p>
             </Col>

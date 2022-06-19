@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { Col } from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
@@ -7,6 +8,7 @@ import { FaUserPlus } from "react-icons/fa";
 const Modal = (props) => {
 
     return (
+        ReactDOM.createPortal(
         <>
         <Col md={12} className='backdrop' onClick={props.func}> </Col>
        <Col md={{span:6}} className="Modal">
@@ -26,10 +28,11 @@ const Modal = (props) => {
                 <h6>{props.mail}</h6>
                 <input type={'text'} placeholder="Patient email"></input>
 
-                <Col md={{span:3, offset:4}} className="mt-5" onClick={props.func}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span:4, offset:4}} className="mt-5" onClick={props.func}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>
        </Col>
        </>
+       , document.getElementById("root"))
     );
 };
 

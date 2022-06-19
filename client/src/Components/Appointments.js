@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useReducer } from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import moment from 'moment';
@@ -29,7 +29,7 @@ const Appointments = () => {
     const Year = moment().clone().format("DD MMMM YYYY");
     const week = current + " - " + endWeek;
     const [value, setValue] = useState(moment());
-    const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"))
+    const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"));
     const [modalOpen, setModalOpen] = useState(false);
     const [appModal, setappModal] = useState(false);
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ const Appointments = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const [allPatients, setAllPatients] = useState([]);
     const [weeklyAppointments, setWeeklyAppointments] = useState();
-    const[avail, setAvail] = useState([]);
+    const [avail, setAvail] = useState([]);
     const name = useRef();
     const start = useRef();
     const end = useRef();
@@ -49,7 +49,7 @@ const Appointments = () => {
     const year = useRef();
     const specialisation = useRef();
     const [doctorName, setDoctorName] = useState();
- 
+
     //Check if the current user has been logged in 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -83,33 +83,32 @@ const Appointments = () => {
                 }
             })
     }, [value.clone().format("DD MMMM YYYY")]);
-    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} function={() => { setModalOpen(true) }} />));
-   const getName = (e) =>{
-    let nm =  e.target.value;
-    console.log(nm)
-    setDoctorName(nm)
-   }
+    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} btn={<Primarybtn function={() => setModalOpen(true)} > <FaRegCalendarCheck size={20} /> Book appointment</Primarybtn>} />));
+    const getName = (e) => {
+        let nm = e.target.value;
+        console.log(nm)
+        setDoctorName(nm)
+    }
 
-
-    const bookApp = (e) =>{
+    const bookApp = (e) => {
         let information = {
             name: doctorName,
             startTime: start.current.value,
             endTime: end.current.value,
             specialisation: specialisation.current.value,
-            date:day.current.value +""+ month.current.value +""+ year.current.value
+            date: day.current.value + " " + month.current.value + " " + year.current.value
         }
         // setAvail(information);
+        console.log(day.current.value)
 
-        axios.post('http://localhost:8888/MedAPI/addAvailable.php', information )
-        .then((res) =>{
-            let data = res.data;
-            console.log(data); 
-        })
+        axios.post('http://localhost:8888/MedAPI/addAvailable.php', information)
+            .then((res) => {
+                let data = res.data;
+                console.log(data);
+                setappModal(false);
+            })
     }
 
-
-  
     useEffect(() => {
         axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
@@ -117,25 +116,24 @@ const Appointments = () => {
                 setAllPatients(data);
             });
 
-            axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
+        axios.get('http://localhost:8888/MedAPI/getAllDoctors.php')
             .then((res) => {
                 let data = res.data;
                 setAllDoctors(data);
+
             })
     }, []);
     const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
-    const dropElements = allDoctors.map((e) => (<option ref={name}  value={e.name +" "+ e.surname}>{e.name} {e.surname}</option>));
+    const dropElements = allDoctors.map((e) => (<option ref={name} value={e.name + " " + e.surname}>{e.name} {e.surname}</option>));
 
-    useEffect(() =>{
+    useEffect(() => {
         axios.get(`http://localhost:8888/MedAPI/getWeeklyAppoint.php?endWeek=${endWeek}&startWeek=${Year}`)
-        .then((res) => {
-            let data = res.data;
-             let weeklyApp = data.map((e) =>(<TableRow Information1={e.Date} Information2={e.timeStart +" - "+ e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"}/>));
-             setWeeklyAppointments(weeklyApp);
-        });
+            .then((res) => {
+                let data = res.data;
+                let weeklyApp = data.map((e) => (<TableRow Information1={e.Date} Information2={e.timeStart + " - " + e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"} />));
+                setWeeklyAppointments(weeklyApp);
+            });
     }, []);
-
-
 
     return (
         <>
@@ -146,7 +144,7 @@ const Appointments = () => {
                     <h2 className='headingTwo' id={'todayApp'} value={Year}> {Year} Appointments</h2>
                 </Col>
                 <Col md={12} className="cardCon">
-                    {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd}  />))}
+                    {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
                 </Col>
                 <Col md={12} className="calendarCon">
                     <Calendar value={value} val={value.clone().format("DD MMMM YYYY")} onChange={setValue}
@@ -171,6 +169,7 @@ const Appointments = () => {
             </Col>
 
             <Col md={3} className="work">
+
                 <Profile />
                 <TableInformation
                     headerOne="Date"
@@ -182,27 +181,36 @@ const Appointments = () => {
                     <h5>{week} Appointments </h5>
                 </TableInformation>
             </Col>
-            {modalOpen && <Modal  nm={"Patient name "} select={allPat} cont={"Patient Cell"} mail={"Patient email"} func={setModalOpen(false)} setModalOpen={setModalOpen} />}
-            {appModal && 
-            <AppointmentModal 
-            special={"Doctor type"}
-            timeBegin={start} 
-            timeEnd={end} 
-            day={day} 
-            month={month} 
-            year={year} 
-            specialisation ={specialisation} 
-            nm={"Doctor "} 
-            select={dropElements} 
-            startTime={"Start time"} 
-            endTime={"End time"} 
-            mail={"Date"} 
-            ref={name}  
-            function={bookApp} 
-            func= {() => setappModal(false)}
-            setappModal={setappModal} 
-            getDrop = {getName}
+
+            {modalOpen && <Modal
+                nm={"Patient name "}
+                select={allPat}
+                cont={"Patient Cell"}
+                mail={"Patient email"}
+                func={() => { return setModalOpen(false); }}
+                setModalOpen={modalOpen}
             />}
+
+            {appModal &&
+                <AppointmentModal
+                    special={"Doctor type"}
+                    timeBegin={start}
+                    timeEnd={end}
+                    day={day}
+                    month={month}
+                    year={year}
+                    specialisation={specialisation}
+                    nm={"Doctor "}
+                    select={dropElements}
+                    startTime={"Start time"}
+                    endTime={"End time"}
+                    mail={"Date"}
+                    ref={name}
+                    function={bookApp}
+                    func={() => { return setappModal(false); }}
+                    setappModal={appModal}
+                    getDrop={getName}
+                />}
         </>
     );
 };

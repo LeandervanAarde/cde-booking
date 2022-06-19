@@ -9,7 +9,7 @@ const AvailableAppointItems = (props) => {
             <td>{props.time}</td>
             <td>{props.Dr}</td>
             <td>{props.special}</td>
-            <td className="remove" id={props.id} onClick={props.function} ><Primarybtn > <FaRegCalendarCheck size={20} /> Book appointment</Primarybtn> </td>
+            <td className="remove" id={props.id}  >{props.btn} </td>
         </tr>
     );
 };
