@@ -5,9 +5,7 @@ import "../../src/index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
 import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
-import { FaUser } from "react-icons/fa";
-import { FaStethoscope } from "react-icons/fa";
-import { FaMoneyBillWave } from "react-icons/fa";
+import { FaMoneyBillWave, FaTimesCircle, FaStethoscope, FaUser  } from "react-icons/fa";
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import TableInformation from './SubComponents/UI/TableInformation';
 import People from './SubComponents/UI/People';
@@ -47,12 +45,12 @@ const Patients = (props) => {
 
     const paidFees = (e) =>{
         let value = e.target.id;
-        console.log(value);
-        setOpenConfirm(true);
+       
         axios.post('http://localhost:8888/MedAPI/editFees.php', value)
         .then((res) =>{
             let data = res.data;
             console.log(data); 
+            setOpenConfirm(true);
         })
         .catch((err) =>{
             console.log(err)
@@ -69,12 +67,12 @@ const Patients = (props) => {
                 const arr = [];
 
                 for(let i = 0; i < data.length; i++){
-                    if(data[i].feesOut != "0.00"){
+                    if(data[i].feesOut != 0){
                         arr.push({
                             id: data[i].id,
                             name: data[i].name,
                             surname: data[i].surname,
-                            fees: data[i].feesOut
+                            fees: "R " + data[i].feesOut
                         })
                         let outstandingpeople = arr.map((e) => <TableRow  Information1={e.id} Information2={e.name +" "+ e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id}/>)
 
@@ -106,12 +104,6 @@ const Patients = (props) => {
 
            
     }, []);  
-
-  
-       
-  
-
-
 
     console.log(fees)
     return (
@@ -172,8 +164,12 @@ const Patients = (props) => {
                 </TableInformation>
 
             </Col>
-            {addModal && <AddModal   function={() => { return setAddModal(false); }} />}
-            {openConfirm && <ConfirmationModal button={<Primarybtn function={() =>{ return setOpenConfirm(false)}}><FaUser /> View profile </Primarybtn>}/>}
+            {addModal && <AddModal   
+            last = "Last Name"
+            DOB = "Date of Birth"
+            day = "Day"
+            function={() => { return setAddModal(false); }} />}
+            {openConfirm && <ConfirmationModal content={"Patient fees has updated"} button={<Primarybtn function={() =>{ return setOpenConfirm(false)}}><FaTimesCircle size={25}/> Close  </Primarybtn>}/>}
         </>
     );
 };

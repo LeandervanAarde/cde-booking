@@ -97,6 +97,10 @@
       background-color: $warning !important;
     }
 
+
+
+
+
     
     
 
@@ -147,4 +151,93 @@
 
 
 
+  }
+
+  #deleteModal{
+    .userDelete{
+      margin-left: 40%;
+      color: $green;
+     }
+
+     h2{
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
+     }
+
+     .btnContainer{
+      margin-top: 2vh !important;
+     }
+  }
+
+  #add{
+    width: 70%;
+    min-height: 30vh;
+    max-height: 95vh;
+    height: auto;
+    background-color: darken($white, 5%);
+    position: fixed;
+    top: 6vh;
+    right: 0;
+    left: 10vw;
+    padding: 2%;
+    animation: modal 0.4s 1;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+
+    .name{
+      width: 30%;
+    }
+
+    #last{
+      margin-left: 3vw;
+      font-weight: bold;
+      font-family: $secondaryFont;
+    }
+
+    h4{
+      margin-bottom: -3vh !important;
+      margin-top: 6vh !important;
+      font-weight:  bold;
+      text-align: left;
+    }
+
+     #month, #year, #gender{
+      width: 12vw !important;
+      margin-left: 2vw !important;
+    }
+
+    #number, #email, #medicalAidnr{
+      width: 14vw;
+    }
+
+    #number{
+      width: 10vw;
+    }
+
+    #email{
+      width: 17vw;
+    }
+
+    #mail, #medN{
+      margin-left: 1vw;
+      margin-right: -1vw !important;
+    }
+
+    #medicalAidnr{
+      width: 12vw;
+    }
+
+    #phone{
+      margin-left: 0;
+    }
+
+    #day{
+      margin-left: 0vw;
+      margin-right: -6vw !important;
+    }
+
+    #monH{
+      margin-left: 7vw;
+    }
   }
