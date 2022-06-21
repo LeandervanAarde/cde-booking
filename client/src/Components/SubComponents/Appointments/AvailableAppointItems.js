@@ -10,6 +10,7 @@ const AvailableAppointItems = (props) => {
             <td>{props.Dr}</td>
             <td>{props.special}</td>
             <td className="remove" id={props.id}  >{props.btn} </td>
+            <td></td>
         </tr>
     );
 };

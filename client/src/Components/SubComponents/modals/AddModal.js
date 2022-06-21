@@ -19,11 +19,6 @@ const AddModal = (props) => {
             <br></br>
             <h6 className='patient'>{props.PatName}</h6>
             <input type={'text'}></input>
-           
-           
-   
-
-
             <Col md={{span:4, offset:4}} className="mt-5" onClick={props.function}><Primarybtn ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
        </Col>
    </Col>

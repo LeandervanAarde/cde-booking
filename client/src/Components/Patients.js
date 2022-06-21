@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
+import TableRow from './SubComponents/UI/TableRow';
 
 const Patients = (props) => {
     // const [modalOpen, setModalOpen] = useState(false);
@@ -31,6 +32,8 @@ const Patients = (props) => {
     const [fees, setFees] = useState();
     const [reset, setReset] = useState();
     const [updatePatients, setUpdatePatiens] = useState();
+    const[outstanding, setOutstanding] = useState();
+    const [outstandingItem, setOutstandingItem] = useState();
 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -39,12 +42,37 @@ const Patients = (props) => {
         }
     }, [currentUser]);
 
+    const paidFees = (e) =>{
+        let value = e.target.id;
+        console.log(value);
+        
+    }
+
+
     useEffect(() => {
         axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
                 let data = res.data;
-            
-                let outstandingFees = data.map((e) => (+ e.feesOut.split(" ").splice(1)));
+                console.log(data)
+
+                const arr = [];
+
+                for(let i = 0; i < data.length; i++){
+                    if(data[i].feesOut != "0.00"){
+                        arr.push({
+                            id: data[i].id,
+                            name: data[i].name,
+                            surname: data[i].surname,
+                            fees: data[i].feesOut
+                        })
+
+                        let outstandingpeople = arr.map((e) => <TableRow  Information1={e.id} Information2={e.name +" "+ e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id}/>)
+
+                        setOutstanding(outstandingpeople);
+                    }
+                }
+
+                let outstandingFees = data.map((e) => (+ e.feesOut));
                 let total = Math.round(outstandingFees.reduce((accumulator, currVal) => (accumulator + currVal), 0));
                 setFees(total)
                 let allPat = data.map((e, index) => (
@@ -65,7 +93,17 @@ const Patients = (props) => {
                 setAllDoctors(data);
                
             });
+
+           
     }, []);  
+
+  
+       
+  
+
+
+
+    console.log(fees)
     return (
         <>
             <Navigation />
@@ -118,9 +156,11 @@ const Patients = (props) => {
                     Information2="Leander van Aarde"
                     Information3="R6000.00"
                     btnTxt="PAID"
+                    row={outstanding}
                 >
                     Outstanding fees
                 </TableInformation>
+
             </Col>
             {addModal && <AddModal   function={() => { return setAddModal(false); }} />}
         </>

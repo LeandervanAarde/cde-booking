@@ -16,13 +16,13 @@ const Navigation = () => {
     const { pathname } = location;
     const splitLocation = pathname.split("/");
     const navigate = useNavigate();
-   
+
     const [role, setRole] = useState();
 
-   
 
-    useEffect(() =>{
-        if(sessionStorage.getItem("UserRank") === "Head Receptionist"){
+
+    useEffect(() => {
+        if (sessionStorage.getItem("UserRank") === "Head Receptionist") {
             setRole(true)
         } else {
             setRole(false)
@@ -31,13 +31,13 @@ const Navigation = () => {
 
 
 
-    const logout = () =>{
+    const logout = () => {
         sessionStorage.clear();
         navigate('/');
     }
 
     return (
-          <Col md={1} className="navCon">
+        <Col md={1} className="navCon">
             {/* Logo */}
             <NavLink to="/Appointments" activeclassname="active"> <Col md={12} className="logoCon"></Col>  </NavLink>
             {/* Links */}
@@ -67,8 +67,8 @@ const Navigation = () => {
                     <FaBookMedical color={"white"} size={25} />
                     <p className='navText'>Recept</p>
                 </Col>
-            </NavLink>  : <></>}
-            
+            </NavLink> : <></>}
+
             <NavLink to="/">
                 <Primarybtn id="logout" function={logout}>
                     <strong>Sign Out</strong>

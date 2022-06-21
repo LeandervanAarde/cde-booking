@@ -4,7 +4,7 @@ import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
 import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
-import { FaStethoscope, FaBookMedical, FaUser } from "react-icons/fa";
+import { FaStethoscope, FaBookMedical, FaUser, FaTrashAlt } from "react-icons/fa";
 import Staff from './SubComponents/UI/Staff';
 import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
@@ -13,6 +13,7 @@ import Navigation from './SubComponents/UI/Navigation';
 import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
+
 
 const socket = io.connect("http://localhost:3001");
 
@@ -24,6 +25,7 @@ const Doctors = () => {
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
+
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");

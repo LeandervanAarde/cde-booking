@@ -106,8 +106,11 @@ const Appointments = () => {
                 let data = res.data;
                 console.log(data);
                 setappModal(false);
+                // setAvail(information);
             })
     }
+
+    console.log(avail)
 
     useEffect(() => {
         axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
@@ -120,7 +123,6 @@ const Appointments = () => {
             .then((res) => {
                 let data = res.data;
                 setAllDoctors(data);
-
             })
     }, []);
     const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
@@ -134,6 +136,17 @@ const Appointments = () => {
                 setWeeklyAppointments(weeklyApp);
             });
     }, []);
+
+
+//FINISH THIS
+    const getpatientDetails = (e) =>{
+        const patientDetails = e.target.value;
+        axios.post('http://localhost:8888/MedAPI/bookAppointment.php', patientDetails)
+        .then((res) =>{
+            let patient = res.data;
+            console.log(patient);
+        })
+    }
 
     return (
         <>
@@ -183,12 +196,14 @@ const Appointments = () => {
             </Col>
 
             {modalOpen && <Modal
+                doctor = {"Appointment with " + outPut.Dr}
                 nm={"Patient name "}
                 select={allPat}
                 cont={"Patient Cell"}
                 mail={"Patient email"}
                 func={() => { return setModalOpen(false); }}
                 setModalOpen={modalOpen}
+                getDetails = {getpatientDetails}
             />}
 
             {appModal &&

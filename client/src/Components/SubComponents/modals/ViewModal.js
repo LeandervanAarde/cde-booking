@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useEffect, useState} from 'react';
 import * as ReactDOM from "react-dom";
 import { Col} from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
@@ -6,6 +7,18 @@ import Primarybtn from '../Buttons/PrimaryBtn';
 
 
 const ViewModal = (props) => {
+    const [role, setRole] = useState();
+
+    useEffect(() =>{
+        if(sessionStorage.getItem("UserRank") === "Head Receptionist"){
+            setRole(true)
+        } else {
+            setRole(false)
+        }
+    }, [])
+
+
+
     return (
         ReactDOM.createPortal(
         <>
@@ -28,7 +41,17 @@ const ViewModal = (props) => {
                      <p><strong>Last Appointment: </strong><span>{props.prevAppoint} - <strong>{props.prevAppointmentDr}</strong></span></p>
                 </Col>
             </Col>
-                <Col md={{span:4, offset:4}}  onClick={props.func} ><Primarybtn > Close</Primarybtn></Col>
+                {
+                    role ?
+                    
+                    <>
+                        <Col md={{span:4, offset:1}}  onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
+                        <Col md={{span:5, offset:1}}  onClick={props.delete} className="button"><Primarybtn id={"delete"} > Delete Patients</Primarybtn></Col>
+                    </>
+                    : 
+                    
+                    <Col md={{span:4, offset:4}}  onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
+                }
            </Col>
        </Col>
        </>

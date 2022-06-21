@@ -6,7 +6,7 @@ const TableRow = (props) => {
             <td>{props.Information1}</td>
             <td>{props.Information2}</td>
             <td>{props.Information3}</td>
-            <td className="remove" onClick={props.function}> {props.tIcon} {props.btnTxt} </td>
+            <td className="remove" id={props.id} onClick={props.function}> {props.tIcon} {props.btnTxt} </td>
         </tr>
     );
 };
