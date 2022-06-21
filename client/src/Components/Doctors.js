@@ -14,9 +14,7 @@ import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
 
-
 const socket = io.connect("http://localhost:3001");
-
 
 const Doctors = () => {
 
@@ -25,7 +23,6 @@ const Doctors = () => {
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
-
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
@@ -41,9 +38,6 @@ const Doctors = () => {
                 setAllDoctors(data);
             })
     }, []);
-
-
-    
 
     return (
         <>
@@ -96,10 +90,8 @@ const Doctors = () => {
                 <Chatroom
                     socket={socket}
                     room={room}
-                 
                 />
             </Col>
-
         </>
     );
 };

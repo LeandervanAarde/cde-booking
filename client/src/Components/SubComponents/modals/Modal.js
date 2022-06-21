@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Col } from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
-import { DeletModal } from "./DeletModal";
+import { DeletModal } from "./ConfirmationModal";
 //FaUserPlus
 
 const Modal = (props) => {

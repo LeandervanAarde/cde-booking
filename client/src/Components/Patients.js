@@ -11,6 +11,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import TableInformation from './SubComponents/UI/TableInformation';
 import People from './SubComponents/UI/People';
+import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
 import AddModal from './SubComponents/modals/AddModal';
 import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
 import TableRow from './SubComponents/UI/TableRow';
+import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
 
 const Patients = (props) => {
     // const [modalOpen, setModalOpen] = useState(false);
@@ -34,6 +36,7 @@ const Patients = (props) => {
     const [updatePatients, setUpdatePatiens] = useState();
     const[outstanding, setOutstanding] = useState();
     const [outstandingItem, setOutstandingItem] = useState();
+    const [openConfirm, setOpenConfirm] = useState(false);
 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -45,9 +48,17 @@ const Patients = (props) => {
     const paidFees = (e) =>{
         let value = e.target.id;
         console.log(value);
+        setOpenConfirm(true);
+        axios.post('http://localhost:8888/MedAPI/editFees.php', value)
+        .then((res) =>{
+            let data = res.data;
+            console.log(data); 
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
         
     }
-
 
     useEffect(() => {
         axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
@@ -65,7 +76,6 @@ const Patients = (props) => {
                             surname: data[i].surname,
                             fees: data[i].feesOut
                         })
-
                         let outstandingpeople = arr.map((e) => <TableRow  Information1={e.id} Information2={e.name +" "+ e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id}/>)
 
                         setOutstanding(outstandingpeople);
@@ -163,6 +173,7 @@ const Patients = (props) => {
 
             </Col>
             {addModal && <AddModal   function={() => { return setAddModal(false); }} />}
+            {openConfirm && <ConfirmationModal button={<Primarybtn function={() =>{ return setOpenConfirm(false)}}><FaUser /> View profile </Primarybtn>}/>}
         </>
     );
 };

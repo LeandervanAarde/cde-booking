@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const TableRow = (props) => {
+    
     return (
         <tr className="dataRow">
             <td>{props.Information1}</td>
