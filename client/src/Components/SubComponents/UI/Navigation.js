@@ -16,10 +16,7 @@ const Navigation = () => {
     const { pathname } = location;
     const splitLocation = pathname.split("/");
     const navigate = useNavigate();
-
     const [role, setRole] = useState();
-
-
 
     useEffect(() => {
         if (sessionStorage.getItem("UserRank") === "Head Receptionist") {
@@ -28,8 +25,6 @@ const Navigation = () => {
             setRole(false)
         }
     }, [])
-
-
 
     const logout = () => {
         sessionStorage.clear();

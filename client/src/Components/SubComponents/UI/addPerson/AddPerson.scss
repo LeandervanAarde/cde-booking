@@ -1,0 +1,55 @@
+@import "/src/scss/variables.scss";
+
+.addPerson {
+    padding-left: 2vw;
+    padding-right: 2vw;
+
+    .name {
+        width: 30%;
+    }
+
+    h6 {
+        font-family: $mainFont;
+        float: left;
+        // margin-left: 1vw;
+        margin-top: 1vh;
+    }
+
+    input,
+    select {
+        border-radius: $borderRad;
+        border: 2px solid $blue;
+        height: 5vh;
+        margin-bottom: 3vh;
+        margin-right: 1vw;
+        margin-left: 2vw;
+    }
+
+    .name {
+        width: 35%;
+        margin-left: 2vw;
+    }
+
+
+    #day {
+        width: 6vw;
+        margin-left: 2vh;
+    }
+
+    #email {
+        width: 30vw;
+    }
+
+    #medicalAidnr,
+    #condition {
+        width: 19.2vw;
+    }
+
+    .button {
+        float: left;
+    }
+
+    #cancel {
+        background-color: $warning  !important;
+    }
+}

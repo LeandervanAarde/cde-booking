@@ -21,7 +21,6 @@ import Addbutton from './SubComponents/Buttons/Addbutton';
 import AppointmentModal from './SubComponents/modals/AppointmentModal';
 import TableRow from './SubComponents/UI/TableRow';
 
-
 const Appointments = () => {
 
     const endWeek = moment().clone().endOf('week').format("DD MMMM YYYY");
@@ -69,6 +68,8 @@ const Appointments = () => {
                     tempArr.push(data[i])
                 }
                 setToday(tempArr);
+
+                console.log(tempArr)
             })
     }, []);
 
@@ -110,8 +111,6 @@ const Appointments = () => {
             })
     }
 
-    console.log(avail)
-
     useEffect(() => {
         axios.get('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
@@ -137,8 +136,6 @@ const Appointments = () => {
             });
     }, []);
 
-
-//FINISH THIS
     const getpatientDetails = (e) =>{
         const patientDetails = e.target.value;
         axios.post('http://localhost:8888/MedAPI/bookAppointment.php', patientDetails)
@@ -157,7 +154,7 @@ const Appointments = () => {
                     <h2 className='headingTwo' id={'todayApp'} value={Year}> {Year} Appointments</h2>
                 </Col>
                 <Col md={12} className="cardCon">
-                    {today.map((e) => (<Appointmentcard Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
+                    {today.map((e) => (<Appointmentcard img={!e.DoctorImage ? e.DoctorImage : "http://localhost:8888/MedAPI/images/" + e.DoctorImage}  Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
                 </Col>
                 <Col md={12} className="calendarCon">
                     <Calendar value={value} val={value.clone().format("DD MMMM YYYY")} onChange={setValue}

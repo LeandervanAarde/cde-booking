@@ -18,6 +18,7 @@ import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
 import TableRow from './SubComponents/UI/TableRow';
 import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
+import AddPerson from './SubComponents/UI/addPerson/AddPerson';
 
 const Patients = (props) => {
     // const [modalOpen, setModalOpen] = useState(false);
@@ -35,6 +36,7 @@ const Patients = (props) => {
     const[outstanding, setOutstanding] = useState();
     const [outstandingItem, setOutstandingItem] = useState();
     const [openConfirm, setOpenConfirm] = useState(false);
+    const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -101,7 +103,6 @@ const Patients = (props) => {
                 setAllDoctors(data);
                
             });
-
            
     }, []);  
 
@@ -135,14 +136,22 @@ const Patients = (props) => {
                 <Col md={{ span: 2, offset: 10 }} className="addPatient">
                     <Addbutton
                         function={() => {
-                            return setAddModal(true);
+                            return setClicked(true);
                         }}
                     />
                     <p className='buttonText'>Add patient</p>
                 </Col>
 
                 <Col md={12} className='mt-3 personBanner '>
-                    {allPatients}
+                    {!clicked 
+                    ? allPatients 
+                    : 
+                    <AddPerson 
+                    head="Add Patient"
+                    ex= "Medical Aid nr."
+                    ex2 = "Medical condition"
+                    cancel= {() => {return setClicked(false)}}/>}
+                    
                 </Col>
 
             </Col>

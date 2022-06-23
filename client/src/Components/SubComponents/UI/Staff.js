@@ -17,12 +17,15 @@ const Staff = (props) => {
       } else {
           setRole(false)
       }
-  }, [])
+  }, [])    
+
+
+ 
 
   return (
- <div className='staffInfo'> 
+ <div className='staffInfo' id={props.id}> 
     <div className='staffPhoto'><img src={props.img}/></div>
-    <h4 className='docName' id={props.name}>{props.name}</h4>
+    <h4 className='docName' ref={props.ref} id={props.name}>{props.name}</h4>
     <Col md={4} className="doctorinfo"><FaUser color={"#2663d4"} size={20}/><h6>{props.gender}</h6></Col>
     <Col md={4} className="doctorinfo"><FaCalendarAlt color={"#2663d4"} size={20}/><h6>{props.age}</h6></Col>
     <Col md={4} className="doctorinfo"><FaDoorClosed color={"#2663d4"} size={20}/><h6>{props.room}</h6></Col>
@@ -35,7 +38,7 @@ const Staff = (props) => {
   role ?
   
   <>
-      <Col md={{span:6, offset:3}}  onClick={props.func} className="button" id={props.id}><Primarybtn id={props.name} > <FaTrashAlt color={"white"} size={13 }/> Remove</Primarybtn></Col>
+      {props.btn}
   </>
   : 
   

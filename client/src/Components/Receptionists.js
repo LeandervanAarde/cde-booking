@@ -14,6 +14,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
+import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
+import { FaTimesCircle, FaTrashAlt } from "react-icons/fa";
+import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
+
 const socket = io.connect("http://localhost:3001");
 
 const Receptionists = () => {
@@ -22,6 +26,8 @@ const Receptionists = () => {
     const recep = sessionStorage.getItem("reception");
     const room = 1;
     const date = moment().clone().format("YYYY");
+    const [click, setClick] = useState({ counter: 1 });
+    const [modalOpen, setModalOpen] = useState(false);
     const joinRoom = () => {
         if (room !== null) {
             socket.emit("joinRoom", room);
@@ -59,6 +65,29 @@ const Receptionists = () => {
     //     number={e.phoneNumber}
     //     role={e.specialisation}
     // />));
+
+    const deleteStaff = (e) => {
+        setClick((prev) => ({ ...prev, counter: prev.counter + 1 }));
+        console.log(click)
+        if (click.counter == 1) {
+            e.target.innerText = "Delete?"
+
+        } else if (click.counter == 2) {
+            let member = e.target.id;
+            console.log(member)
+            setModalOpen(true)
+            axios.post('http://localhost:8888/MedAPI/deleteDoctors.php', member)
+                .then(res => {
+                    let data = res.data;
+                    console.log(data);
+                    setModalOpen(true)
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("There was an issue deleting the Doctor")
+                })
+        }
+    }
 
     return (
         <>
@@ -99,7 +128,7 @@ const Receptionists = () => {
                       mail={e.email}
                       number={e.phoneNumber}
                       role={e.rank}
-                      
+                      btn={<Col md={{ span: 6, offset: 3 }} className="button" id={e.id}><Primarybtn function={deleteStaff} id={e.id} > <FaTrashAlt color={"white"} size={13} /> Remove</Primarybtn></Col>}
                     />))}
                    
 

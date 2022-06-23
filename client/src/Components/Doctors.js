@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -10,25 +10,29 @@ import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './SubComponents/UI/Navigation';
+import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
 import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
+import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
+import { FaTimesCircle } from "react-icons/fa";
+
 
 const socket = io.connect("http://localhost:3001");
 
 const Doctors = () => {
-
     const room = 1;
     const navigate = useNavigate();
-    const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
+    const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
-    const name = useRef();
+    const [click, setClick] = useState({ counter: 1 });
+    const [modalOpen, setModalOpen] = useState(false);
 
 
-    useEffect(() =>{
+    useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
-        if(userLogged === "" || userLogged === null || userLogged === false){
+        if (userLogged === "" || userLogged === null || userLogged === false) {
             navigate('/');
         }
     }, [currentUser])
@@ -40,6 +44,29 @@ const Doctors = () => {
                 setAllDoctors(data);
             })
     }, []);
+
+    const deleteStaff = (e) => {
+        setClick((prev) => ({ ...prev, counter: prev.counter + 1 }));
+        console.log(click)
+        if (click.counter == 1) {
+            e.target.innerText = "Delete?"
+
+        } else if (click.counter == 2) {
+            let member = e.target.id;
+            console.log(member)
+            setModalOpen(true)
+            axios.post('http://localhost:8888/MedAPI/deleteDoctors.php', member)
+                .then(res => {
+                    let data = res.data;
+                    console.log(data);
+                    setModalOpen(true)
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("There was an issue deleting the Doctor")
+                })
+        }
+    }
 
     return (
         <>
@@ -69,19 +96,19 @@ const Doctors = () => {
 
                 <Col md={{ span: 12, }} className='staffWrapper '>
                     {
-                        allDoctors.map((e) =>( <Staff
-                            key= {e.index}
-                            img={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/"+e.profileImage}
-                            name={e.name +" "+ e.surname}
+                        allDoctors.map((e) => (<Staff
+                            id={e.id}
+                            key={e.index}
+                            img={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage}
+                            name={e.name + " " + e.surname}
                             gender={e.gender}
                             age={date - e.dateOfBirth.split(" ").splice(2)}
                             room={e.room}
-                            unique={"Consultation Fee: R"+ e.consultFee}
+                            unique={"Consultation Fee: R" + e.consultFee}
                             mail={e.email}
                             number={e.phoneNumber}
                             role={e.specialisation}
-                 
-                            ref = {name}
+                            btn={<Col md={{ span: 6, offset: 3 }} className="button" id={e.id}><Primarybtn function={deleteStaff} id={e.id} > <FaTrashAlt color={"white"} size={13} /> Remove</Primarybtn></Col>}
                         />))
                     }
                 </Col>
@@ -96,6 +123,11 @@ const Doctors = () => {
                     room={room}
                 />
             </Col>
+            {modalOpen && 
+            <ConfirmationModal 
+            content={"Doctor has been removed from the system"} 
+            button={<Primarybtn 
+            function={() =>{ return setModalOpen(false)}}><FaTimesCircle size={25}/> Close  </Primarybtn>}/>}
         </>
     );
 };
