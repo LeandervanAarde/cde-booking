@@ -35,7 +35,7 @@ const ViewModal = (props) => {
                     <img src={props.image} alt={props.name}/>
                 </Col>
                 <Col md={{span: 12}} className="Name">
-                     <h2>{props.name} {props.surname}</h2>
+                     <h2 className="personName">{props.name} {props.surname}</h2>
                      <p><strong>Age: </strong> <span>{props.age}</span></p>
                      <p><strong>Birth Date: </strong><span>{props.dateOfBirth}</span></p>
                      <p><strong>Condition: </strong> <span>{props.medCondition}</span></p>

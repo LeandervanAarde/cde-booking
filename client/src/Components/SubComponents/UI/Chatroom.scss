@@ -28,6 +28,13 @@
      padding-right: 1vw;
     //Fix this aspect from here
 
+    .message-container {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+
     p {
         border-radius: 1.15rem;
         line-height: 1.25;
@@ -108,8 +115,6 @@
       .StaffName{
           font-weight: bold;
       }
-
-   
 
     
 }

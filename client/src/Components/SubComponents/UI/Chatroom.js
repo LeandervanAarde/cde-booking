@@ -10,7 +10,7 @@ const Chatroom = ({ props, socket, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     //join the correct Room
-    
+
     //sending a message and storing the data, getting the date etc
     const sndMssg = async () => {
         if (currentMessage !== "") {
@@ -27,16 +27,16 @@ const Chatroom = ({ props, socket, room }) => {
         }
     };
 
-  if(!sessionStorage.getItem("mssg")){
-    sessionStorage.setItem("mssg", messageList)
-  }
+    if (!sessionStorage.getItem("mssg")) {
+        sessionStorage.setItem("mssg", messageList)
+    }
 
     const joinRoom = () => {
         if (room !== null) {
             socket.emit("joinRoom", room);
         }
     }
-    
+
     useEffect(() => {
         socket.on("receiveMessage", (data) => {
             setMessageList((list) => [...list, data]);
@@ -46,12 +46,14 @@ const Chatroom = ({ props, socket, room }) => {
     return (
         <Col md={12} className="ChatCon" onMouseOver={joinRoom}>
             <Col md={12} className="Header"> <h2 className='text-center'>Staff Updates</h2></Col>
+          
             <Col md={12} className="Wbody">
+            <ScrollToBottom className='message-container'>
                 <p className='fromThem' id='Defaultmssg'>Welcome to chatRoom {room}</p>
-                {messageList.map((messageContent) =>
-                    <p className={username === messageContent.author ? "fromMe" : "fromThem"}>{messageContent.message}</p>
-                )}
+                {messageList.map((messageContent) =>{ return (<p className={username === messageContent.author ? "fromMe" : "fromThem"}>{messageContent.message}</p>)})}
+                </ScrollToBottom>
             </Col>
+           
             <Col md={{ span: 11 }} className="messageType">
                 <input
                     type={"text"}

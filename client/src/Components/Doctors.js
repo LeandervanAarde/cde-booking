@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
@@ -23,6 +23,8 @@ const Doctors = () => {
     const [currentUser, setCurrentUser] = useState({activeUser: sessionStorage.getItem("activeUser")});
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
+    const name = useRef();
+
 
     useEffect(() =>{
         const userLogged = sessionStorage.getItem("activeUser");
@@ -78,6 +80,8 @@ const Doctors = () => {
                             mail={e.email}
                             number={e.phoneNumber}
                             role={e.specialisation}
+                 
+                            ref = {name}
                         />))
                     }
                 </Col>
