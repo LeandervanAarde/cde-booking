@@ -3,7 +3,6 @@ import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import moment from 'moment';
 import "../index.scss";
-import SearchInput from './SubComponents/Inputs/SearchInput';
 import Appointmentcard from './SubComponents/Appointments/Appointmentcard';
 import Profile from './SubComponents/UI/Profile';
 import Calendar from './SubComponents/Calendar/Calendar';
@@ -15,12 +14,11 @@ import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
-import { FaRegCalendarCheck,FaEdit } from "react-icons/fa";
+import { FaRegCalendarCheck,FaEdit, FaTrashAlt } from "react-icons/fa";
 import NoAppointments from './SubComponents/Appointments/NoAppointments';
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import AppointmentModal from './SubComponents/modals/AppointmentModal';
 import TableRow from './SubComponents/UI/TableRow';
-import { EditAppointment } from './SubComponents/modals/EditAppointment';
 
 const Appointments = () => {
 
@@ -29,10 +27,8 @@ const Appointments = () => {
     const Year = moment().clone().format("DD MMMM YYYY");
     const week = current + " - " + endWeek;
     const [value, setValue] = useState(moment());
-    const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"));
     const [modalOpen, setModalOpen] = useState(false);
     const [appModal, setappModal] = useState(false);
-    const [editModal, setEditModal] = useState(false);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
     const [appointments, setAppointments] = useState(Year);
@@ -41,7 +37,6 @@ const Appointments = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const [allPatients, setAllPatients] = useState([]);
     const [weeklyAppointments, setWeeklyAppointments] = useState();
-    const [avail, setAvail] = useState([]);
     const name = useRef();
     const start = useRef();
     const end = useRef();
@@ -50,7 +45,9 @@ const Appointments = () => {
     const year = useRef();
     const appointId = useRef();
     const specialisation = useRef();
+    const patientName = useRef();
     const [doctorName, setDoctorName] = useState();
+    const [patientId, setPatientId] = useState();
 
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -71,7 +68,6 @@ const Appointments = () => {
                     tempArr.push(data[i])
                 }
                 setToday(tempArr);
-
             })
     }, []);
 
@@ -89,6 +85,26 @@ const Appointments = () => {
 
 console.log(availableAppointments)
 
+    const getpatientDetails = (e) =>{
+        const patientDetails = e.target.value;
+        const patientId = e.target.id;
+        console.log(patientId);
+        // axios.post('http://localhost:8888/MedAPI/bookAppointment.php', patientDetails)
+        // .then((res) =>{
+        //     let patient = res.data;
+        //     console.log(patient);
+        // })
+    }
+
+    console.log(patientId)
+
+const bookNewAppointment = (e) =>{
+    let targ = e.target.id;
+    console.log(targ);
+    setModalOpen(true)
+    console.log(patientName.current)
+}
+
     const outPut = !availableAppointments 
                     ? (<NoAppointments 
                         mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) 
@@ -99,9 +115,9 @@ console.log(availableAppointments)
                         timeEnd = {e.TimeEnd}
                         Dr={e.DoctorName} 
                         special={e.Speciality} 
-                        btn={<Primarybtn id={e.id }><FaRegCalendarCheck  size={20} /> Book </Primarybtn>}
+                        btn={<Primarybtn id={e.id } function={bookNewAppointment}><FaRegCalendarCheck  size={20}/> Book </Primarybtn>}
                         edit={<Primarybtn id={e.id}> <FaEdit size={20}/> Edit</Primarybtn>}   
-                        delete={<Primarybtn id={e.id} extraClass={"del"}> <FaEdit size={20} /> delete</Primarybtn>}   
+                        delete={<Primarybtn id={e.id} extraClass={"del"}> <FaTrashAlt size={20}/> delete</Primarybtn>}   
                         date={e.Date}    
                         />));
 
@@ -110,8 +126,6 @@ console.log(availableAppointments)
         console.log(nm)
         setDoctorName(nm)
     }
-
-
 
     const bookApp = (e) => {
         let information = {
@@ -146,7 +160,11 @@ console.log(availableAppointments)
                 setAllDoctors(data);
             })
     }, []);
-    const allPat = allPatients.map((e) => (<option>{e.name} {e.surname}</option>));
+
+
+
+
+    const allPat = allPatients.map((e) => (<option ref={patientName} id={Math.round(Math.random()*100) +"."+ e.id}>{e.name} {e.surname}</option>));
     const dropElements = allDoctors.map((e) => (<option ref={name} value={e.name + " " + e.surname}>{e.name} {e.surname}</option>));
 
     useEffect(() => {
@@ -158,14 +176,6 @@ console.log(availableAppointments)
             });
     }, []);
 
-    const getpatientDetails = (e) =>{
-        const patientDetails = e.target.value;
-        axios.post('http://localhost:8888/MedAPI/bookAppointment.php', patientDetails)
-        .then((res) =>{
-            let patient = res.data;
-            console.log(patient);
-        })
-    }
 
     return (
         <>
@@ -175,12 +185,13 @@ console.log(availableAppointments)
                 <Col md={12}>
                     <h2 className='headingTwo' id={'todayApp'} value={Year}> {Year} Appointments</h2>
                 </Col>
+
                 <Col md={12} className="cardCon">
                     {today.map((e) => (<Appointmentcard img={!e.DoctorImage ? e.DoctorImage : "http://localhost:8888/MedAPI/images/" + e.DoctorImage}  Doctor={e.Doctor} patient={e.Patient} time={e.timeStart + " " + e.timeEnd} />))}
                 </Col>
+
                 <Col md={12} className="calendarCon">
-                    <Calendar value={value} val={value.clone().format("DD MMMM YYYY")} onChange={setValue}
-                    />
+                    <Calendar value={value} val={value.clone().format("DD MMMM YYYY")} onChange={setValue}/>
                 </Col>
 
                 <Col md={{ span: 2, offset: 10 }} className="addPatient">
@@ -201,7 +212,6 @@ console.log(availableAppointments)
             </Col>
 
             <Col md={3} className="work">
-
                 <Profile />
                 <TableInformation
                     headerOne="Date"
@@ -215,7 +225,6 @@ console.log(availableAppointments)
             </Col>
 
             {modalOpen && <Modal
-                doctor = {"Appointment with " + outPut.Dr}
                 nm={"Patient name "}
                 select={allPat}
                 cont={"Patient Cell"}
@@ -227,6 +236,7 @@ console.log(availableAppointments)
 
             {appModal &&
                 <AppointmentModal
+                    head= {"Add availability"}
                     special={"Doctor type"}
                     timeBegin={start}
                     timeEnd={end}
@@ -245,8 +255,6 @@ console.log(availableAppointments)
                     setappModal={appModal}
                     getDrop={getName}
                 />}
-
-
         </>
     );
 };

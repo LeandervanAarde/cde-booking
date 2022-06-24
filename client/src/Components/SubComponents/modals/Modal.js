@@ -16,7 +16,7 @@ const Modal = (props) => {
            <Col md={12}>
 
             <Col md={2} className="logo" onClick={props.func}> </Col>
-          <h2> Book appointment</h2>
+          <h2> Book appointment </h2>
            <hr></hr>
            <h4>{props.doctor}</h4>
            <h6>{props.nm}</h6>

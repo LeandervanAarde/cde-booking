@@ -1,0 +1,41 @@
+.backdrop{
+    background-color: #0000009e;
+    height: auto;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    
+}
+
+.Modal{
+    width: 7vw;
+    height: auto;
+    max-height: 5vh;
+    background-color: darken($white, 5%);
+    position: fixed;
+    top: 15vh;
+    right: 0;
+    left: 20vw;
+    padding: 2%;
+    animation: modal 0.4s 1;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+    z-index: +999;
+    
+}
+
+@keyframes modal {
+    from{
+      transform: scale(0);
+      opacity: 0;
+      z-index: -1;
+    } to{
+      transform: scale(1);
+      opacity: 1;
+      z-index: 2;
+    }
+}
+
+
+
+

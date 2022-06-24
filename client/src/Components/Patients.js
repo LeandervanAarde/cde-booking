@@ -88,6 +88,9 @@ const Patients = (props) => {
                         key={e.index}
                         image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage}
                         age={(+date - e.dateOfBirth.split(" ").splice(2))}
+                        cellphone={e.phoneNumber}
+                        gender={e.gender}
+                        medicalAid = {e.medicalAidNr}
                     />
                 ));
                 setAllPatients(allPat);

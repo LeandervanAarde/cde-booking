@@ -259,3 +259,42 @@
       margin-left: 7vw;
     }
   }
+
+  #view{
+    .name{
+      width: 30%;
+    }
+
+    .nameL{
+      margin-left: -2.5vw !important;
+    }
+    #first{
+      margin-left: 1vw !important;
+      margin-right: 1vw;
+    }
+
+    .gen{
+      width: 25%;
+      margin-left: 1vw;
+      margin-right: 1vw;
+    }
+
+    #cell{
+      width: 30%;
+    }
+
+    #email, #medA {
+      width: 50%;
+    }
+
+    #medA{
+      margin-bottom: 2vh;
+    }
+
+
+  }
+
+  #cancel{
+    color: $warning !important;
+    text-align: right;
+   }
