@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import * as ReactDOM from "react-dom";
 import { Col} from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
+import { FaEdit } from "react-icons/fa";
 
 
 
@@ -15,7 +16,11 @@ const ViewModal = (props) => {
         } else {
             setRole(false)
         }
-    }, [])
+    }, []);
+
+    const editPatient = () =>{
+        console.log(props.name)
+    }
 
    
 
@@ -31,10 +36,12 @@ const ViewModal = (props) => {
           <h2>Patient Name Information</h2>
            <hr></hr>
             <Col md={12} className="con " id="patientModal">
+            <Col md={2} className="edit" onClick={editPatient}><FaEdit size={20} color={"black"}/> <p>Edit</p> </Col>
                 <Col md={{span: 2, offset: 5}} className="patPhoto">
                     <img src={props.image} alt={props.name}/>
                 </Col>
                 <Col md={{span: 12}} className="Name">
+                   
                      <h2 className="personName">{props.name} {props.surname}</h2>
                      <p><strong>Age: </strong> <span>{props.age}</span></p>
                      <p><strong>Birth Date: </strong><span>{props.dateOfBirth}</span></p>
@@ -48,10 +55,9 @@ const ViewModal = (props) => {
                     
                     <>
                         <Col md={{span:4, offset:1}}  onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
-                        <Col md={{span:5, offset:1}}  onClick={props.delete} className="button"><Primarybtn id={"delete"} > Delete Patients</Primarybtn></Col>
+                        <Col md={{span:5, offset:1}}  onClick={props.delete } className="button"><Primarybtn id={"delete"} > Delete Patients</Primarybtn></Col>
                     </>
                     : 
-                    
                     <Col md={{span:4, offset:4}}  onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
                 }
            </Col>

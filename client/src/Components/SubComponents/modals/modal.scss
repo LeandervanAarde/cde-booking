@@ -55,7 +55,20 @@
         width: 9.5vw !important;
       }
 
+      .edit{
+        padding-bottom: 1%;
+     
+        float: right;
 
+        p, svg{
+          float: left ;
+          margin-left: 10px;
+        }
+
+        & :hover{
+         color: $blue;
+        }
+      }
 
       h6{
          display: inline-block;

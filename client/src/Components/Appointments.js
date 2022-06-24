@@ -15,11 +15,12 @@ import Navigation from './SubComponents/UI/Navigation';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
-import { FaRegCalendarCheck } from "react-icons/fa";
+import { FaRegCalendarCheck,FaEdit } from "react-icons/fa";
 import NoAppointments from './SubComponents/Appointments/NoAppointments';
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import AppointmentModal from './SubComponents/modals/AppointmentModal';
 import TableRow from './SubComponents/UI/TableRow';
+import { EditAppointment } from './SubComponents/modals/EditAppointment';
 
 const Appointments = () => {
 
@@ -31,6 +32,7 @@ const Appointments = () => {
     const [currentD, setCurrentD] = useState(moment().clone().format("DD MMMM YYYY"));
     const [modalOpen, setModalOpen] = useState(false);
     const [appModal, setappModal] = useState(false);
+    const [editModal, setEditModal] = useState(false);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({ activeUser: sessionStorage.getItem("activeUser") });
     const [appointments, setAppointments] = useState(Year);
@@ -46,6 +48,7 @@ const Appointments = () => {
     const day = useRef();
     const month = useRef();
     const year = useRef();
+    const appointId = useRef();
     const specialisation = useRef();
     const [doctorName, setDoctorName] = useState();
 
@@ -69,7 +72,6 @@ const Appointments = () => {
                 }
                 setToday(tempArr);
 
-                console.log(tempArr)
             })
     }, []);
 
@@ -84,12 +86,31 @@ const Appointments = () => {
                 }
             })
     }, [value.clone().format("DD MMMM YYYY")]);
-    const outPut = !availableAppointments ? (<NoAppointments mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) : availableAppointments.map((e) => (<AvailableAppointItems time={e.TimeStart} Dr={e.DoctorName} special={e.Speciality} btn={<Primarybtn function={() => setModalOpen(true)} > <FaRegCalendarCheck size={20} /> Book appointment</Primarybtn>} />));
+
+console.log(availableAppointments)
+
+    const outPut = !availableAppointments 
+                    ? (<NoAppointments 
+                        mess={"No appointments for " + value.clone().format("DD MMMM YYYY")} />) 
+                        : availableAppointments.map((e) => (
+                        <AvailableAppointItems 
+                        key={e.id}
+                        time={e.TimeStart} 
+                        timeEnd = {e.TimeEnd}
+                        Dr={e.DoctorName} 
+                        special={e.Speciality} 
+                        btn={<Primarybtn id={e.id }><FaRegCalendarCheck  size={20} /> Book appointment</Primarybtn>}
+                        edit={<Primarybtn id={e.id}> <FaEdit size={20} /> Edit appointment</Primarybtn>}   
+                        date={e.Date}             
+                        />));
+
     const getName = (e) => {
         let nm = e.target.value;
         console.log(nm)
         setDoctorName(nm)
     }
+
+
 
     const bookApp = (e) => {
         let information = {
@@ -223,6 +244,8 @@ const Appointments = () => {
                     setappModal={appModal}
                     getDrop={getName}
                 />}
+
+
         </>
     );
 };

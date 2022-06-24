@@ -5,7 +5,7 @@ import "../../src/index.scss";
 import SearchInput from './SubComponents/Inputs/SearchInput';
 import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
-import { FaMoneyBillWave, FaTimesCircle, FaStethoscope, FaUser  } from "react-icons/fa";
+import { FaMoneyBillWave, FaTimesCircle, FaStethoscope, FaUser } from "react-icons/fa";
 import Addbutton from './SubComponents/Buttons/Addbutton';
 import TableInformation from './SubComponents/UI/TableInformation';
 import People from './SubComponents/UI/People';
@@ -32,8 +32,7 @@ const Patients = (props) => {
     const date = moment().clone().format("YYYY");
     const [fees, setFees] = useState();
     const [reset, setReset] = useState();
-    const [updatePatients, setUpdatePatiens] = useState();
-    const[outstanding, setOutstanding] = useState();
+    const [outstanding, setOutstanding] = useState();
     const [outstandingItem, setOutstandingItem] = useState();
     const [openConfirm, setOpenConfirm] = useState(false);
     const [clicked, setClicked] = useState(false);
@@ -45,19 +44,18 @@ const Patients = (props) => {
         }
     }, [currentUser]);
 
-    const paidFees = (e) =>{
+    const paidFees = (e) => {
         let value = e.target.id;
-       
+
         axios.post('http://localhost:8888/MedAPI/editFees.php', value)
-        .then((res) =>{
-            let data = res.data;
-            console.log(data); 
-            setOpenConfirm(true);
-        })
-        .catch((err) =>{
-            console.log(err)
-        })
-        
+            .then((res) => {
+                let data = res.data;
+                console.log(data);
+                setOpenConfirm(true);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     useEffect(() => {
@@ -65,19 +63,17 @@ const Patients = (props) => {
             .then((res) => {
                 let data = res.data;
                 console.log(data)
-
                 const arr = [];
 
-                for(let i = 0; i < data.length; i++){
-                    if(data[i].feesOut != 0){
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].feesOut != 0) {
                         arr.push({
                             id: data[i].id,
                             name: data[i].name,
                             surname: data[i].surname,
                             fees: "R " + data[i].feesOut
                         })
-                        let outstandingpeople = arr.map((e) => <TableRow  Information1={e.id} Information2={e.name +" "+ e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id}/>)
-
+                        let outstandingpeople = arr.map((e) => <TableRow key={e.id} Information1={e.id} Information2={e.name + " " + e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id} />)
                         setOutstanding(outstandingpeople);
                     }
                 }
@@ -87,13 +83,12 @@ const Patients = (props) => {
                 setFees(total)
                 let allPat = data.map((e, index) => (
                     <People
-                        {...e} 
-                        key={index}
-                        image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage} 
-                        age={(+date - e.dateOfBirth.split(" ").splice(2))} 
+                        {...e}
+                        key={e.index}
+                        image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage}
+                        age={(+date - e.dateOfBirth.split(" ").splice(2))}
                     />
                 ));
-              
                 setAllPatients(allPat);
             });
 
@@ -101,12 +96,9 @@ const Patients = (props) => {
             .then((res) => {
                 let data = res.data;
                 setAllDoctors(data);
-               
             });
-           
-    }, []);  
-
-    console.log(fees)
+    }, []);
+    
     return (
         <>
             <Navigation />
@@ -143,15 +135,15 @@ const Patients = (props) => {
                 </Col>
 
                 <Col md={12} className='mt-3 personBanner '>
-                    {!clicked 
-                    ? allPatients 
-                    : 
-                    <AddPerson 
-                    head="Add Patient"
-                    ex= "Medical Aid nr."
-                    ex2 = "Medical condition"
-                    cancel= {() => {return setClicked(false)}}/>}
-                    
+                    {!clicked
+                        ? allPatients
+                        :
+                        <AddPerson
+                            head="Add Patient"
+                            ex="Medical Aid nr."
+                            ex2="Medical condition"
+                            cancel={() => { return setClicked(false) }} />}
+
                 </Col>
 
             </Col>
@@ -173,12 +165,12 @@ const Patients = (props) => {
                 </TableInformation>
 
             </Col>
-            {addModal && <AddModal   
-            last = "Last Name"
-            DOB = "Date of Birth"
-            day = "Day"
-            function={() => { return setAddModal(false); }} />}
-            {openConfirm && <ConfirmationModal content={"Patient fees has updated"} button={<Primarybtn function={() =>{ return setOpenConfirm(false)}}><FaTimesCircle size={25}/> Close  </Primarybtn>}/>}
+            {addModal && <AddModal
+                last="Last Name"
+                DOB="Date of Birth"
+                day="Day"
+                function={() => { return setAddModal(false); }} />}
+            {openConfirm && <ConfirmationModal content={"Patient fees has updated"} button={<Primarybtn function={() => { return setOpenConfirm(false) }}><FaTimesCircle size={25} /> Close  </Primarybtn>} />}
         </>
     );
 };

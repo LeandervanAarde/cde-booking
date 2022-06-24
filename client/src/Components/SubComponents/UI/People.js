@@ -51,7 +51,7 @@ const People = (props) => {
     <>
       {props.key}
       {/* {props.} */}
-      <Col md={12} className='infoCon' >
+      <Col md={12} className='infoCon'>
         <Col md={1} className="text-center picture">
           <img src={props.image} alt='Patient' className='picture' />
         </Col>
@@ -66,7 +66,7 @@ const People = (props) => {
 
       {modalOpen && <ViewModal
         {...props}
-        func={() => { return setModalOpen(false); }}
+        func={() => { return setModalOpen(false)}}
         delete={confirm}
         setModalOpen={setModalOpen}
       />}
