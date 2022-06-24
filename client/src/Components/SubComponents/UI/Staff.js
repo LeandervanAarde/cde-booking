@@ -19,9 +19,6 @@ const Staff = (props) => {
       }
   }, [])    
 
-
- 
-
   return (
  <div className='staffInfo' id={props.id}> 
     <div className='staffPhoto'><img src={props.img}/></div>
@@ -41,7 +38,6 @@ const Staff = (props) => {
       {props.btn}
   </>
   : 
-  
   <></>
 }
  </div>

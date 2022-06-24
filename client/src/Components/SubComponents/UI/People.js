@@ -69,6 +69,7 @@ const People = (props) => {
         func={() => { return setModalOpen(false)}}
         delete={confirm}
         setModalOpen={setModalOpen}
+        id={props.id}
       />}
     </>
   );

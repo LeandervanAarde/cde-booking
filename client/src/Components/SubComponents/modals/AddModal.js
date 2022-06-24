@@ -5,8 +5,7 @@ import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
 
 const AddModal = (props) => {
-  const theMonths = ["January", "February", "March", "April", "May",
-  "June", "July", "August", "September", "October", "November", "December"];
+
 
     return (
       ReactDOM.createPortal(

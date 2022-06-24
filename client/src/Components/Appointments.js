@@ -99,9 +99,10 @@ console.log(availableAppointments)
                         timeEnd = {e.TimeEnd}
                         Dr={e.DoctorName} 
                         special={e.Speciality} 
-                        btn={<Primarybtn id={e.id }><FaRegCalendarCheck  size={20} /> Book appointment</Primarybtn>}
-                        edit={<Primarybtn id={e.id}> <FaEdit size={20} /> Edit appointment</Primarybtn>}   
-                        date={e.Date}             
+                        btn={<Primarybtn id={e.id }><FaRegCalendarCheck  size={20} /> Book </Primarybtn>}
+                        edit={<Primarybtn id={e.id}> <FaEdit size={20}/> Edit</Primarybtn>}   
+                        delete={<Primarybtn id={e.id} extraClass={"del"}> <FaEdit size={20} /> delete</Primarybtn>}   
+                        date={e.Date}    
                         />));
 
     const getName = (e) => {
@@ -117,8 +118,8 @@ console.log(availableAppointments)
             name: doctorName,
             startTime: start.current.value,
             endTime: end.current.value,
-            specialisation: specialisation.current.value,
-            date: day.current.value + " " + month.current.value + " " + year.current.value
+            specialisation: specialisation.current.value.trim(),
+            date: day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim()
         }
         // setAvail(information);
         console.log(day.current.value)

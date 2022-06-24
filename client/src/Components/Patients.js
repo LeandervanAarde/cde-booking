@@ -84,6 +84,7 @@ const Patients = (props) => {
                 let allPat = data.map((e, index) => (
                     <People
                         {...e}
+                        id={e.id}
                         key={e.index}
                         image={!e.profileImage ? image : "http://localhost:8888/MedAPI/images/" + e.profileImage}
                         age={(+date - e.dateOfBirth.split(" ").splice(2))}

@@ -1,6 +1,6 @@
-
 @import "/src/scss/variables.scss";
-.Bookings{
+
+.Bookings {
     height: 100%;
     min-height: 57vh;
     max-height: 57vh;
@@ -9,7 +9,7 @@
     overflow: scroll;
     @include dropShadow;
 
-    .banner{
+    .banner {
         height: 15%;
         min-height: 5.7vh;
         background-color: $blue;
@@ -18,45 +18,51 @@
         border-top-right-radius: $borderRad;
         padding-top: 1%;
         position: relative;
-        
 
-        h4{
+
+        h4 {
             color: $white;
             font-family: $mainFont;
         }
-        
-        p{
+
+        p {
             color: $white;
             font-family: $secondaryFont;
         }
     }
 
-    .body{
-        table{
+    .body {
+        table {
             width: 100%;
             text-align: center;
-        
-            th{
+
+            th {
                 font-family: $mainFont;
                 font-size: 20px;
                 padding-bottom: 2vh;
             }
 
-            td{
+            td {
                 font-family: $secondaryFont;
                 height: 4vh;
                 font-size: 18px;
             }
         }
 
-        #noApp{
+        #noApp {
             display: none;
         }
 
-        .remove{
-            width: 20%;
+        .remove {
+            width: 15%;
             padding-bottom: 1vh;
             padding-right: 1.5%;
+        }
+
+        .del {
+            :first-child {
+                background-color: $warning  !important;
+            }
         }
     }
 }
