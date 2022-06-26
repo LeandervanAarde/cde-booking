@@ -47,7 +47,8 @@ const Appointments = () => {
     const specialisation = useRef();
     const patientName = useRef();
     const [doctorName, setDoctorName] = useState();
-    const [patientId, setPatientId] = useState();
+    const [appointmentId, setAppointmentId] = useState();
+
 
     //Check if the current user has been logged in 
     useEffect(() => {
@@ -85,25 +86,16 @@ const Appointments = () => {
 
 console.log(availableAppointments)
 
-    const getpatientDetails = (e) =>{
-        const patientDetails = e.target.value;
-        const patientId = e.target.id;
-        console.log(patientId);
-        // axios.post('http://localhost:8888/MedAPI/bookAppointment.php', patientDetails)
-        // .then((res) =>{
-        //     let patient = res.data;
-        //     console.log(patient);
-        // })
-    }
+    const openTheModal = (e) =>{
+        let targ = e.target.id;
+        console.log(targ);
+        setModalOpen(true);
+        setAppointmentId(targ)
+  }
 
-    console.log(patientId)
 
-const bookNewAppointment = (e) =>{
-    let targ = e.target.id;
-    console.log(targ);
-    setModalOpen(true)
-    console.log(patientName.current)
-}
+
+
 
     const outPut = !availableAppointments 
                     ? (<NoAppointments 
@@ -115,7 +107,7 @@ const bookNewAppointment = (e) =>{
                         timeEnd = {e.TimeEnd}
                         Dr={e.DoctorName} 
                         special={e.Speciality} 
-                        btn={<Primarybtn id={e.id } function={bookNewAppointment}><FaRegCalendarCheck  size={20}/> Book </Primarybtn>}
+                        btn={<Primarybtn id={e.id} function={openTheModal}><FaRegCalendarCheck  size={20}/> Book </Primarybtn>}
                         edit={<Primarybtn id={e.id}> <FaEdit size={20}/> Edit</Primarybtn>}   
                         delete={<Primarybtn id={e.id} extraClass={"del"}> <FaTrashAlt size={20}/> delete</Primarybtn>}   
                         date={e.Date}    
@@ -130,8 +122,8 @@ const bookNewAppointment = (e) =>{
     const bookApp = (e) => {
         let information = {
             name: doctorName,
-            startTime: start.current.value,
-            endTime: end.current.value,
+            startTime: start.current.value.trim(),
+            endTime: end.current.value.trim(),
             specialisation: specialisation.current.value.trim(),
             date: day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim()
         }
@@ -161,17 +153,19 @@ const bookNewAppointment = (e) =>{
             })
     }, []);
 
+ 
 
 
 
-    const allPat = allPatients.map((e) => (<option ref={patientName} id={Math.round(Math.random()*100) +"."+ e.id}>{e.name} {e.surname}</option>));
+
+    const allPat = allPatients.map((e) => (<option  id={e.id} value={e.id}>{e.name} {e.surname}</option>));
     const dropElements = allDoctors.map((e) => (<option ref={name} value={e.name + " " + e.surname}>{e.name} {e.surname}</option>));
 
     useEffect(() => {
         axios.get(`http://localhost:8888/MedAPI/getWeeklyAppoint.php?endWeek=${endWeek}&startWeek=${Year}`)
             .then((res) => {
                 let data = res.data;
-                let weeklyApp = data.map((e) => (<TableRow Information1={e.Date} Information2={e.timeStart + " - " + e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"} />));
+                let weeklyApp = data.map((e) => (<TableRow id={e.id} Information1={e.Date} Information2={e.timeStart + " - " + e.timeEnd} Information3={e.Patient} btnTxt={"- REMOVE"} />));
                 setWeeklyAppointments(weeklyApp);
             });
     }, []);
@@ -225,13 +219,15 @@ const bookNewAppointment = (e) =>{
             </Col>
 
             {modalOpen && <Modal
-                nm={"Patient name "}
+                key={appointmentId}
+                id={appointmentId}
                 select={allPat}
+                nm={"Patient name "}
+                pName={patientName}
                 cont={"Patient Cell"}
                 mail={"Patient email"}
-                func={() => { return setModalOpen(false); }}
                 setModalOpen={modalOpen}
-                getDetails = {getpatientDetails}
+               
             />}
 
             {appModal &&
@@ -251,7 +247,7 @@ const bookNewAppointment = (e) =>{
                     mail={"Date"}
                     ref={name}
                     function={bookApp}
-                    func={() => { return setappModal(false); }}
+                  
                     setappModal={appModal}
                     getDrop={getName}
                 />}

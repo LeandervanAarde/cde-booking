@@ -4,9 +4,33 @@ import { Col } from 'react-bootstrap';
 import Primarybtn from '../Buttons/PrimaryBtn';
 import { FaUserPlus } from "react-icons/fa";
 import { DeletModal } from "./ConfirmationModal";
+import { useState } from "react";
+import axios from "axios"
+
 //FaUserPlus
 
 const Modal = (props) => {
+    const [selected, setSelected] = useState();
+
+    const bookNewAppointment = (e) =>{
+        console.log("Something weird")
+        const patient = selected;
+
+        let targ = props.id
+        
+        let appointmentInformation ={
+            patientId: patient,
+            appointId: targ
+        };
+        axios.post("http://localhost:8888/MedAPI/bookAppointment.php", appointmentInformation)
+        .then(res =>{
+            let data = res.data;
+            console.log(data);
+        })
+        .catch(err =>{
+            console.log(err); 
+        })
+    }
 
     return (
         ReactDOM.createPortal(
@@ -20,7 +44,7 @@ const Modal = (props) => {
            <hr></hr>
            <h4>{props.doctor}</h4>
            <h6>{props.nm}</h6>
-                <select onChange={props.getDetails}>
+                <select ref={props.pName} onChange={(e) => {setSelected(e.target.value);}} >
                    {props.select}
                 </select>
                 <br></br>
@@ -31,7 +55,7 @@ const Modal = (props) => {
                 <h6>{props.mail}</h6>
                 <input type={'text'} placeholder="Patient email"></input>
 
-                <Col md={{span:4, offset:4}} className="mt-5" onClick={props.func}><Primarybtn onClick={props.function} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span:4, offset:4}} className="mt-5 " ><Primarybtn function={bookNewAppointment} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>
        </Col>
        </>

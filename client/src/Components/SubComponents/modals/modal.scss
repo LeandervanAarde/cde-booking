@@ -12,7 +12,7 @@
 .Modal {
     width: 70%;
     min-height: 30vh;
-
+    @include dropShadow;
     height: auto;
     background-color: darken($white, 5%);
     position: fixed;
@@ -115,7 +115,12 @@
       background-color: $warning !important;
     }
 
+    .userExist{
+      color: $warning;
+      margin-left: 32%;
+    }
 
+  
 
 
 
@@ -291,6 +296,32 @@
       margin-bottom: 2vh;
     }
 
+    .error{
+      color: $warning;
+      margin-left: -2.5vw !important;
+      margin-right: -4vw !important;
+    
+    }
+
+    .error2{
+      color: $warning;
+      margin-left: 0!important;
+      margin-right: 1vw !important;
+    
+    }
+
+    .error1{
+      color: $warning;
+      margin-left: -2vw!important;
+      margin-right: 1vw !important;
+    
+    }
+
+    .inErr{
+      border: 2px solid $warning;
+      margin-left: 0 !important;
+    }
+
 
   }
 
@@ -298,3 +329,38 @@
     color: $warning !important;
     text-align: right;
    }
+
+   .succ{
+    height: auto;
+    min-height: 25vh;
+    max-height: 30vh;
+    background-color: $white;
+    position: absolute;
+    z-index: +9999;
+    @include dropShadow;
+    animation: modal 0.4s 1;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+
+    .successinfo{
+      text-align: center;
+      font-family: $mainFont;
+    }
+
+    #close{
+      .btn{
+        background-color: $warning !important;
+      }
+    }
+   }
+
+   .edited{
+    margin-left: 42% !important;
+    color: $green !important;
+  }
+
+  .closeModal{
+    .btn{
+      background-color: $warning !important;
+    }
+  }

@@ -15,7 +15,6 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
     $date = $data -> date;
     $special = $data -> specialisation; 
 
-
     if($data === !''){
         echo 'there is no data';
     } else{

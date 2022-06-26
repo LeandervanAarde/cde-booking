@@ -147,9 +147,7 @@ const Patients = (props) => {
                             ex="Medical Aid nr."
                             ex2="Medical condition"
                             cancel={() => { return setClicked(false) }} />}
-
                 </Col>
-
             </Col>
 
             <Col md={3} className="work">

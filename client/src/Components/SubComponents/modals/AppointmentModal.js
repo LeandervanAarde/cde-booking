@@ -13,7 +13,7 @@ const AppointmentModal = (props) => {
            <Col md={12}>
 
             <Col md={2} className="logo" onClick={props.func}> </Col>
-          <h2>{props.head}</h2>
+          <h2> Book appointment</h2>
            <hr></hr>
            <h6>{props.nm}</h6>
                 <select ref={props.ref} onChange={props.getDrop}>

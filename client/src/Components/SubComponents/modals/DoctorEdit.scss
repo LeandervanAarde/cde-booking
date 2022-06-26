@@ -1,0 +1,60 @@
+@import "/src/scss/variables.scss";
+
+.backdrop{
+    background-color: #0000006f;
+    height: auto;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    // z-index: 12;
+  }
+
+  .Modal{
+    width: 70%;
+    min-height: 30vh;
+    @include dropShadow;
+    height: auto;
+    background-color: darken($white, 5%);
+    position: fixed;
+    top: 7vh;
+    right: 0;
+    left: 20vw;
+    padding: 2%;
+    animation: modal 0.4s 1;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+
+    .Dname, .special{
+        width: 30% !important;
+        margin-left:  0.5vw !important;
+        margin-right: 1vw;
+    }
+    
+    .Err{
+        color: $warning;
+    }
+    
+    .inErr{
+        border: 2px solid $warning !important;
+        width: 9vw !important;
+    }
+
+    .patPhoto{
+        aspect-ratio: 1/1;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 55%;
+
+        img{
+            height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 55%;
+          
+          } 
+      }
+    
+
+  }
+

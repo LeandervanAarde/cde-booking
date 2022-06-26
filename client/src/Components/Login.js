@@ -58,7 +58,6 @@ const Login = () => {
              
                {error && <p  className='text-center errorText'><strong>Email or password incorrect, please try again</strong></p>}
                 <form>
-                   
                     <input name="RecepID" onChange={captureInputs} ref={userName} type="email" className='RecepID' />
                     <label className='recepLabel'>Receptionist ID</label>
                     <br></br>

@@ -47,9 +47,12 @@
 
     .button {
         float: left;
+        text-align: center !important;
     }
 
     #cancel {
         background-color: $warning  !important;
+        color: white !important;
+        margin-right: 6vw;        
     }
 }

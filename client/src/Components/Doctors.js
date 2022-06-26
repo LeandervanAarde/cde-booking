@@ -15,7 +15,8 @@ import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
 import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
-import { FaTimesCircle } from "react-icons/fa";
+import { FaTimesCircle, FaUserMd } from "react-icons/fa";
+import { DoctorEditModal } from './SubComponents/modals/DoctorEditModal';
 
 
 const socket = io.connect("http://localhost:3001");
@@ -28,6 +29,7 @@ const Doctors = () => {
     const date = moment().clone().format("YYYY");
     const [click, setClick] = useState({ counter: 1 });
     const [modalOpen, setModalOpen] = useState(false);
+  
 
 
     useEffect(() => {
@@ -123,11 +125,13 @@ const Doctors = () => {
                     room={room}
                 />
             </Col>
-            {modalOpen && 
-            <ConfirmationModal 
-            content={"Doctor has been removed from the system"} 
-            button={<Primarybtn 
-            function={() =>{ return setModalOpen(false)}}><FaTimesCircle size={25}/> Close  </Primarybtn>}/>}
+
+
+            {modalOpen &&
+                <ConfirmationModal
+                    content={"Doctor has been removed from the system"}
+                    button={<Primarybtn
+                    function={() => { return setModalOpen(false) }}><FaTimesCircle size={25} /> Close  </Primarybtn>} />}
         </>
     );
 };
