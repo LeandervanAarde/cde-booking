@@ -43,7 +43,6 @@ export const EditAppointment = (props) => {
         axios.post('http://localhost:8888/MedAPI/editAppointment.php', tempArr)
             .then(res => {
                 let data = res.data;
-                console.log(data);
                 setClose(props.func);
   
             })

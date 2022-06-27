@@ -32,7 +32,7 @@ const AppointmentModal = (props) => {
                 <h6>{props.mail}</h6>
                 <input ref={props.day} type={'text'}  placeholder="Day" id="day"></input>
                 <input ref={props.month} type={'text'}  placeholder="Month" id="month"></input>
-                <input ref={props.year} type={'number'}  placeholder="Day" id="year"></input>
+                <input ref={props.year} type={'number'}  placeholder="Year" id="year"></input>
 
                 <Col md={{span:6, offset:3}} className="mt-5" onClick={props.function}><Primarybtn onClick={props.close} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
            </Col>

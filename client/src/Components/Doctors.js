@@ -14,10 +14,11 @@ import Primarybtn from './SubComponents/Buttons/PrimaryBtn';
 import axios from 'axios';
 import moment from 'moment';
 import image from "../Components/Assets/default.jpeg";
+import Addbutton from './SubComponents/Buttons/Addbutton';
 import { ConfirmationModal } from './SubComponents/modals/ConfirmationModal';
 import { FaTimesCircle, FaUserMd } from "react-icons/fa";
 import { DoctorEditModal } from './SubComponents/modals/DoctorEditModal';
-
+import AddDoctor from './SubComponents/UI/addDoctor/AddDoctor';
 
 const socket = io.connect("http://localhost:3001");
 
@@ -28,6 +29,7 @@ const Doctors = () => {
     const [allDoctors, setAllDoctors] = useState([]);
     const date = moment().clone().format("YYYY");
     const [click, setClick] = useState({ counter: 1 });
+    const [clicked, setClicked] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
   
 
@@ -45,22 +47,19 @@ const Doctors = () => {
                 let data = res.data;
                 setAllDoctors(data);
             })
-    }, []);
+    }, [allDoctors]);
 
     const deleteStaff = (e) => {
         setClick((prev) => ({ ...prev, counter: prev.counter + 1 }));
-        console.log(click)
         if (click.counter == 1) {
             e.target.innerText = "Delete?"
 
         } else if (click.counter == 2) {
             let member = e.target.id;
-            console.log(member)
             setModalOpen(true)
             axios.post('http://localhost:8888/MedAPI/deleteDoctors.php', member)
                 .then(res => {
                     let data = res.data;
-                    console.log(data);
                     setModalOpen(true)
                 })
                 .catch(err => {
@@ -97,7 +96,17 @@ const Doctors = () => {
                 <h2 className='allPatients ms-2 mt-4'>All Doctors</h2>
 
                 <Col md={{ span: 12, }} className='staffWrapper '>
+                <Col md={{ span: 2, offset: 10 }} className="addPatient mb-5">
+                    <Addbutton
+                          function={() => {
+                            return setClicked(true);
+                        }}
+                    />
+                    <p className='buttonText'>Add Doctor</p>
+                </Col>
                     {
+                        !clicked
+                        ?
                         allDoctors.map((e) => (<Staff
                             id={e.id}
                             key={e.index}
@@ -112,6 +121,10 @@ const Doctors = () => {
                             role={e.specialisation}
                             btn={<Col md={{ span: 6, offset: 3 }} className="button" id={e.id}><Primarybtn function={deleteStaff} id={e.id} > <FaTrashAlt color={"white"} size={13} /> Remove</Primarybtn></Col>}
                         />))
+                        :
+                        <AddDoctor
+                            cancel={() => {return setClicked(false)}}
+                        />
                     }
                 </Col>
             </Col>

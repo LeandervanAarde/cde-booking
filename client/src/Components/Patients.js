@@ -31,11 +31,12 @@ const Patients = (props) => {
     const [person, setPerson] = useState();
     const date = moment().clone().format("YYYY");
     const [fees, setFees] = useState();
-    const [reset, setReset] = useState();
+    const [render, setRender] = useState(false);
     const [outstanding, setOutstanding] = useState();
     const [outstandingItem, setOutstandingItem] = useState();
     const [openConfirm, setOpenConfirm] = useState(false);
     const [clicked, setClicked] = useState(false);
+
 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -50,7 +51,6 @@ const Patients = (props) => {
         axios.post('http://localhost:8888/MedAPI/editFees.php', value)
             .then((res) => {
                 let data = res.data;
-                console.log(data);
                 setOpenConfirm(true);
             })
             .catch((err) => {
@@ -62,7 +62,6 @@ const Patients = (props) => {
         axios.post('http://localhost:8888/MedAPI/getAllPatients.php')
             .then((res) => {
                 let data = res.data;
-                console.log(data)
                 const arr = [];
 
                 for (let i = 0; i < data.length; i++) {
@@ -146,7 +145,9 @@ const Patients = (props) => {
                             head="Add Patient"
                             ex="Medical Aid nr."
                             ex2="Medical condition"
-                            cancel={() => { return setClicked(false) }} />}
+                            cancel={() => { return setClicked(false) }} />
+                           
+                            }
                 </Col>
             </Col>
 

@@ -3,16 +3,14 @@ import Primarybtn from '../Buttons/PrimaryBtn';
 import { Col } from 'react-bootstrap';
 import { FaCalendarAlt, FaDoorClosed, FaUser, FaRegEnvelope, FaTty, FaBookMedical, FaTrashAlt } from "react-icons/fa";
 import { FaTimesCircle, FaUserMd } from "react-icons/fa";
-import { DoctorEditModal } from '../modals/DoctorEditModal';
-// import Primarybtn from './PrimaryBtn';
+import ReceptionistEdit from "../modals/ReceptionistEdit";
 
 
-
-const Staff = (props) => {
+export const ReceptionistC = (props) => {
     const [role, setRole] = useState();
     const [click, setClick] = useState({ counter: 1 });
     const [edit, setEdit] = useState(false);
-    
+
     useEffect(() => {
         if (sessionStorage.getItem("UserRank") === "Head Receptionist") {
             setRole(true)
@@ -33,7 +31,6 @@ const Staff = (props) => {
                 <Col md={12} className="doctordetail"><FaRegEnvelope className='Info' color={"#2663d4"} size={20} /><p>{props.mail}</p></Col>
                 <Col md={12} className="doctordetail"><FaTty className='Info' color={"#2663d4"} size={20} /><p>{props.number}</p></Col>
                 <Col md={12} className="doctordetail"><FaBookMedical className='Info' color={"#2663d4"} size={20} /><p>{props.role}</p></Col>
-
                 {
                     role ?
                         <>
@@ -45,15 +42,14 @@ const Staff = (props) => {
                 }
             </div>
             {
-                edit && <DoctorEditModal
+                edit && <ReceptionistEdit
                 {...props}
                 closeButt={() =>{ return setEdit(false)}}
-                func={() =>{ return setEdit(false)}}
-                close={() =>{ return setEdit(false)}}
+                func={() =>{return setEdit(false) }}
                 />
             }
+
         </>
     );
 };
 
-export default Staff;

@@ -49,7 +49,6 @@ const Appointments = () => {
     const [doctorName, setDoctorName] = useState();
     const [appointmentId, setAppointmentId] = useState();
 
-
     //Check if the current user has been logged in 
     useEffect(() => {
         const userLogged = sessionStorage.getItem("activeUser");
@@ -64,7 +63,6 @@ const Appointments = () => {
             .then((res) => {
                 let data = res.data;
                 let tempArr = [];
-                // console.log(data);
                 for (let i = 0; i < data.length; i++) {
                     tempArr.push(data[i])
                 }
@@ -84,18 +82,14 @@ const Appointments = () => {
             })
     }, [value.clone().format("DD MMMM YYYY")]);
 
-console.log(availableAppointments)
+
 
     const openTheModal = (e) =>{
         let targ = e.target.id;
-        console.log(targ);
+     
         setModalOpen(true);
         setAppointmentId(targ)
   }
-
-
-
-
 
     const outPut = !availableAppointments 
                     ? (<NoAppointments 
@@ -115,7 +109,6 @@ console.log(availableAppointments)
 
     const getName = (e) => {
         let nm = e.target.value;
-        console.log(nm)
         setDoctorName(nm)
     }
 
@@ -125,15 +118,17 @@ console.log(availableAppointments)
             startTime: start.current.value.trim(),
             endTime: end.current.value.trim(),
             specialisation: specialisation.current.value.trim(),
-            date: day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim()
+            date: day.current.value.trim() < 10? "0" + day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim() :  day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim()
+        }
+//Endocrinology
+        if(information.date < 10){
+            information.date = "0" + day.current.value.trim() + " " + month.current.value.trim() + " " + year.current.value.trim()
         }
         // setAvail(information);
-        console.log(day.current.value)
-
         axios.post('http://localhost:8888/MedAPI/addAvailable.php', information)
             .then((res) => {
                 let data = res.data;
-                console.log(data);
+
                 setappModal(false);
                 // setAvail(information);
             })
@@ -152,11 +147,6 @@ console.log(availableAppointments)
                 setAllDoctors(data);
             })
     }, []);
-
- 
-
-
-
 
     const allPat = allPatients.map((e) => (<option  id={e.id} value={e.id}>{e.name} {e.surname}</option>));
     const dropElements = allDoctors.map((e) => (<option ref={name} value={e.name + " " + e.surname}>{e.name} {e.surname}</option>));

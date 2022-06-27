@@ -39,7 +39,6 @@ const ViewModal = (props) => {
     }, []);
 
     const editPatient = () => {
-        console.log(props.name)
         setClicked(true)
     }
 
@@ -127,12 +126,11 @@ const ViewModal = (props) => {
                 medicaNr: medicalAidNumber.current.value.trim()
             }
 
-            console.log(newValues);
+
             //Do axios call here
             axios.post("http://localhost:8888/MedAPI/editPatient.php", newValues)
             .then(res =>{
                 let data = res.data;
-                console.log(data);
                 setSucc(true);
             })
             .catch(err =>{

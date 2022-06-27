@@ -364,3 +364,28 @@
       background-color: $warning !important;
     }
   }
+
+  .successMod{
+    width: 30% !important;
+    min-height: 40vh;
+    @include dropShadow;
+    height: auto;
+    background-color: lighten($white, 5%);
+    position: fixed;
+    top: 25vh;
+    right: 0;
+    left: 26vw;
+    padding: 1%;
+    padding-top: 3% ;
+    animation: modal 0.4s 1;
+    border-radius: $borderRad;
+    transition: height 0.5s linear, width 0.5s linear;
+
+    & :nth-child(1){
+     margin-left: 10%;
+    }
+
+    .faMedBook{
+      margin-left: 32%;
+    }
+  }

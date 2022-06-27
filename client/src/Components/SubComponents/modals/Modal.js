@@ -13,7 +13,6 @@ const Modal = (props) => {
     const [selected, setSelected] = useState();
 
     const bookNewAppointment = (e) =>{
-        console.log("Something weird")
         const patient = selected;
 
         let targ = props.id
@@ -25,7 +24,7 @@ const Modal = (props) => {
         axios.post("http://localhost:8888/MedAPI/bookAppointment.php", appointmentInformation)
         .then(res =>{
             let data = res.data;
-            console.log(data);
+       
         })
         .catch(err =>{
             console.log(err); 

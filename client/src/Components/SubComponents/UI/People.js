@@ -21,8 +21,6 @@ const People = (props) => {
   const confirm = (e) => {
  
     setClick((prev) => ({ ...prev, counter: prev.counter + 1 }));
-    console.log(click)
-
     if (click.counter == 1) {
       const confirm = e.target;
       confirm.innerHTML = "<strong>Confirm patient Delete</strong>";
@@ -37,7 +35,6 @@ const People = (props) => {
       axios.post('http://localhost:8888//MedApi/deletePatient.php',persona)
         .then((res) => {
           let data = res.data;
-          console.log(data);
           setClick((prev) => ({ ...prev, counter: prev.counter -1 }));
           setModalOpen(false)
         })

@@ -39,6 +39,7 @@ const AddPerson = (props) => {
             console.log(data);
             if(data === false){
                 setErrorModal(true);
+                const reset = props.reset;
             }
         })
         .catch(err =>{
@@ -49,7 +50,7 @@ const AddPerson = (props) => {
     return (
         <>
         <Col md={12} className="addPerson">
-            <form>
+            <form onInvalid={"addForm"}>
                 <h2> {props.head}</h2>
                 <hr></hr>
                 <label for="firstName">first Name</label>

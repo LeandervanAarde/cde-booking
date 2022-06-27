@@ -28,10 +28,10 @@ const Login = () => {
     };
 
     const getData = (e) =>{
-        console.log(userInputs);
+
         axios.post('http://localhost:8888/MedAPI/userLogin.php', userInputs)
         .then((res) =>{
-            console.log(res);
+
             if(res.data === true){
                 sessionStorage.setItem("activeUser", userInputs.user);
                 navigate("/Appointments");
