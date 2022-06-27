@@ -19,6 +19,7 @@ const AddDoctor = (props) => {
     const day = useRef();
     const month = useRef();
     const year = useRef();
+    const [photo, setPhoto] = useState();
 
     //other
     const gender = useRef();
@@ -29,6 +30,7 @@ const AddDoctor = (props) => {
     const specialise = useRef();
     const room = useRef();
     const fees = useRef();
+    const image = useRef();
     const contactRegex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
 
@@ -71,6 +73,8 @@ const AddDoctor = (props) => {
             setConfirm(false);
         }
     }
+
+
 
     const pushDoctor = () => {
 
@@ -151,6 +155,9 @@ const AddDoctor = (props) => {
 
                     <label for="fee">Consult fee</label>
                     <input ref={fees} type={'number'} name="fee" id="fee" ></input>
+                 
+                    
+                
 
                     <Col md={{ span: 4, offset: 2 }} className="mt-5 button" onClick={() => { addDoctor(); pushDoctor() }}><Primarybtn ><FaUserPlus size={25} className="me-3 text-center" /> Add Doctor </Primarybtn></Col>
 

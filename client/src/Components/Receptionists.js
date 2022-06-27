@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import "../index.scss";
-import SearchInput from './SubComponents/Inputs/SearchInput';
 import Profile from './SubComponents/UI/Profile';
 import Chatroom from './SubComponents/UI/Chatroom';
 import io from 'socket.io-client';
@@ -112,25 +111,22 @@ const Receptionists = () => {
         <>
             <Navigation />
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
-                <SearchInput>
-                    Search Receptionists...
-                </SearchInput>
                 <h2 className='headingTwo ms-2'> RECEPTIONISTS </h2>
 
                 <Patientoverview
                     title="Total Staff members"
                     number={staffAmount}
-                    icon={<FaUser color={"#2663d4"} size={70} />} />
+                    icon={<FaUser color={"#2663d4"} size={56} />} />
 
                 <Patientoverview
                     title="Total Appointments"
                     number={bookedL}
-                    icon={<FaBookMedical color={"#2663d4"} size={70} />} />
+                    icon={<FaBookMedical color={"#2663d4"} size={56} />} />
 
                 <Patientoverview
                     title="Total Receptionists"
                     number={recepLength}
-                    icon={<FaTty color={"#2663d4"} size={70} />} />
+                    icon={<FaTty color={"#2663d4"} size={56} />} />
 
                 <h2 className='allPatients ms-2 mt-4'>All Receptionists</h2>
 

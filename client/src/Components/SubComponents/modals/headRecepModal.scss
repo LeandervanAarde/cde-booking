@@ -1,0 +1,27 @@
+@import "/src/scss/variables.scss";
+
+.btnContainer{
+    margin-top: 2vh;
+    float: left;
+}
+
+.in{
+    width: 70%;
+    margin-left: 15% !important;
+    margin-bottom: 3vh !important;
+    border-radius: $borderRad;
+    border: 2px solid $blue;
+}
+
+.lab{
+    margin-bottom: 1vh;
+    margin-left: 15%;
+    font-family: $mainFont;
+    font-weight: 600;
+}
+
+#cancel{
+    background-color: $warning !important;
+    color: white !important;
+    text-align: center !important;
+}

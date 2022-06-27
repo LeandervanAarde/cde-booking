@@ -11,3 +11,28 @@
 #fee{
     width: 8vw;
 }
+
+.file{
+  & :nth-child(1){
+    border: none !important;
+    float: left;
+  }
+}
+
+.profile_img{
+    border: none;
+    background-color: red;
+    height: 10vh;
+    aspect-ratio: 1/1;
+    float: left;
+    overflow: scroll;
+    object-fit: contain !important;
+    background-attachment: contain;
+    display: none;
+
+    &:first-child{
+        background-position: center !important;
+        background-size: contain !important; 
+    }
+
+}

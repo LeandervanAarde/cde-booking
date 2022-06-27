@@ -54,7 +54,8 @@ const Modal = (props) => {
                 <h6>{props.mail}</h6>
                 <input type={'text'} placeholder="Patient email"></input>
 
-                <Col md={{span:4, offset:4}} className="mt-5 " ><Primarybtn function={bookNewAppointment} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span:4, offset:1}} className="mt-5 btun" onClick={props.close} ><Primarybtn function={bookNewAppointment} ><FaUserPlus size ={25} className="me-3 text-center" /> Add Appointment </Primarybtn></Col>
+                <Col md={{span: 4, offset:1}} className="mt-5 btun" onClick={props.close} ><Primarybtn function={bookNewAppointment} >Close</Primarybtn></Col>
            </Col>
        </Col>
        </>

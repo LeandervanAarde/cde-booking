@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useState } from 'react';
 import "../../src/index.scss";
-import SearchInput from './SubComponents/Inputs/SearchInput';
+
 import Profile from './SubComponents/UI/Profile';
 import Patientoverview from './SubComponents/UI/Patientoverview';
 import { FaMoneyBillWave, FaTimesCircle, FaStethoscope, FaUser } from "react-icons/fa";
@@ -106,25 +106,22 @@ const Patients = (props) => {
         <>
             <Navigation />
             <Col md={{ span: 8, offset: 1 }} className="workingCon">
-                <SearchInput>
-                    Search Patient...
-                </SearchInput>
                 <h2 className='headingTwo'> CDE Program patients</h2>
 
                 <Patientoverview
                     title="Total patients"
                     number={allPatients.length}
-                    icon={<FaUser color={"#2663d4"} size={70} />} />
+                    icon={<FaUser color={"#2663d4"} size={56} />} />
 
                 <Patientoverview
                     title="Total Doctors"
                     number={allDoctors.length}
-                    icon={<FaStethoscope color={"#2663d4"} size={70} />} />
+                    icon={<FaStethoscope color={"#2663d4"} size={56} />} />
 
                 <Patientoverview
                     title="Total fees owed"
                     number={"R " + fees}
-                    icon={<FaMoneyBillWave color={"#2663d4"} size={70} />} />
+                    icon={<FaMoneyBillWave color={"#2663d4"} size={56} />} />
 
                 <h2 className='allPatients ms-4'>All patients</h2>
 

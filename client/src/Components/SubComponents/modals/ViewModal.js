@@ -56,7 +56,7 @@ const ViewModal = (props) => {
         let newValues = {
             id: props.id,
             nm: personName.current.value.trim(),
-            surn:personSurname.current.value.trim(),
+            surn: personSurname.current.value.trim(),
             gen: genD.current.value.trim(),
             nr: cellP.current.value.trim(),
             mail: mailAd.current.value.trim(),
@@ -67,59 +67,59 @@ const ViewModal = (props) => {
 
         if (name == "") {
             setErrorMod(true)
-        } else{
+        } else {
             setErrorMod(false)
         }
 
         if (surname == "") {
             setSurnameErr(true)
-        } else{
+        } else {
             setSurnameErr(false)
         }
 
         if (gender == "" || gender.length <= 2) {
             setGenderErr(true)
-        } else{
+        } else {
             setGenderErr(false)
         }
 
         if (number == false || number.length <= 9) {
             setNumberErr(true)
-        } else{
+        } else {
             setNumberErr(false)
         }
 
         if (email !== "") {
-            setEmailErr(false); 
-        } else{
+            setEmailErr(false);
+        } else {
             setEmailErr(true)
             console.log("false")
         }
 
-        if(email !== mailcodex){
+        if (email !== mailcodex) {
             setEmailErr(false)
-        } else{
+        } else {
             setEmailErr(false)
         }
 
 
         if (medicalAid == "" || medicalAid.length < 6) {
             setMedicalErr(true);
-        } else{
+        } else {
             setMedicalErr(false)
         }
 
 
     }
 
-    const updatedInformation =() =>{
-        if(errorMod === false && surnameErr === false && genderErr === false && numberErr === false && emailErr === false && medicalErr === false){
+    const updatedInformation = () => {
+        if (errorMod === false && surnameErr === false && genderErr === false && numberErr === false && emailErr === false && medicalErr === false) {
             console.log("all good to be pushed");
             let newValues = {
                 id: props.id,
                 image: props.image,
                 nm: personName.current.value.trim(),
-                surn:personSurname.current.value.trim(),
+                surn: personSurname.current.value.trim(),
                 gen: genD.current.value.trim(),
                 nr: cellP.current.value.trim(),
                 mail: mailAd.current.value.trim(),
@@ -129,13 +129,13 @@ const ViewModal = (props) => {
 
             //Do axios call here
             axios.post("http://localhost:8888/MedAPI/editPatient.php", newValues)
-            .then(res =>{
-                let data = res.data;
-                setSucc(true);
-            })
-            .catch(err =>{
-                console.log(err);
-            })
+                .then(res => {
+                    let data = res.data;
+                    setSucc(true);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
 
@@ -149,14 +149,14 @@ const ViewModal = (props) => {
                         <Col md={{ span: 5 }} className="Modal ">
                             {/* Fix eventually, this modal is included as modal within another modal. */}
                             {
-                                succ?
-                                <Col md={{span:8, offset:1}} className="succ">
-                                <FaUserCheck className="edited" size={70} />
-                                <h3 className="successinfo">Patient information updated!</h3>
-                                <Col md={{span:4, offset: 4}} id="close"><Primarybtn function={()=>{return setSucc(false); }} >Close</Primarybtn></Col>
-                                </Col>
-                                :
-                                <></>
+                                succ ?
+                                    <Col md={{ span: 8, offset: 1 }} className="succ">
+                                        <FaUserCheck className="edited" size={70} />
+                                        <h3 className="successinfo">Patient information updated!</h3>
+                                        <Col md={{ span: 4, offset: 4 }} id="close"><Primarybtn function={() => { return setSucc(false); }} >Close</Primarybtn></Col>
+                                    </Col>
+                                    :
+                                    <></>
                             }
 
                             <Col md={12}>
@@ -213,8 +213,8 @@ const ViewModal = (props) => {
 
 
                                             <>
-                                                 <label for="cell">Cell number</label>
-                                                 <input ref={cellP} name="cell" id="cell" defaultValue={props.cellphone}></input>
+                                                <label for="cell">Cell number</label>
+                                                <input ref={cellP} name="cell" id="cell" defaultValue={props.cellphone}></input>
                                             </>
 
                                             :
@@ -242,29 +242,22 @@ const ViewModal = (props) => {
 
                                         {!medicalErr ?
                                             <>
-                                               <label for="medA" className="nameL">Medical Aid</label>
+                                                <label for="medA" className="nameL">Medical Aid</label>
                                                 <input ref={medicalAidNumber} name="medA" id="medA" defaultValue={props.medicalAid}></input>
                                             </>
 
                                             :
                                             <>
-                                               <label for="medA" className="nameL error1">*MEICAL AID</label>
+                                                <label for="medA" className="nameL error1">*MEICAL AID</label>
                                                 <input ref={medicalAidNumber} className="inErr" name="medA" id="medA" defaultValue={props.medicalAid}></input>
                                             </>
                                         }
 
-                                        
+
                                     </Col>
                                 </Col>
-                                {
-                                    role ?
-                                        <>
-                                            <Col md={{ span: 4, offset: 1 }} onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
-                                            <Col md={{ span: 5, offset: 1 }} onClick={ () => {updatePatient(); updatedInformation()}} className="button"><Primarybtn id={"delete"} >Update information</Primarybtn></Col>
-                                        </>
-                                        :
-                                        <Col md={{ span: 4, offset: 4 }} onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
-                                }
+                                <Col md={{ span: 4, offset: 1 }} onClick={props.func} className="button"><Primarybtn > Close</Primarybtn></Col>
+                                <Col md={{ span: 5, offset: 1 }} onClick={() => { updatePatient(); updatedInformation() }} className="button"><Primarybtn id={"delete"} >Update information</Primarybtn></Col>
                             </Col>
                         </Col>
 

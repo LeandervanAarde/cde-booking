@@ -217,7 +217,7 @@ const Appointments = () => {
                 cont={"Patient Cell"}
                 mail={"Patient email"}
                 setModalOpen={modalOpen}
-               
+               close={() =>{return setModalOpen(false)}}
             />}
 
             {appModal &&
