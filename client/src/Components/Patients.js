@@ -72,7 +72,7 @@ const Patients = (props) => {
                             surname: data[i].surname,
                             fees: "R " + data[i].feesOut
                         })
-                        let outstandingpeople = arr.map((e) => <TableRow key={e.id} Information1={e.id} Information2={e.name + " " + e.surname} Information3={e.fees} btnTxt={"- PAID"} function={paidFees} id={e.id} />)
+                        let outstandingpeople = arr.map((e) => <TableRow key={e.id} Information1={e.id} Information2={e.name + " " + e.surname} Information3={e.fees} id={e.id} />)
                         setOutstanding(outstandingpeople);
                     }
                 }

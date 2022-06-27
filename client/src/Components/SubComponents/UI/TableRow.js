@@ -17,7 +17,6 @@ const TableRow = (props) => {
                 })
                 .catch(err => {
                     console.log(err);
-                    alert("There was an issue deleting the Appointment");
                 })
         }
     }
