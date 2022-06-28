@@ -132,7 +132,7 @@ Run the following in the command-line to install all the required dependencies:
 
 <!-- note how you can use your gitHub link. Just make a path to your assets folder -->
 
-![image2](https://drive.google.com/uc?export=view&id=1bHE72vLjpqrjRsHUDHiq-NO7HIz7YvfU)
+![image2](https://drive.google.com/uc?export=view&id=1lWJwFo9amrM6M1hlhdouKXxl6RWEkE8a)
 
 ### See all available appointments by clicking on the Calendars dates! 
 See,Book, update and remove all available appointments for anytime on any day! The calendar on the CDE allows Receptionists to see availabilities for the near and far future. 
@@ -144,7 +144,8 @@ See all booked appointments for the current week (start to end) so that Receptio
 Remove old patients, Doctors and Receptionists that have left the CDE or CDE program. This allows the system to remain light weight and easy to scroll through. 
 Edit all members as information is changed such as email etc. 
 Visually see all members and add members to the system!
-![image4][https://drive.google.com/uc?export=view&id=179PtitQiOw--XTjHwvjWnHSUn7ZrX4dD]
+
+![image4](https://drive.google.com/uc?export=view&id=179PtitQiOw--XTjHwvjWnHSUn7ZrX4dD)
 
 ### Talk to other Staff members on the live chat
 Get staff updates and talk to other members to keep up to date with what is happening in the CDE to ensure nothing goes missing, this allows staff members to avoid missing important information and updates based around the CDE.
@@ -160,12 +161,15 @@ For this specific project, I had taken inspiration from other medical websites a
 Throughout the concept process I had also started learning more about REACT to make the project easier for myself as well as making it more efficient. This would make for a more successful project overall. Furthemore, I had to conceptually understand the limitations that I had considering my basic knowledge of PHP. 
 
 ### Ideation
-![image5](https://drive.google.com/uc?export=view&id=)
+
+![image7](https://drive.google.com/uc?export=view&id=1K4q_eWZJq-odCJlG3jd-ENfxlXb7omN_)
 ### Wireframes
- In order to get the best result and most user-centered design that I could produce, I had to create wireframes. Giving me the opportunity to identify any problems with the design earlier on and thus saving time during the development process.
-![image7](https://drive.google.com/uc?export=view&id=)
-![image8](https://drive.google.com/uc?export=view&id=)
-![image9](https://drive.google.com/uc?export=view&id=)
+  Wireframing fell as part of my planning process, these wireframes would guide me in the right direction and would assist me in planning my content in order to ge the best possible outcan that I could possibly get for this project.
+![image6](https://drive.google.com/uc?export=view&id=1UVAQ3u8f3C3ZfcbXLlzEQng64HR6n1cy)
+![image8](https://drive.google.com/uc?export=view&id=196jy4Nvux146o_AWG20cywmIFeBirFvF)
+![image15](https://drive.google.com/uc?export=view&id=1JMBzEJ2Pbqnv0TJQA49QatIhDuBoOUaB)
+![image15](https://drive.google.com/uc?export=view&id=1havZXna34S0EV7ALAZy1dmWQtIMPgLGI)
+
 
 <!-- DEVELOPMENT PROCESS -->
 ## Development Process
@@ -185,50 +189,48 @@ The `Development Process` is the technical implementations and functionality don
 
 #### Highlights
 <!-- stipulated the highlight you experienced with the project -->
-* Over the course of this project I have learned about the implementation of React and some of the basic capabilities. I have a better understanding of why the framework is so popular. I have a grown with a basic knowledge in components, axios calls, useStates, UseRef's and useEffects. 
-* I have learned about the implementation of React chartsjs and how to use props to implement Chartsjs
-* I enjoyed the challenges that this API brought me and solving issues in a different way. I definetly enjoyed the progression of this project and the final outcome that it has presented. Furthermoer, I enjoyed the general implementation of React, while there is much more to learn about React, I believe that this was a good starting point to have. 
+* Over the course of this project, the highlight for me was the impementation of Socket Io, this was especially exciting because it added an extra layer of excitement to the application. 
+* Using PHP has taught me the basics of backend development and SQL databases. This was a highlight as it has the potential to open up many more doors.
+* I enjoyed the challenges that these two languages have brought, although it was extremely difficult, I have a new respect for Php and what it has to offer.
 
 #### Challenges
 <!-- stipulated the challenges you faced with the project and why you think you faced it or how you think you'll solve it (if not solved) -->
-* One of the main challenges faced was the implementation of the players compare page, the API endpoint that I had used does not list players, but does return a single player by ID. As we do not know these unique ID's it had presented a challenge of getting the desired players. I had resolved this by downloading a typeScript folder with  these players ID's and Names, converting it to a JS file and using that to get the ID and run the API call. 
-* On the Team Compare page I have utilized a polar area chart, which had proven to be quite challenging at first, the problem was that I could append 2 polar area charts through props (as opposed to the single polar area that would hold both teams). This was resolved through an empty array that would hold the length of the data and then append it after an API call was run
-* The desired outcome on the player timeline page was to show a single Statistic from a player over the course of 5 years. The challenge faced here was that if a year was chosen that could not increment by 5, the entire function would break, thus no data would be displayed (eg. Alex Ovechkin, Shots, 2017/2018. This would break as it can only show 4 seasons.). I had overcome this by creating a function that would return the last year that can increment by 5 if the value is not able to increment.
-
-
-
+* One of my largest challenges in this project was an error that is still active, there is an issue with the useEffects that cause an infinite loop, thus information does not properly update unless the application is reloaded everytime a change is made. This is especially frustrating because it defeats the purpose of SPA=. 
+* The intergration of PHP and REACT was fairly difficult and was proven to be a challenge throuhgout the entire project. This issue was resolved through numerous work arounds and self study. In the end the project was successful, but it was fairly challenging
+* Consistency was a big issue in this problem , I've noticed that this is a challenge among most of the applications that I have developed. This is something that I will pay more attention to in the future, but this was a step in the right direction. 
 
 #### Above And Beyond
 
 What aspects of this final build contribute to the `Above And Beyond` Component of your brief?
 <!-- what did you learn outside of the classroom and implement into your project-->
-* Model Viewer
-* model-viewer is an easy to implement 3D modelviewer CDn, this allows for developers to insert a 3D model format into their code and for it to be displayed as a model instead of it being an image/gif. Developers are able to explore the interactiveness, such as users being able to interact with 3d models. 
+* SocketIo Chatroom
+* This project made use of SocketIo in order to create a chatroom. Socket Io makes use of webSockets in order to create a communication between client and server. This was not part of the brief but it was something that I felt could be fairly benificial to the application. 
++ MomentJS.
+* Moment JS was used as a way to incorporate formatted dates into the application, this was used throughout the entire application to apply functionality. It was also used in the creation of the calendar. 
+* SASS
+* Sass was used as a means to make Css more readable due to its structure. SCSS allows for external files to be linked. This was used to create more consistency in the front end of the application with the use of variables. The variables would allow me to predefine aspects such as fonts and colours to be re-used. Variables would also avoid aspects of too much repetition and making the code look un neat. 
 
 ### Future Implementation
 <!-- stipulate functionality and improvements that can be implemented in the future. -->
-* in the future I would like to implement more of React's features and prebuilt items. 
-* In future I would like to implement the design decisions that I have made throughout this project, making this look more user friendly and making it more interactive
-* A future improvement is more use of reusable components, while this has reusable components to a certain extent, I have not taken full advantage of this. in future I will be implementing reusable components as I have an understanding of them now. 
+* In future I would like to implement better back end and make use of table relations and prepared statements. This will make the application more usable and more secure, while teaching me better practice for industry standard 
+* In the future I would like to implement a better, more consistent front end that is more attractive to the viewers. 
+*  A future improvement that I would like to incorporate is the image upload, due to time constraints I was not able to incorporate this into the project. 
 
 <!-- MOCKUPS -->
 ## Final Outcome
 
 ### Mockups
 
-![image10](https://drive.google.com/uc?export=view&id=1CnAZx4L5mjxIh8QP-bYqLTUxsdFEBHvb)
-![image11](https://drive.google.com/uc?export=view&id=1cFheqJ1b2ZAUQw9vK_ZO1w9i8aJ1Nhr1)
-![image12](https://drive.google.com/uc?export=view&id=1GVeowYa9OiS-E_EtFMDd4gyhXPGy_Vzd)
-![image13](https://drive.google.com/uc?export=view&id=1OeF2P1xmajnRdLrd_NW8E9CqrsQgRqHG)
-![image14](https://drive.google.com/uc?export=view&id=1bHE72vLjpqrjRsHUDHiq-NO7HIz7YvfU)
-
+![image10](https://drive.google.com/uc?export=view&id=1zhp2EjfmmWPeYJ1ug8vRv8NEBVu50XaH)
+![image11](https://drive.google.com/uc?export=view&id=1lWJwFo9amrM6M1hlhdouKXxl6RWEkE8a)
+![image12](https://drive.google.com/uc?export=view&id=179PtitQiOw--XTjHwvjWnHSUn7ZrX4dD)
+![image13](https://drive.google.com/uc?export=view&id=1AZRxRysJt9lKHe_fatdQWGNezd3PFrUv)
+![image14](https://drive.google.com/uc?export=view&id=1Jed5lxkq6HY8Pc-Y7tFW8hU9LxbHVj0a)
+1AZRxRysJt9lKHe_fatdQWGNezd3PFrUv
 <!-- VIDEO DEMONSTRATION -->
 ### Video Demonstration
-
 To see a run through of the application, click below:
-
-[View Demonstration](path/to/video/demonstration)
-
+[View Demonstration](https://drive.google.com/uc?export=view&id=15g0MauoJMrDld3alcVn1GhrlNraR1i_w)
 
 See the [open issues](https://github.com/LeandervanAarde/cde-booking/issues) for a list of proposed features (and known issues).
 
@@ -251,10 +253,9 @@ Distributed under the MIT License. See `LICENSE` for more information.\
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 <!-- all resources that you used and Acknowledgements here -->
-* [model-viewer](https://modelviewer.dev/)
+* [MomentJs](https://momentjs.com/)
 * [Stack overflow](https://stackoverflow.com/)
-* [React Chartsjs](https://www.npmjs.com/package/react-chartjs-2)
-* [Blender](https://www.blender.org/)
-* [Image](https://unsplash.com/s/photos/hockey)
-* [mockups](https://www.figma.com/community/plugin/786250770157843670/Mockuuups-Studio)
+* [SocketIO](https://socket.io/)
+* [Chat App](https://www.fullstacklabs.co/blog/chat-application-react-express-socket-io)
+* [Image](https://unsplash.com/)
 
